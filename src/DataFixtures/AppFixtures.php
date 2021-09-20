@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Article;
+use App\Entity\Category;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
