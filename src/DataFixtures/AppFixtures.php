@@ -8,6 +8,8 @@ use DateTime;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\Entity\Category;
+use App\Entity\Article;
 use Faker;
 
 class AppFixtures extends Fixture
@@ -35,18 +37,22 @@ class AppFixtures extends Fixture
         return $categorys;
     }
 
-    private function createProductByCategory($manager,$faker,$categorys){
-        foreach($categorys as $category){
+    private function createProductByCategory($manager,$faker,$articles){
+        foreach($articles as $article){
             for($i=0;$i<10;$i++){
-                $categoryFromDB = $manager->getRepository(Category::class)->findOneBy([
-                    'name'=> $category->getName()
-                ]);
+                //$categoryFromDB = $manager->getRepository(Category::class)->findOneBy([
+                //    'name'=> $category->getName()
+                //]);
                 $article = new Article();
-                $article->setCategory($categoryFromDB);
-                $article->setContent($faker->paragraph(3,true));
+                //$article->setCategory($categoryFromDB);
+                $article->setName($faker->firstName());
+                $article->setInfos($faker->lastName());
+                $article->setPrice($faker->randomFloat(2, 1, 50));
                 $article->setCreatedAt(new DateTimeImmutable());
-                $article->setTitle($faker->realText(10,1));
-                $manager->flush();
+                $article->setPic($faker->firstName());
+                $manager->persist($article);
+
+            
             }
         }
     }
