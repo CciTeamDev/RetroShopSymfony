@@ -16,5 +16,43 @@
         <li>Your controller at <code><a href="{{ 'C:/Users/formationpeweb/Desktop/EcommSymfony/Eshop/RetroShopSymfony/src/Controller/CartController.php'|file_link(0) }}">src/Controller/CartController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/formationpeweb/Desktop/EcommSymfony/Eshop/RetroShopSymfony/templates/cart/index.html.twig'|file_link(0) }}">templates/cart/index.html.twig</a></code></li>
     </ul>
+    {% if items | length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th></th>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{item.product.name}}</td>
+            
+                        <td>{{item.product.price}}</td>
+                        
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.product.price * item.quantity}}</td>
+                        <td><a href="{{path('cart_remove',{'id':item.product.id})}}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i><button>bleep</button>
+                        </a></td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total :</td>
+                    <td> {{total}}</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <p>c vide</p>
+    {% endif %}
 </div>
+    
 {% endblock %}
