@@ -15,14 +15,28 @@ class CartService{
         $this->session = $session;
         $this->articleRepository = $articleRepository;
     }
-    public function add(int $id) {
+
+    public function add(int $id,int $qte) {
+
         $panier = $this->session->get('panier',[]);
         if(!empty($panier[$id])){
-            $panier[$id]++;
+            $panier = $this->update($id,$qte);
         } else {
-            $panier[$id] = 1;
+            $panier[$id] = $qte;
         }
         $this->session->set('panier',$panier);
+    }
+
+    public function update(int $id,int $qte) {
+    
+        $panier = $this->session->get('panier',[]);
+        if(!empty($panier[$id])){
+            $panier[$id]+=$qte;
+        } else {
+            $error_message = false;
+            return $error_message;
+        }
+        return $panier;
     }
 
     public function remove(int $id){
@@ -45,7 +59,6 @@ class CartService{
                 'quantity'=>$quantity
             ];
         }
-        //dd($panierWithData);
         return $panierWithData;
     }
 

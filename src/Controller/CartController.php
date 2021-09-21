@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,8 +21,8 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart/add/{id}', name:"cart_add")]
-    public function add($id,CartService $cartService){
-        $cartService->add($id);
+    public function add($id,CartService $cartService,Request $request){
+        $cartService->add($id,$request->get('quantity'));
         
         return $this->redirectToRoute('cart_index');
     }
@@ -31,4 +32,13 @@ class CartController extends AbstractController
         $cartService->remove($id);
         return $this->redirectToRoute("cart_index");
     }
+
+    //#[Route('/cart/update/{id}', name:"cart_update")]
+    //public function update($id, CartService $cartService){
+    //    $cartUpdate = $cartService->update($id);
+    //    if($cartUpdate === false) {
+    //        return $this->redirectToRoute("article_index");
+    //    }
+    //    return $this->redirectToRoute("cart_index");
+    //}
 }

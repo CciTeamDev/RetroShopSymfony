@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +25,7 @@ class ArticleController extends AbstractController
     #[Route('/new', name: 'article_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
+        
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -45,6 +47,7 @@ class ArticleController extends AbstractController
     #[Route('/{id}', name: 'article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
+        
         return $this->render('article/show.html.twig', [
             'article' => $article,
         ]);
