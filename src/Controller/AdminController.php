@@ -28,6 +28,7 @@ class AdminController extends AbstractController
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
+
     }
 
     #[Route('/{id}', name: 'user_delete', methods: ['POST'])]

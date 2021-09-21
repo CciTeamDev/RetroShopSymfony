@@ -3,20 +3,31 @@
 namespace App\Controller;
 
 use App\Service\Cart\CartService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CartController extends AbstractController
 {
     #[Route('/cart', name: 'cart_index')]
-    public function index(CartService $cartService): Response
+    public function index(CartService $cartService, PaginatorInterface $paginator, Request $request): Response
     {
+        $CartArticles = $paginator->paginate(
+            $cartService->getFullCart(),
+            $request->query->getInt('page', 1),
+            5
+        );
+        
+
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',
-            'items' => $cartService->getFullCart(),
-            'total' => $cartService->getTotal()
+            'items' => $CartArticles,
+            'total' => $cartService->getTotal(),
+            //'cart' => $CartArticles
         ]);
+        // dd($cartService);
     }
 
     #[Route('/cart/add/{id}', name:"cart_add")]
