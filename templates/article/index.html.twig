@@ -35,6 +35,7 @@
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('cart_add', {'id': article.id}) }}">add</a>
                 </td>
             </tr>
         {% else %}
