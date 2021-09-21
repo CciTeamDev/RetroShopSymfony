@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Article;
+use App\Entity\Category;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\Category;
-use App\Entity\Article;
 use Faker;
 
 class AppFixtures extends Fixture
