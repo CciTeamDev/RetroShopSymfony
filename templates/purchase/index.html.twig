@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Purchase index{% endblock %}
+
+{% block body %}
+    <h1>Purchase index</h1>
+
+    {# <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created_at</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Id_stripe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase.id }}</td>
+                <td>{{ purchase.createdAt ? purchase.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ purchase.status }}</td>
+                <td>{{ purchase.total }}</td>
+                <td>{{ purchase.idStripe }}</td>
+                <td>
+                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
+                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %} #}
+        {# </tbody>
+    </table>
+    <a href="{{ path('purchase_new') }}">Create new</a> #} 
+
+    
+    {% for purchase in purchases %}
+    {% if purchase.status == "En cours de traitement" %}
+        <h2>Commande en cours de traitement</h2>
+        <tr>
+                <td>{{ purchase.id }}</td>
+                <td>{{ purchase.createdAt ? purchase.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ purchase.status }}</td>
+                <td>{{ purchase.total }}</td>
+                <td>{{ purchase.idStripe }}</td>
+                <td>
+                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
+                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
+                </td>
+            </tr>
+    {% elseif purchase.status == "Validé" %}
+        <h2>Commande Validé</h2>
+        <tr>
+                <td>{{ purchase.id }}</td>
+                <td>{{ purchase.createdAt ? purchase.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ purchase.status }}</td>
+                <td>{{ purchase.total }}</td>
+                <td>{{ purchase.idStripe }}</td>
+                <td>
+                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
+                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
+                </td>
+            </tr>
+    {% elseif purchase.status == "Annulé" %}
+        <h2>Commande Annulé</h2>
+            <tr>
+                <td>{{ purchase.id }}</td>
+                <td>{{ purchase.createdAt ? purchase.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ purchase.status }}</td>
+                <td>{{ purchase.total }}</td>
+                <td>{{ purchase.idStripe }}</td>
+                <td>
+                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
+                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
+                </td>
+            </tr>
+    {% else %}
+        <h2>Aucune commande n'a été trouvé</h2>
+    {% endif %}
+    {% endfor %}
+{% endblock %}
