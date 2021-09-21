@@ -22,8 +22,6 @@ class CartService{
         } else {
             $panier[$id] = 1;
         }
-
-        
         $this->session->set('panier',$panier);
     }
 
@@ -40,13 +38,14 @@ class CartService{
     public function getFullCart():array{
         $panier = $this->session->get('panier',[]);
         $panierWithData = [];
-
+        
         foreach($panier as $id => $quantity){
             $panierWithData[] = [
                 'product' => $this->articleRepository->find($id),
                 'quantity'=>$quantity
             ];
         }
+        //dd($panierWithData);
         return $panierWithData;
     }
 
