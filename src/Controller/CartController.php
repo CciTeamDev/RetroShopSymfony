@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\PurchaseHaveProduct;
 use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

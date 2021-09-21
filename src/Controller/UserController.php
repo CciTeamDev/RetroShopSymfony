@@ -2,17 +2,68 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\User;
+use App\Entity\Purchase;
 use App\Form\UserType;
+use App\Entity\PurchaseHaveProduct as Cart;
 use App\Repository\UserRepository;
+use App\Service\Cart\CartService;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/user')]
 class UserController extends AbstractController
 {
+    #[Route('/getter', name: 'user_getter')]
+    public function userIdGetter(CartService $cartService){
+        $panier = $cartService->getFullCart();
+        dd($panier);
+        $boo = $this->getUser();
+        if($boo) {
+            $boot = $boo->getId();
+            
+            $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$boot]);
+            $purchase = $this->getDoctrine()->getRepository(Purchase::class)->findOneBy(['user'=>$user,'status'=>'panier']);
+
+            //dd($purchase);
+            if($purchase !== null) {
+                
+                $art = $this->getDoctrine()->getRepository(Article::class)->findAll();
+
+                $cart = $this->getDoctrine()->getRepository(Cart::class)->findBy(['purchase'=>$purchase]);
+                
+                dd($cart,$purchase,'bleep');
+
+
+            } else {
+
+                $entityManager = $this->getDoctrine()->getManager();
+
+                $purchase = new Purchase();
+                $date = new DateTimeImmutable();
+                $purchase->setCreatedAt($date);
+ 
+                $purchase->setStatus('panier');
+                $purchase->setTotal('0');
+                $purchase->setIdStripe('bleh');
+                $purchase->setUser($user);
+
+                $entityManager->persist($purchase);
+                $entityManager->flush();
+            }
+            
+            dd($purchase,$boot);
+        } else {
+            $boo = 'vide';
+        }
+        dd($boo);
+    }
+
     #[Route('/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
