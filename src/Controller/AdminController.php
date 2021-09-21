@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\PurchaseRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,18 +15,18 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin', name:"admin")]
 class AdminController extends AbstractController
 {
-    // #[Route('/', name: 'admin',methods: ['GET'])]
-    // public function index(): Response
-    // {
-    //     return $this->render('admin/index.html.twig', [
-    //         'controller_name' => 'AdminController',
-    //     ]);
-    // }
+    #[Route('/', name: 'admin',methods: ['GET'])]
+    public function index(): Response
+    { 
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController',
+        ]);
+    }
 
     #[Route('/', name: 'user_index',methods: ['GET'])]
     public function showUser(UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig', [
+        return $this->render('admin/user.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
 
@@ -41,6 +42,14 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/', name: 'purchase_index', methods: ['GET'])]
+    public function showPurchase(PurchaseRepository $purchaseRepository): Response
+    {
+        return $this->render('admin/purchase.html.twig', [
+            'purchases' => $purchaseRepository->findAll(),
+        ]);
     }
 
 }

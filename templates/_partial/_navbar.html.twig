@@ -13,6 +13,25 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
+        {% if app.user.roles[1] is defined %}
+
+          {% if app.user.roles[1] %}
+          
+          <li>
+            <a class="nav-link" href={{path("user_index")}}>Tous les Utilisateurs</a>
+          </li>
+          <li>
+            <a class="nav-link" href={{path("purchase_index")}}>Toutes les Commandes</a>
+          </li>
+
+          {% else %}
+           <li>
+            
+           </li>
+          {% endif %}
+
+        {% endif %}
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -41,3 +60,17 @@
     </div>
   </div>
 </nav>
+ 
+
+    <p>Our website is in maintenance mode. Please, come back later.</p>
+
+
+{# {% for user in users %}
+  {{dump(app.session('users'))}}
+  {{ user.roles[0] ? user.roles|json_encode : '' }}
+{% endfor %} #}
+{# {% if user.roles == ["ROLE_ADMIN"]%}
+  <h1>HELLOCOUPCU ADMIN</h1>
+{% else %}
+ <h1> HELLO COUOCU USER</h1>
+ {% endif %} #}
