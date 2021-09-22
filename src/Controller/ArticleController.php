@@ -50,7 +50,13 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/search', name: 'article_search', methods: ['POST'])]
+
+    // cette route ne marche apparement pas
+    // #[Route('/search', name: 'article_search', methods: ['POST'])]
+
+    /**
+     * @Route("/search", name="search")
+     */
     public function search(ArticleRepository $articleRepository, Request $request): Response
     {
        
@@ -60,6 +66,7 @@ class ArticleController extends AbstractController
         ]);
 
     }
+
     #[Route('/{id}', name: 'article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
