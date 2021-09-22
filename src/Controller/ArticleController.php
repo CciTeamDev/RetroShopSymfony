@@ -57,14 +57,17 @@ class ArticleController extends AbstractController
     /**
      * @Route("/search", name="search")
      */
-    public function search(ArticleRepository $articleRepository, Request $request): Response
+    public function search(ArticleRepository $articleRepository, Request $request, PaginatorInterface $paginator): Response
     {
-       
+        $article = $paginator->paginate(
+            $articleRepository->search($request->get('terme')),
+            $request->query->getInt('page', 1),
+            5
+        );
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->search($request->get('terme'))
-           
+            'articles' => $article
+        
         ]);
-
     }
 
     #[Route('/{id}', name: 'article_show', methods: ['GET'])]
