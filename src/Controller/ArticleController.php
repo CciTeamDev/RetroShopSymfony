@@ -50,6 +50,16 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    #[Route('/search', name: 'article_search', methods: ['POST'])]
+    public function search(ArticleRepository $articleRepository, Request $request): Response
+    {
+       
+        return $this->render('article/index.html.twig', [
+            'articles' => $articleRepository->search($request->get('terme'))
+           
+        ]);
+
+    }
     #[Route('/{id}', name: 'article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
@@ -78,15 +88,6 @@ class ArticleController extends AbstractController
 
    
 
-    #[Route('/search', name: 'article_search', methods: ['POST'])]
-    public function search(ArticleRepository $articleRepository,Request $request): Response
-    {
-        return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->search($request->get('terme'))
-           
-        ]);
-
-    }
     
     #[Route('/{id}/delete', name: 'article_delete', methods: ['POST'])]
     public function delete(Request $request, Article $article): Response
