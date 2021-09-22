@@ -1,5 +1,5 @@
 # RetroShopSymfony
-
+Pour Faker
 symfony console doctrine:fixtures:load 
 
 
@@ -14,3 +14,6 @@ pour yarn :
  yarn run watch
 
  yarn add sass-loader@112.0.0 sass --dev
+
+ Pour Pagination :
+ composer require knplabs/knp-paginator-bundle
