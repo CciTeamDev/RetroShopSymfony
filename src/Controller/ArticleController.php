@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/admin/article')]
+#[Route('/article')]
 class ArticleController extends AbstractController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
