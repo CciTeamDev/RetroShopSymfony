@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-#[Route('/admin', name:"admin")]
+#[Route('/admin')]
 class AdminController extends AbstractController
 {
     #[Route('/', name: 'admin',methods: ['GET'])]
@@ -23,10 +23,10 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'user_index',methods: ['GET'])]
+    #[Route('/user', name: 'admin_user',methods: ['GET'])]
     public function showUser(UserRepository $userRepository): Response
     {
-        return $this->render('admin/user.html.twig', [
+        return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
 
