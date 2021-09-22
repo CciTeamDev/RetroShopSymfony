@@ -18,7 +18,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'choices' => [
                     'admin' => 'ROLE_ADMIN',
-                    'profile' => 'ROLE_USER',
+                    'user' => 'ROLE_USER',
                 ]
             ])
             ->add('password')

@@ -32,6 +32,25 @@ class AdminController extends AbstractController
 
     }
 
+    #[Route('/{id}/edit', name: 'admin_user_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, User $user): Response
+    {   
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+        }
+        
+        return $this->renderForm('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    
+    }
+
     #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
     public function deleteUser(Request $request, User $user): Response
     {
@@ -44,10 +63,10 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/', name: 'purchase_index', methods: ['GET'])]
+    #[Route('/purchase', name: 'admin_purchase', methods: ['GET'])]
     public function showPurchase(PurchaseRepository $purchaseRepository): Response
     {
-        return $this->render('admin/purchase.html.twig', [
+        return $this->render('purchase/index.html.twig', [
             'purchases' => $purchaseRepository->findAll(),
         ]);
     }
