@@ -12,7 +12,6 @@
                 <th>Name</th>
                 <th>Infos</th>
                 <th>Price</th>
-                <th>Created_at</th>
                 <th>Pic</th>
                 <th>actions</th>
             </tr>
@@ -21,7 +20,7 @@
               <div class="search">
             <form action="/article/search" method="POST">
                 <input name="terme" type="text" placeholder="Que Cherches-tu ?">
-                <button type="submit"><i class="fas fa-search"></i></button>
+                <button type="submit"><i class="fas fa-search"></i>search</button>
             </form>
         </div>
         {% for article in articles %}
@@ -29,12 +28,12 @@
                 <td>{{ article.id }}</td>
                 <td>{{ article.name }}</td>
                 <td>{{ article.infos }}</td>
+                {# <td><img src="{{ article.pic }}"/></td> #}
                 <td>{{ article.price }}</td>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.pic }}</td>
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('cart_add', {'id': article.id}) }}">add</a>
                 </td>
             </tr>
         {% else %}
@@ -44,6 +43,8 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <div class="navigation">
+            {{ knp_pagination_render(articles) }}
+    </div>
     <a href="{{ path('article_new') }}">Create new</a>
 {% endblock %}

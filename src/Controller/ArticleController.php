@@ -5,20 +5,27 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use App\Service\Cart\CartService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/article')]
 class ArticleController extends AbstractController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, PaginatorInterface $paginator,Request $request): Response
     {
+
+        $articles = $paginator->paginate(
+            $articleRepository->findAll(),
+            $request->query->getInt('page', 1),
+            5
+        );
+
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findAll(),
+            'articles' => $articles,
         ]);
     }
 
@@ -41,6 +48,26 @@ class ArticleController extends AbstractController
         return $this->renderForm('article/new.html.twig', [
             'article' => $article,
             'form' => $form,
+        ]);
+    }
+
+
+    // cette route ne marche apparement pas
+    // #[Route('/search', name: 'article_search', methods: ['POST'])]
+
+    /**
+     * @Route("/search", name="search")
+     */
+    public function search(ArticleRepository $articleRepository, Request $request, PaginatorInterface $paginator): Response
+    {
+        $article = $paginator->paginate(
+            $articleRepository->search($request->get('terme')),
+            $request->query->getInt('page', 1),
+            5
+        );
+        return $this->render('article/index.html.twig', [
+            'articles' => $article
+        
         ]);
     }
 
@@ -73,19 +100,8 @@ class ArticleController extends AbstractController
 
    
 
-    #[Route('/search', name: 'article_search', methods: ['POST'])]
-    public function search(ArticleRepository $articleRepository,Request $request): Response
-    {
-
-
-        return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->search($request->get('terme'))
-           
-        ]);
-
-    }
-
-    #[Route('/{id}', name: 'article_delete', methods: ['POST'])]
+    
+    #[Route('/{id}/delete', name: 'article_delete', methods: ['POST'])]
     public function delete(Request $request, Article $article): Response
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
@@ -96,5 +112,6 @@ class ArticleController extends AbstractController
 
         return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
     }
+
     
 }

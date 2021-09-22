@@ -72,7 +72,7 @@ class LoginFromAuthenticator extends AbstractLoginFormAuthenticator
         
         $this->leTest($this->service['Cart'],$this->service['Purchase'],$token->getUser());
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('app_login'));
+        return new RedirectResponse($this->urlGenerator->generate('accueil_index'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
