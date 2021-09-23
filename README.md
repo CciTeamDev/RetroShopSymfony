@@ -17,3 +17,9 @@ pour yarn :
 
  Pour Pagination :
  composer require knplabs/knp-paginator-bundle
+
+ // pour les erreur 
+
+ https://symfony.com/doc/current/controller/error_pages.html
+
+ modifié env /app_env
