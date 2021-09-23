@@ -12,14 +12,14 @@
         </li> #}
         {% if app.user.roles[1] is defined %}
 
-          {% if app.user.roles[1] %}
-          
-          <li>
-            <a class="nav-link" href={{path("admin_user")}}>Tous les Utilisateurs</a>
-          </li>
-          <li>
-            <a class="nav-link" href={{path("admin_purchase")}}>Toutes les Commandes</a>
-          </li>
+        {% if app.user.roles[1] %}
+
+        <li>
+          <a class="nav-link" href={{path("admin_user")}}>Tous les Utilisateurs</a>
+        </li>
+        <li>
+          <a class="nav-link" href={{path("admin_purchase")}}>Toutes les Commandes</a>
+        </li>
 
         {% else %}
         <li>
@@ -56,30 +56,35 @@
         <input class="form-control me-2" name="terme" type="search" placeholder="Que Cherches-tu ?">
         <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
       </form>
-      
-      <a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i></a>
-      
+
       {% if app.user %}
-        <a class="nav-link" href={{path("user_index")}}><i class="fas fa-user"></i></a>
+      <a class="nav-link" href="/user/cart"><i class="fas fa-shopping-basket"></i></a>
+ 
       {% else %}
-        <a class="nav-link" href={{path("app_login")}}><i class="fas fa-user"></i></a>
+      <a class="nav-link" href={{path("app_login")}}><i class="fas fa-shopping-basket"></i></a>
+      {% endif %}
+
+      {% if app.user %}
+      <a class="nav-link" href={{path("user_index")}}><i class="fas fa-user"></i></a>
+      {% else %}
+      <a class="nav-link" href={{path("app_login")}}><i class="fas fa-user"></i></a>
       {% endif %}
 
       {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined)  %}
 
-          {% if app.user.roles[0] %}
-          
-          <a class="nav-link" href={{path("app_logout")}}>Se Déconnecter</a>
+      {% if app.user.roles[0] %}
 
-          {% elseif app.user.roles[1]%}
+      <a class="nav-link" href={{path("app_logout")}}>Se Déconnecter</a>
 
-          <a class="nav-link" href={{path("app_logout")}}>Se Déconnecter</a>
+      {% elseif app.user.roles[1]%}
 
-          {% else %}
-           <li>
-            
-           </li>
-          {% endif %}
+      <a class="nav-link" href={{path("app_logout")}}>Se Déconnecter</a>
+
+      {% else %}
+      <li>
+
+      </li>
+      {% endif %}
 
       {% endif %}
 
