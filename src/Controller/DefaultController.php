@@ -22,6 +22,11 @@ class DefaultController extends AbstractController
         ]);
     }
 
+    #[Route('/e', name: 'error404', methods: ['GET'])]
+    public function error404(): Response
+    {   
+        return $this->render("default/page404.html.twig", []);
+    }
     
 
     // public function categorie(): Response
