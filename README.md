@@ -20,7 +20,7 @@ pour yarn :
 
 
 
- Installer bootstrap
+Installer bootstrap
 
  yarn add bootstrap
 
@@ -28,7 +28,7 @@ pour yarn :
 
  dans assets/styles/app.scss
  mettre le @import '~bootstrap/scss/bootstrap'; (tout en haut)
-
+ yarn run watch
 
 
  // pour les erreur 
