@@ -37,14 +37,14 @@ class PurchaseRepository extends ServiceEntityRepository
     */
 
     
-    // public function findOneBySomeField($status): ?Purchase
-    // {
-    //     return $this->createQueryBuilder('p')
-    //         ->andWhere('p.exampleField = :val')
-    //         ->setParameter('val', $status)
-    //         ->getQuery()
-    //         ->getOneOrNullResult()
-    //     ;
-    // }
+    public function findOneById($id): ?Purchase
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.etat = :val')
+            ->setParameter('panier', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
     
 }
