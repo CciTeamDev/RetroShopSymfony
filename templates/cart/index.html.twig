@@ -36,8 +36,9 @@
                         <td>{{item.quantity}}</td>
                         <td>{{item.product.price * item.quantity}}</td>
                         <td><a href="{{path('cart_remove',{'id':item.product.id})}}" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i><button>remove</button>
+                            <i class="fas fa-trash"></i><button>Remove</button>
                         </a></td>
+
                     </tr>
                 {% endfor %}
             </tbody>
@@ -51,9 +52,10 @@
         </table>
     {% else %}
         <p>c vide</p>
+        
     {% endif %}
 </div>
- <div class="navigation">
-            {{ knp_pagination_render(items) }}
-</div>   
+<div class="navigation">
+    {{knp_pagination_render(items)}}
+</div>
 {% endblock %}

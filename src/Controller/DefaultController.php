@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/accueil')]
+#[Route('/')]
 class DefaultController extends AbstractController
 {   
     #[Route('/', name: 'accueil_index', methods: ['GET'])]
@@ -21,8 +21,6 @@ class DefaultController extends AbstractController
         'users' => $userRepository->findAll()
         ]);
     }
-
-    
 
     // public function categorie(): Response
     // {   

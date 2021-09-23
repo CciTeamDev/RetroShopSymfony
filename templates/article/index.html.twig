@@ -20,7 +20,7 @@
               <div class="search">
             <form action="/article/search" method="POST">
                 <input name="terme" type="text" placeholder="Que Cherches-tu ?">
-                <button type="submit"><i class="fas fa-search"></i></button>
+                <button type="submit"><i class="fas fa-search"></i>search</button>
             </form>
         </div>
         {% for article in articles %}
@@ -33,7 +33,12 @@
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                    {% if app.user %}
                     <a href="{{ path('cart_add', {'id': article.id}) }}">add</a>
+                    {% else %}
+                    <a href="{{ path('app_login', {'id': article.id}) }}">add</a>
+                    {% endif %}
+                    
                 </td>
             </tr>
         {% else %}

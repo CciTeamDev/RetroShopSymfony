@@ -33,6 +33,22 @@
             </tr>
         </tbody>
     </table>
+    <form action="{{ path('cart_add' ,{id:article.id}) }}" method="POST">
+        <select name="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        {% if app.user %}
+        <a href="{{ path('cart_add', {'id': article.id}) }}"><button type="submit"></button></a>
+        {% else %}
+
+        <a href="/login"><input type="button" value="acheter"></a>
+
+        {% endif %}
+    </form>
 
     <a href="{{ path('article_index') }}">back to list</a>
 

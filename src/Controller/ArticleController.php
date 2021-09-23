@@ -32,6 +32,7 @@ class ArticleController extends AbstractController
     #[Route('/new', name: 'article_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
+        
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -50,9 +51,30 @@ class ArticleController extends AbstractController
         ]);
     }
 
+
+    // cette route ne marche apparement pas
+    // #[Route('/search', name: 'article_search', methods: ['POST'])]
+
+    /**
+     * @Route("/search", name="search")
+     */
+    public function search(ArticleRepository $articleRepository, Request $request, PaginatorInterface $paginator): Response
+    {
+        $article = $paginator->paginate(
+            $articleRepository->search($request->get('terme')),
+            $request->query->getInt('page', 1),
+            5
+        );
+        return $this->render('article/index.html.twig', [
+            'articles' => $article
+        
+        ]);
+    }
+
     #[Route('/{id}', name: 'article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
+        
         return $this->render('article/show.html.twig', [
             'article' => $article,
         ]);
@@ -78,15 +100,6 @@ class ArticleController extends AbstractController
 
    
 
-    #[Route('/search', name: 'article_search', methods: ['POST'])]
-    public function search(ArticleRepository $articleRepository,Request $request): Response
-    {
-        return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->search($request->get('terme'))
-           
-        ]);
-
-    }
     
     #[Route('/{id}/delete', name: 'article_delete', methods: ['POST'])]
     public function delete(Request $request, Article $article): Response
