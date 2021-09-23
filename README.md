@@ -2,6 +2,17 @@
 Pour Faker
 symfony console doctrine:fixtures:load 
 
+Installer bootstrap
+
+ yarn add bootstrap
+
+ yarn add @popperjs/core
+ 
+ dans le assets/app.js
+ mettre import 'bootstrap';
+
+ dans assets/styles/app.scss
+ mettre le @import '~bootstrap/scss/bootstrap'; (tout en haut)
 
 pour yarn :
 (1 fois c'est tout)
@@ -18,12 +29,8 @@ pour yarn :
  Pour Pagination :
  composer require knplabs/knp-paginator-bundle
 
+// pour les erreur
 
- Installer bootstrap
+https://symfony.com/doc/current/controller/error_pages.html
 
- yarn add bootstrap
-
- yarn add @popperjs/core
-
- dans assets/styles/app.scss
- mettre le @import '~bootstrap/scss/bootstrap'; (tout en haut)
+modifié env /app_env
