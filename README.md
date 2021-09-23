@@ -17,3 +17,13 @@ pour yarn :
 
  Pour Pagination :
  composer require knplabs/knp-paginator-bundle
+
+
+ Installer bootstrap
+
+ yarn add bootstrap
+
+ yarn add @popperjs/core
+
+ dans assets/styles/app.scss
+ mettre le @import '~bootstrap/scss/bootstrap'; (tout en haut)

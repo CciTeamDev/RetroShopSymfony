@@ -54,10 +54,10 @@
       </ul>
       <form class="d-flex" action="/article/search" method="POST">
         <input class="form-control me-2" name="terme" type="search" placeholder="Que Cherches-tu ?">
-        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>Search</button>
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
       </form>
       
-      <a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i></a>
+      <a class="nav-link" href={{path("cart_index")}}><i class="fas fa-shopping-basket"></i></a>
       
       {% if app.user %}
         <a class="nav-link" href={{path("user_index")}}><i class="fas fa-user"></i></a>
