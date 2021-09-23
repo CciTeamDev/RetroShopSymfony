@@ -29,7 +29,7 @@
                 <td>{{ article.name }}</td>
                 <td>{{ article.infos }}</td>
                 {# <td><img src="{{ article.pic }}"/></td> #}
-                <td>{{ article.price }}</td>
+                <td>{{ article.price }}€</td>
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
