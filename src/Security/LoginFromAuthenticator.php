@@ -2,6 +2,11 @@
 
 namespace App\Security;
 
+use App\Entity\Purchase;
+use App\Entity\User;
+use App\Service\Cart\CartService;
+use App\Service\Purchase\PurchaseService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +29,15 @@ class LoginFromAuthenticator extends AbstractLoginFormAuthenticator
 
     private UrlGeneratorInterface $urlGenerator;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    private EntityManagerInterface $em;
+    private array $service = [];
+
+    public function __construct(UrlGeneratorInterface $urlGenerator,EntityManagerInterface $em,CartService $cartService,PurchaseService $purchaseService)
     {
         $this->urlGenerator = $urlGenerator;
+        $this->service['Cart']=$cartService;
+        $this->service['Purchase']=$purchaseService;
+        $this->em = $em;
     }
 
     public function authenticate(Request $request): PassportInterface
@@ -44,12 +55,22 @@ class LoginFromAuthenticator extends AbstractLoginFormAuthenticator
         );
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
+    protected function leTest(CartService $cartService,PurchaseService $purchaseService,$user){
+        
+        if($user) {
+            $user = $this->em->getRepository(User::class)->findOneBy(['id'=>$user->getId()]);
+            $purchase = $this->em->getRepository(Purchase::class)->findOneBy(['user'=>$user,'status'=>'panier']);
+            $purchaseService->checkPurchase($purchase,$user,$cartService);
+        } 
+    }
+
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token,string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
+        
+        $this->leTest($this->service['Cart'],$this->service['Purchase'],$token->getUser());
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('accueil_index'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
