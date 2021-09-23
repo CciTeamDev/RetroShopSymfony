@@ -1,5 +1,12 @@
-body {
-    background-color: rgb(235, 235, 235);
-    
+@import "1-theme/theme";
+@import "2-fonts/fonts";
+@import "3-layout/layout";
+@import "4-header/header";
+@import "5-footer/footer";
+@import "6-main/main";
+html, body {
+    background-color: var(--app-background);
+    color: var(--app-color-text);
+    // text-align: center;
     
 }
