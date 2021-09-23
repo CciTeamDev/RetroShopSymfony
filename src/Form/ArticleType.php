@@ -16,11 +16,8 @@ class ArticleType extends AbstractType
             ->add('name')
             ->add('infos')
             ->add('price')
-            ->add('created_at')
             ->add('pic')
-            ->add('category', ChoiceType::class, [
-                'multiple' => true,
-            ])
+            
         ;
     }
 
