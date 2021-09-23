@@ -18,8 +18,22 @@ pour yarn :
  Pour Pagination :
  composer require knplabs/knp-paginator-bundle
 
+
+
+ Installer bootstrap
+
+ yarn add bootstrap
+
+ yarn add @popperjs/core
+
+ dans assets/styles/app.scss
+ mettre le @import '~bootstrap/scss/bootstrap'; (tout en haut)
+
+
+
  // pour les erreur 
 
  https://symfony.com/doc/current/controller/error_pages.html
 
  modifié env /app_env
+
