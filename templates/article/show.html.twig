@@ -3,7 +3,7 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+    <h1 class="change">Article</h1>
 
     <table class="table">
         <tbody>
@@ -41,7 +41,13 @@
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
-        <button type="submit">sendqte</button>
+        {% if app.user %}
+        <a href="{{ path('cart_add', {'id': article.id}) }}"><button type="submit"></button></a>
+        {% else %}
+
+        <a href="/login"><input type="button" value="acheter"></a>
+
+        {% endif %}
     </form>
 
     <a href="{{ path('article_index') }}">back to list</a>
