@@ -14,6 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/article')]
 class ArticleController extends AbstractController
 {
+
+    
     #[Route('/', name: 'article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository, PaginatorInterface $paginator,Request $request): Response
     {

@@ -11,7 +11,6 @@
             <th>Id</th>
             <th>Name</th>
             <th>Infos</th>
-            <th>Pic</th>
             <th>Price</th>
             <th>actions</th>
         </tr>
@@ -28,7 +27,6 @@
             <td>{{ article.id }}</td>
             <td>{{ article.name }}</td>
             <td>{{ article.infos }}</td>
-            <td><img src="{{ article.pic }}"/></td>
             <td>{{ article.price }}€</td>
             <td>
                 <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
