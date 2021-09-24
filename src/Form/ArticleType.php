@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ArticleType extends AbstractType
 {
@@ -17,10 +18,8 @@ class ArticleType extends AbstractType
             ->add('infos')
             ->add('price')
             ->add('created_at')
-            ->add('pic')
-            ->add('category', ChoiceType::class, [
-                'multiple' => true,
-            ])
+            // ->add('ImageName')
+            ->add('ImageFile', FileType::class)
         ;
     }
 

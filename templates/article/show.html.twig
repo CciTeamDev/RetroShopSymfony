@@ -24,13 +24,14 @@
                 <td>{{ article.price }}</td>
             </tr>
             <tr>
+                <th>La putin d'image de sa mére</th>
+                <td><img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}"></td>
+            </tr>
+            <tr>
                 <th>Created_at</th>
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
-            <tr>
-                <th>Pic</th>
-                <td><img src="{{ article.pic }}"/></td>
-            </tr>
+            <
         </tbody>
     </table>
     <form action="{{ path('cart_add' ,{id:article.id}) }}" method="POST">
