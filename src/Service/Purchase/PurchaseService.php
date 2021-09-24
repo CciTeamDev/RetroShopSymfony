@@ -23,7 +23,7 @@ class PurchaseService{
         $this->articleRepository = $articleRepository;
     }
 
-    public function checkPurchase($purchase,$user,CartService $cartService){
+    public function checkPurchase($purchase,$user){
         if($purchase === null) {
             $entityManager = $this->entityManager;
 
@@ -37,4 +37,16 @@ class PurchaseService{
             $entityManager->persist($purchase);
             $entityManager->flush(); 
     }}
+
+    public function purchaseHistory($purchase){
+        $hpurchase =[];
+        foreach($purchase as $hpurchase){
+            dump($hpurchase);
+            //$hpurchase[] = [
+            //    'product' => $hpurchase->getArticle(),
+            //    'quantity'=> $hpurchase->getQuantity()
+            //];
+        }
+        return $hpurchase;
+    }
 }
