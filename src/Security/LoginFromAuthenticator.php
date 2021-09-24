@@ -55,12 +55,12 @@ class LoginFromAuthenticator extends AbstractLoginFormAuthenticator
         );
     }
 
-    protected function leTest(CartService $cartService,PurchaseService $purchaseService,$user){
+    protected function leTest(PurchaseService $purchaseService,$user){
         
         if($user) {
             $user = $this->em->getRepository(User::class)->findOneBy(['id'=>$user->getId()]);
             $purchase = $this->em->getRepository(Purchase::class)->findOneBy(['user'=>$user,'status'=>'panier']);
-            $purchaseService->checkPurchase($purchase,$user,$cartService);
+            $purchaseService->checkPurchase($purchase,$user);
         } 
     }
 
@@ -70,7 +70,7 @@ class LoginFromAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
         
-        $this->leTest($this->service['Cart'],$this->service['Purchase'],$token->getUser());
+        $this->leTest($this->service['Purchase'],$token->getUser());
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('accueil_index'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);

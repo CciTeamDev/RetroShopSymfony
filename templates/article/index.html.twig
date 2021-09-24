@@ -3,53 +3,53 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
+    <div class="testbody">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Infos</th>
-                <th>Price</th>
-                <th>Pic</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-              <div class="search">
-            <form action="/article/search" method="POST">
-                <input name="terme" type="text" placeholder="Que Cherches-tu ?">
-                <button type="submit"><i class="fas fa-search"></i>search</button>
-            </form>
+    <!--<div class="search">
+        <form action="/article/search" method="POST">
+            <input name="terme" type="text" placeholder="Que Cherches-tu ?">
+            <button type="submit"><i class="fas fa-search"></i>search</button>
+        </form>
+    </div>-->
+
+    <div class="blocarticle">
+    {% for article in articles %}
+    <div class="article">
+        <div class="top">
+            <h2 class="articlename">{{ article.name }}</h2>
+            <p class="articleinfolabel">Info</p>
+            <h3 class="articleinfos">{{ article.infos }}</h3>
         </div>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.name }}</td>
-                <td>{{ article.infos }}</td>
-                {# <td><img src="{{ article.pic }}"/></td> #}
-                <td>{{ article.price }}</td>
-                <td>
-                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-                    {% if app.user %}
-                    <a href="{{ path('cart_add', {'id': article.id}) }}">add</a>
-                    {% else %}
-                    <a href="{{ path('app_login', {'id': article.id}) }}">add</a>
-                    {% endif %}
-                    
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        
+        <div class="testpic">
+            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
+        </div>
+
+        <div class="bottom">
+            <div class="price">
+                <p class="pricelabel">price</p>
+                <p class="itemprice">{{ article.price }}€</p> 
+            </div>
+            <div class="actions">
+                <a id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
+                {% if app.user %}
+                <a id="actions-add" href="{{ path('cart_add', {'id': article.id}) }}">Ajout panier</a>
+                {% else %}
+                <a id="actions-add" href="{{ path('app_login', {'id': article.id}) }}">Ajout panier</a>
+                {% endif %}
+                <a id="actions-edit" href="{{ path('article_edit', {'id': article.id}) }}">Edit</a>
+                
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <p>no records found</p>  
+    {% endfor %}
+    </div>
+
     <div class="navigation">
             {{ knp_pagination_render(articles) }}
     </div>
-    <a href="{{ path('article_new') }}">Create new</a>
+    <a href="{{ path('article_new') }}">Create new article</a>
+    </div>
 {% endblock %}

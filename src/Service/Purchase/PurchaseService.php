@@ -23,7 +23,7 @@ class PurchaseService{
         $this->articleRepository = $articleRepository;
     }
 
-    public function checkPurchase($purchase,$user,CartService $cartService){
+    public function checkPurchase($purchase,$user){
         if($purchase === null) {
             $entityManager = $this->entityManager;
 
@@ -35,6 +35,28 @@ class PurchaseService{
             $purchase->setUser($user);
 
             $entityManager->persist($purchase);
+            $entityManager->flush();
+    }}
+
+    public function validatePurchase($purchase,CartService $cartService){
+        if($purchase) {
+            $entityManager = $this->entityManager;
+            $purchase->setTotal($cartService->getTotal($purchase));
+            $purchase->setCreatedAt(new DateTimeImmutable());
+            $purchase->setStatus('complete');
+            $purchase->setIdStripe('bleh');
+
+            $entityManager->persist($purchase);
             $entityManager->flush(); 
     }}
+
+    public function purchaseHistory($purchase,CartService $cartService){
+        $subpurchase =[];
+        
+        foreach($purchase as $hpurchase){
+            $fcart = ['purchase'=> $hpurchase, 'cart'=>$cartService->getFullCart($hpurchase)];
+            $subpurchase[] = $fcart;
+        }
+        return $subpurchase;
+    }
 }

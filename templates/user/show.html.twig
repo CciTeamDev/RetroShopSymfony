@@ -58,6 +58,8 @@
         </tbody>
     </table>
 
+    <a href="{{ path('purchase_history', {'id': user.id}) }}">historique des commandes</a>
+
     <a href="{{ path('user_index') }}">back to list</a>
 
     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>

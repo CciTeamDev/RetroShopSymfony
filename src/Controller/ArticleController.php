@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use DateTimeImmutable;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/article')]
 class ArticleController extends AbstractController
 {
+
+    
     #[Route('/', name: 'article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository, PaginatorInterface $paginator,Request $request): Response
     {
@@ -21,7 +24,7 @@ class ArticleController extends AbstractController
         $articles = $paginator->paginate(
             $articleRepository->findAll(),
             $request->query->getInt('page', 1),
-            5
+            4
         );
 
         return $this->render('article/index.html.twig', [
@@ -36,6 +39,7 @@ class ArticleController extends AbstractController
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
+        $article->setCreatedAt(new DateTimeImmutable());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
