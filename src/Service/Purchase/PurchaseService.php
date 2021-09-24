@@ -35,18 +35,28 @@ class PurchaseService{
             $purchase->setUser($user);
 
             $entityManager->persist($purchase);
+            $entityManager->flush();
+    }}
+
+    public function validatePurchase($purchase,CartService $cartService){
+        if($purchase) {
+            $entityManager = $this->entityManager;
+            $purchase->setTotal($cartService->getTotal($purchase));
+            $purchase->setCreatedAt(new DateTimeImmutable());
+            $purchase->setStatus('complete');
+            $purchase->setIdStripe('bleh');
+
+            $entityManager->persist($purchase);
             $entityManager->flush(); 
     }}
 
-    public function purchaseHistory($purchase){
-        $hpurchase =[];
+    public function purchaseHistory($purchase,CartService $cartService){
+        $subpurchase =[];
+        
         foreach($purchase as $hpurchase){
-            dump($hpurchase);
-            //$hpurchase[] = [
-            //    'product' => $hpurchase->getArticle(),
-            //    'quantity'=> $hpurchase->getQuantity()
-            //];
+            $fcart = ['purchase'=> $hpurchase, 'cart'=>$cartService->getFullCart($hpurchase)];
+            $subpurchase[] = $fcart;
         }
-        return $hpurchase;
+        return $subpurchase;
     }
 }

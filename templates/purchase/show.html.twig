@@ -5,34 +5,42 @@
 {% block body %}
     <h1>Purchase</h1>
 
-    <table class="table">
+    {% for cmds in bleep %}
+        <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ purchase.id }}</td>
+                <td>{{ cmds.purchase.id }}</td>
             </tr>
             <tr>
                 <th>Created_at</th>
-                <td>{{ purchase.createdAt ? purchase.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cmds.purchase.createdAt ? cmds.purchase.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{{ purchase.status }}</td>
+                <td>{{ cmds.purchase.status }}</td>
             </tr>
             <tr>
                 <th>Total</th>
-                <td>{{ purchase.total }}</td>
+                <td>{{ cmds.purchase.total }}€</td>
             </tr>
             <tr>
                 <th>Id_stripe</th>
-                <td>{{ purchase.idStripe }}</td>
+                <td>{{ cmds.purchase.idStripe }}</td>
             </tr>
+            
         </tbody>
+        
     </table>
+    {% for pan in cmds.cart %}
+        <div>
+            <p>{{ pan.product.name }}, quantity : {{ pan.quantity  }}, {{pan.product.price}}€/u</p>
+            
+        </div>
+    {% endfor %}
+    {% endfor %}
 
-    <a href="{{ path('purchase_index') }}">back to list</a>
+    
 
-    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
 
-    {{ include('purchase/_delete_form.html.twig') }}
 {% endblock %}
