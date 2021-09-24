@@ -116,7 +116,7 @@
         "version": "v5.6.0"
     },
     "laminas/laminas-code": {
-        "version": "4.4.2"
+        "version": "4.4.3"
     },
     "monolog/monolog": {
         "version": "2.3.4"
@@ -125,7 +125,7 @@
         "version": "1.10.2"
     },
     "nikic/php-parser": {
-        "version": "v4.12.0"
+        "version": "v4.13.0"
     },
     "phar-io/manifest": {
         "version": "2.0.3"
@@ -140,7 +140,7 @@
         "version": "5.2.2"
     },
     "phpdocumentor/type-resolver": {
-        "version": "1.4.0"
+        "version": "1.5.0"
     },
     "phpspec/prophecy": {
         "version": "1.14.0"
@@ -506,7 +506,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "5.3",
-            "ref": "227eba5e0c7e8fc4beda3537c3d81dc23ba08182"
+            "ref": "9c4fcf79873f7400c885b90935f7163233615d6f"
         },
         "files": [
             "./config/packages/security.yaml"
