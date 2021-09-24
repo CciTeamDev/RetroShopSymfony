@@ -17,7 +17,7 @@ class ArticleType extends AbstractType
             ->add('name')
             ->add('infos')
             ->add('price')
-            ->add('created_at')
+            //->add('created_at')
             // ->add('ImageName')
             ->add('ImageFile', FileType::class)
         ;

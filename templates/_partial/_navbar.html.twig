@@ -14,7 +14,7 @@
           <a class="nav-link" href={{path("admin_user")}}>Tous les Utilisateurs</a>
         </li>
         <li>
-          <a class="nav-link" href={{path("admin_purchase")}}>Toutes les Commandes</a>
+          <a class="nav-link" href={{path("purchase_history",{id:app.user.id})}}>Toutes les Commandes</a>
         </li>
         {% else %}
         <li>
@@ -66,7 +66,7 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href={{path("user_index")}}>Mon compte</a></li>
           <li><a class="dropdown-item" href="/user/cart">Mon panier</a></li>
-          <li><a class="dropdown-item" href="/?">Mes commandes</a></li>
+          <li><a class="dropdown-item" href={{path("purchase_history",{id:app.user.id})}}>Mes commandes</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
