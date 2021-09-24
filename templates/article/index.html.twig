@@ -3,57 +3,43 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-<h1>Article index</h1>
+<h1>Tous les produits</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Infos</th>
-            <th>Pic</th>
-            <th>Price</th>
-            <th>actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <div class="search">
-            <form action="/article/search" method="POST">
-                <input name="terme" type="text" placeholder="Que Cherches-tu ?">
-                <button type="submit"><i class="fas fa-search"></i>search</button>
-            </form>
-        </div>
+    <div class="produits">
         {% for article in articles %}
-        <tr>
-            <td>{{ article.id }}</td>
-            <td>{{ article.name }}</td>
-            <td>{{ article.infos }}</td>
-            <td><img src="{{ article.pic }}"/></td>
-            <td>{{ article.price }}€</td>
-            <td>
+            <div class="prod">
+                <h3>{{ article.name }}</h3>
+                <p>{{ article.infos }}</p>
+                <img src="{{ article.pic }}"/>
+                <p><strong>{{ article.price }}€</strong></p>
+            
                 <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                {% if app.user.roles[1] is defined %}
+            {% if app.user.roles[1] is defined %}
                 {% if app.user.roles[1] %}
                 <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
                 {% endif %}
-                {% endif %}
-                {% if app.user %}
-                <a href="{{ path('cart_add', {'id': article.id}) }}">add</a>
-                {% else %}
-                <a href="{{ path('app_login', {'id': article.id}) }}">add</a>
-                {% endif %}
-
-            </td>
-        </tr>
+            {% endif %}
+            
+            {% if app.user %}
+            <a href="{{ path('cart_add', {'id': article.id}) }}">add</a>
+            {% else %}
+            <a href="{{ path('app_login', {'id': article.id}) }}">add</a>
+            {% endif %}
+            </div>
+            
         {% else %}
-        <tr>
-            <td colspan="7">Aucun article trouvé</td>
-        </tr>
+            <p>Aucun article trouvé</p>
         {% endfor %}
-    </tbody>
-</table>
+        
+    </div>
 <div class="navigation">
     {{ knp_pagination_render(articles) }}
 </div>
-<a href="{{ path('article_new') }}">Create new</a>
+
+{% if app.user.roles[1] is defined%}
+    {% if app.user.roles[1] %}
+    <a href="{{ path('article_new') }}">Create new</a>
+    {% endif %}
+{% endif %}
+
 {% endblock %}

@@ -1,0 +1,10 @@
+body{
+    .produits{
+        display: flex;
+        .prod{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

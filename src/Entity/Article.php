@@ -56,11 +56,17 @@ class Article
      */
     private $purchase;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Ratings::class, mappedBy="article")
+     */
+    private $ratings;
+
     public function __construct()
     {
         $this->purchaseArticle = new ArrayCollection();
         $this->category = new ArrayCollection();
         $this->purchase = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -178,6 +184,36 @@ class Article
             // set the owning side to null (unless already changed)
             if ($purchase->getArticle() === $this) {
                 $purchase->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ratings[]
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Ratings $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings[] = $rating;
+            $rating->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Ratings $rating): self
+    {
+        if ($this->ratings->removeElement($rating)) {
+            // set the owning side to null (unless already changed)
+            if ($rating->getArticle() === $this) {
+                $rating->setArticle(null);
             }
         }
 
