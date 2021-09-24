@@ -47,7 +47,9 @@ class AppFixtures extends Fixture
                 $article->setInfos($faker->lastName());
                 $article->setPrice($faker->randomFloat(2, 1, 50));
                 $article->setCreatedAt(new DateTimeImmutable());
-                $article->setPic($faker->firstName());
+                $article->setImageFile($faker->file('/DataFixtures','/upload/images/products'));
+                // $article->setImageName($faker->firstName());
+                // $article->setImageSize($faker->randomDigit());
                 $manager->persist($article);
 
             

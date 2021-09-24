@@ -4,82 +4,118 @@
 
 {% block body %}
 
-    {% if app.user.roles[0] is defined %}
-        {% if app.user.roles[0] %}
-            <h1>Profil de {{app.user.username}}</h1>
+{% if app.user.roles[0] is defined %}
+{% if app.user.roles[0] %}
+<h1>Profil de {{app.user.username}}</h1>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ app.user.id }}</td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td>{{ app.user.username }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ app.user.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ app.user.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Genre</th>
+            <td>{{ app.user.genre }}</td>
+        </tr>
+        <tr>
+            <th>Date_naissance</th>
+            <td>{{ app.user.dateNaissance ? app.user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Adress</th>
+            <td>{{ app.user.adress }}</td>
+        </tr>
+        <tr>
+            <th>CP</th>
+            <td>{{ app.user.CP }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ app.user.ville }}</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{ app.user.phone }}</td>
+        </tr>
+    </tbody>
+</table>
 
-            <p>{{app.user.nom}}</p>
-            <p>{{app.user.prenom}}</p>
-            <p>{{app.user.genre}}</p>
-            <p>{{app.user.dateNaissance|date('Y-m-d')}}</p>
-            <p>{{app.user.adress}}</p>
-            <p>{{app.user.cp}}</p>
-            <p>{{app.user.phone}}</p>
 
-            <a href="{{ path('user_show', {'id': app.user.id}) }}">show</a>
-            <a href="{{ path('admin_user_edit', {'id': app.user.id}) }}">edit</a>
-        {% endif %}
-    {% endif %}
+<a href="{{ path('client_edit') }}">edit</a>
+{% endif %}
+{% endif %}
 
-    {% if app.user.roles[1] is defined%}
-        {% if app.user.roles[1]%}
-            <h1>Tous les Utilisateurs</h1>
+{% if app.user.roles[1] is defined%}
+{% if app.user.roles[1]%}
+<h1>Tous les Utilisateurs</h1>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Username</th>
-                        <th>Roles</th>
-                        <th>Password</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Genre</th>
-                        <th>Date_naissance</th>
-                        <th>Adress</th>
-                        <th>CP</th>
-                        <th>Ville</th>
-                        <th>Phone</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                        <td>{{ user.password }}</td>
-                        <td>{{ user.nom }}</td>
-                        <td>{{ user.prenom }}</td>
-                        <td>{{ user.genre }}</td>
-                        <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>{{ user.adress }}</td>
-                        <td>{{ user.CP }}</td>
-                        <td>{{ user.ville }}</td>
-                        <td>{{ user.phone }}</td>
-                        <td>
-                            <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                            <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="13">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Roles</th>
+            <th>Password</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Genre</th>
+            <th>Date_naissance</th>
+            <th>Adress</th>
+            <th>CP</th>
+            <th>Ville</th>
+            <th>Phone</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.genre }}</td>
+            <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
+            <td>{{ user.adress }}</td>
+            <td>{{ user.CP }}</td>
+            <td>{{ user.ville }}</td>
+            <td>{{ user.phone }}</td>
+            <td>
+                <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+                <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="13">no records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-        <a href="{{ path('user_new') }}">Create new</a>
-        {% endif %}
-    {% endif %}
+<a href="{{ path('user_new') }}">Create new</a>
+{% endif %}
+{% endif %}
 
-    {# 
+{# 
     A FAIRE MARCHER LE BOUTON EDIT
     <a href="{{path('user_edit', {'id': app.user.id})}}">Modifier mon profil</a>
     <a href="{{ path('user_edit', json_encode({'id': app.user.id}))}}">edit</a> 
     #}
-    
-    
-{% endblock %} 
+
+
+{% endblock %}
