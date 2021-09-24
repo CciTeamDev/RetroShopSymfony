@@ -43,7 +43,7 @@
             <option value="5">5</option>
         </select>
         {% if app.user %}
-        <a href="{{ path('cart_add', {'id': article.id}) }}"><button type="submit"></button></a>
+        <a href="{{ path('cart_add', {'id': article.id}) }}"><button type="submit">Ajouter au panier</button></a>
         {% else %}
 
         <a href="/login"><input type="button" value="acheter"></a>

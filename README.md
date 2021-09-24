@@ -48,10 +48,15 @@ Installer bootstrap
 
  modifié env /app_env
 
+
+
 // viche uploader
 https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md
 
 composer require vich/uploader-bundle
+
+(si marche pas)
+symfony composer install 
 
 
 
