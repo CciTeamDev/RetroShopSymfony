@@ -55,13 +55,13 @@
         </li>
       </ul>
       <form class="d-flex" action="/article/search" method="POST">
-     <div class="sb-example-1">
+        <div class="sb-example-1">
              <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                <input type="text" class="searchTerm" name="terme" placeholder="What are you looking for?">
                 <button type="submit" class="searchButton">
                   <i class="fa fa-search"></i>
                </button>
-             </div>
+             </div> 
           </div>
       </form>
       {% if app.user %}

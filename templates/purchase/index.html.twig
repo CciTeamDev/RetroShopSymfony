@@ -3,7 +3,7 @@
 {% block title %}Purchase index{% endblock %}
 
 {% block body %}
-    <h1>Purchase index</h1>
+    {# <h1>Purchase index</h1>
 
     {# <table class="table">
         <thead>
@@ -39,7 +39,7 @@
     <a href="{{ path('purchase_new') }}">Create new</a> #} 
 
     
-    {% for purchase in purchases %}
+    {# {% for purchase in purchases %}
     {% if purchase.status == "panier" %}
         <h2>Commande dans le panier</h2>
         <tr>
@@ -82,5 +82,5 @@
     {% else %}
         <h2>Aucune commande n'a été trouvé</h2>
     {% endif %}
-    {% endfor %}
+    {% endfor %} #}
 {% endblock %}
