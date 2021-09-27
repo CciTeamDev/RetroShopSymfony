@@ -7,7 +7,9 @@
 
     <p>{{article.infos}}</p>
     <p>{{article.price}}€</p>            
-    <img src="{{ article.pic }}"/>
+    <div class="testpic">
+            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
+    </div>
 
     <div>
         <h4>Note du produit</h4>

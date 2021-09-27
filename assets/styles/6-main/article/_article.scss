@@ -1,10 +1,241 @@
 body{
-    .produits{
+    .testbody{
+       display: flex;
+       flex-direction: column;
+    
+
+    .blocarticle{
+        align-self: center;
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        justify-content: space-around;
         display: flex;
-        .prod{
-            display:flex;
+
+        .article{
+        box-shadow: 1px 1px 1px 1px grey;
+        display: flex;
+        flex-direction: column;
+
+        width: 380px;
+        height: 550px;
+        padding: 10px 10px 10px 10px;
+        border-radius: 50px;
+        background-color: white;
+
+        &:hover{
+            animation-duration: 0.2s;
+            scale: 1.1;
+        }
+        .top{
+            margin-left: 7.5%;
+            margin-right: 7.5%;
+            height:35%;
+            .articlename{
+                font-family: 'Abril Fatface',cursive;
+                font-size: 2.188em;
+            }
+
+            .articleinfolabel{
+                font-family: 'Roboto';
+                font-size: 1em;
+            }
+
+            .articleinfos{
+                text-align: center;
+                font-family: 'Roboto';
+                font-size:1.2em;
+            }
+        }
+        
+
+        .testpic{
+            align-self: center;
+            border: 1px solid black;
+            width: 85%;
+            height:40%;
+            border-radius: 15px;
+        }
+
+        .bottom{
+            margin-left: 7.5%;
+            margin-right: 7.5%;
+            height: 25%;
+            align-self: bottom;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Roboto';
+            
+            .price {
+                .pricelabel{
+                    font-weight: 200;
+                }
+                .itemprice{
+                   font-size: 1.25em; 
+                }
+            }
+            .actions{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                #actions-show{
+                    text-decoration: none;
+                    text-align: center;
+                    color: black;
+                    background-color:#d5e0e6;
+                    border-radius: 15px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    font-weight: 200;
+                }
+
+                #actions-add{
+                    text-decoration: none;
+                    text-align: center;
+                    color: black;
+                    background-color: #5496BF;
+                    border-radius: 15px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    color:white;
+                }
+
+                #actions-edit{
+                    color: black;
+                    text-align: center;
+                }
+            }
+        }
+
+    }}
+
+    .navigation{
+        
+        align-self: center;
+        letter-spacing: 5px;
+        
+        
+        :link{
+            color: black;
+            text-decoration: none;
+        }
+        :visited{
+            color: black;
+        }
+        :hover{
+            color: green;
+        }
+        :active{
+            color: red;
+        }
+    }
+    }
+    .testbodynew{
+        display: flex;
+        justify-content: center;
+        .newarticle{
+            box-shadow: 1px 1px 1px 1px grey;
+            display: flex;
             flex-direction: column;
             align-items: center;
+    
+            width: 380px;
+            height: 550px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 50px;
+            background-color: white;
+        }
+    }
+    
+    .testbodyshow{
+        display: flex;
+        justify-content: center;
+        .article{
+            box-shadow: 1px 1px 1px 1px grey;
+            display: flex;
+            flex-direction: column;
+        
+            width: 380px;
+            height: 550px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 50px;
+            background-color: white;
+        
+            &:hover{
+                    animation-duration: 0.2s;
+                    scale: 1.1;
+            }
+            .top{
+                    margin-left: 7.5%;
+                    margin-right: 7.5%;
+                    height:35%;
+                    .articlename{
+                        font-family: 'Abril Fatface',cursive;
+                        font-size: 2.188em;
+                    }
+        
+                    .articleinfolabel{
+                        font-family: 'Roboto';
+                        font-size: 1em;
+                    }
+        
+                    .articleinfos{
+                        text-align: center;
+                        font-family: 'Roboto';
+                        font-size:1.2em;
+                    }
+            }
+
+        
+            .testpic{
+                    align-self: center;
+                    border: 1px solid black;
+                    width: 85%;
+                    height:40%;
+                    border-radius: 15px;
+            }
+        
+            .bottom{
+                    margin-left: 7.5%;
+                    margin-right: 7.5%;
+                    height: 25%;
+                    align-self: bottom;
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    font-family: 'Roboto';
+                    
+                    .price {
+                        .pricelabel{
+                            font-weight: 200;
+                        }
+                        .itemprice{
+                           font-size: 1.25em; 
+                        }
+                    }
+                    .actions{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+        
+                        #actions-add{
+                            text-decoration: none;
+                            text-align: center;
+                            color: black;
+                            background-color: #5496BF;
+                            border-radius: 15px;
+                            padding-left: 5px;
+                            padding-right: 5px;
+                            color:white;
+                        }
+        
+                        #actions-edit{
+                            color: black;
+                            text-align: center;
+                        }
+                }
+            }
         }
     }
 }

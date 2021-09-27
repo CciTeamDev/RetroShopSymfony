@@ -10,21 +10,18 @@
             <div class="prod">
                 <h3>{{ article.name }}</h3>
                 <p>{{ article.infos }}</p>
-                <img src="{{ article.pic }}"/>
+                <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">è
                 <p><strong>{{ article.price }}€</strong></p>
-            
-                <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-            {% if app.user.roles[1] is defined %}
-                {% if app.user.roles[1] %}
-                <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-                {% endif %}
-            {% endif %}
-            
-            {% if app.user %}
-            <a href="{{ path('cart_add', {'id': article.id}) }}">add</a>
-            {% else %}
-            <a href="{{ path('app_login', {'id': article.id}) }}">add</a>
-            {% endif %}
+                <div class="actions">
+                    <a id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
+                    {% if app.user %}
+                    <a id="actions-add" href="{{ path('cart_add', {'id': article.id}) }}">Ajout panier</a>
+                    {% else %}
+                    <a id="actions-add" href="{{ path('app_login', {'id': article.id}) }}">Ajout panier</a>
+                    {% endif %}
+                    <a id="actions-edit" href="{{ path('article_edit', {'id': article.id}) }}">Edit</a>
+                    
+                </div>
             </div>
             
         {% else %}

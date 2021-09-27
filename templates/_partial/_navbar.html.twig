@@ -1,6 +1,15 @@
+<div class="container-xxl">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href={{path("accueil_index")}}>RetroShop</a>
+    <a class="navbar-brand" href={{path("accueil_index")}}>
+    {# logo svg #}
+      <svg id="Composant_9_1" data-name="Composant 9 – 1" xmlns="http://www.w3.org/2000/svg" width="226" height="78" viewBox="0 0 226 78">
+              <text id="Retro" transform="translate(0 57)" fill="#4e5658" font-size="54" font-family="AbrilFatface-Regular, Abril Fatface"><tspan x="0" y="-13">Retro</tspan></text>
+              <g id="Composant_8_1" data-name="Composant 8 – 1" transform="translate(146 10)">
+               <text id="Shop" transform="translate(40 50)" fill="#5293be" font-size="36" font-family="Pacifico-Regular, Pacifico"><tspan x="-39.767" y="-13">Shop</tspan></text>
+              </g>
+      </svg>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,7 +23,7 @@
           <a class="nav-link" href={{path("admin_user")}}>Tous les Utilisateurs</a>
         </li>
         <li>
-          <a class="nav-link" href={{path("admin_purchase")}}>Toutes les Commandes</a>
+          <a class="nav-link" href={{path("purchase_history",{id:app.user.id})}}>Toutes les Commandes</a>
         </li>
         {% else %}
         <li>
@@ -46,10 +55,15 @@
         </li>
       </ul>
       <form class="d-flex" action="/article/search" method="POST">
-        <input class="form-control me-2" name="terme" type="search" placeholder="Que Cherches-tu ?">
-        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+     <div class="sb-example-1">
+             <div class="search">
+                <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                  <i class="fa fa-search"></i>
+               </button>
+             </div>
+          </div>
       </form>
-
       {% if app.user %}
       <a class="nav-link" href="/user/cart"><i class="fas fa-shopping-basket"></i></a>
       {% else %}
@@ -66,7 +80,7 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href={{path("user_index")}}>Mon compte</a></li>
           <li><a class="dropdown-item" href="/user/cart">Mon panier</a></li>
-          <li><a class="dropdown-item" href="/?">Mes commandes</a></li>
+          <li><a class="dropdown-item" href={{path("purchase_history",{id:app.user.id})}}>Mes commandes</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -92,3 +106,4 @@
     </div>
   </div>
 </nav>
+</div>

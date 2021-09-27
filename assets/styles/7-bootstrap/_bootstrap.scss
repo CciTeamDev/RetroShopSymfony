@@ -1,0 +1,23 @@
+@use '~bootstrap/scss/bootstrap' with (
+    //change le container bootstrap
+    $container-max-widths: (
+            sm: 540px,
+            md: 720px,
+            lg: 960px,
+            xl: 1140px,
+            xxl: 1640px
+          ),
+    // change les couleurs de base de bootstrap
+    $primary: #5496bf,
+    $secondary:#A4c3d7, 
+    $success:#B5E48C, 
+    $info:#d5e0e6, 
+    $warning:#EFCD5A,
+    $danger:#BC5A62,
+    $light:#fef9f3,
+    $dark:#4e5658,
+
+    // change la font en Roboto par default
+    $font-family-sans-serif: $font-sans-serif-alternative
+    
+    );
