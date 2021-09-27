@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -76,7 +77,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $ville;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $phone;
 
@@ -85,9 +86,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Ratings::class, mappedBy="user")
+     */
+    private $ratings;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -150,7 +157,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -258,12 +264,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(?int $phone): self
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
 
@@ -299,4 +305,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Ratings[]
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Ratings $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings[] = $rating;
+            $rating->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Ratings $rating): self
+    {
+        if ($this->ratings->removeElement($rating)) {
+            // set the owning side to null (unless already changed)
+            if ($rating->getUser() === $this) {
+                $rating->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
+
 }
