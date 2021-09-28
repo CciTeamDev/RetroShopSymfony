@@ -1,33 +1,53 @@
 {% extends "base.html.twig" %}
 
-
 {% block body %}
-
     <div class="main_index">
         <div class="part1">
             <h1>Bienvenue</h1>
-
-            <h2>dans notre magasin vintage</h2>
-
-            <p>Généralement, on utilise un texte en faux latin 
-            (le texte ne veut rien dire, il a été modifié), 
-            le Lorem ipsum ou Lipsum, qui permet donc de 
-            faire office de texte d'attente.
-            L'avantage de le mettre en latin est que l'opérateur 
-            sait au premier coup d'oeil que la page contenant ces
-                lignes n'est pas valide, et surtout l'attention du client 
-                n'est pas dérangée par le contenu, il demeure concentré 
-                seulement sur l'aspect graphique.</p>
-
-            <button class="shop">Shop now</button>
-
+                <h2>dans notre magasin vintage</h2>
+                    <p>Généralement, on utilise un texte en faux latin 
+                     (le texte ne veut rien dire, il a été modifié), 
+                    le Lorem ipsum ou Lipsum, qui permet donc de 
+                    faire office de texte d'attente.
+                    L'avantage de le mettre en latin est que l'opérateur 
+                    sait au premier coup d'oeil que la page contenant ces
+                    lignes n'est pas valide, et surtout l'attention du client 
+                    n'est pas dérangée par le contenu, il demeure concentré 
+                    seulement sur l'aspect graphique.</p>
+                <button class="shop">Shop now</button>
         </div>
-
         <div class="part2">
             <button>Regarder tous les produits</button>
         </div>
-    
     </div>
-    
-        
+{% endblock %}
+{% block suggestions %}
+    <div>
+        <h1>Suggestions</h1>
+            <div class="row justify-content-md-center">
+                {% for article in articles %}
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ article.name }}</h3>
+                                <p class="card-text">{{ article.infos }}</p>
+                                <img class="card-img-top" src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
+                                <p><strong>{{ article.price }}€</strong></p>
+                            </div>
+                            <div class="actions">
+                                <a class="btn btn-primary" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
+                                {% if app.user %}
+                                <a class="btn btn-primary" id="actions-add" href="{{ path('cart_add', {'id': article.id}) }}">Ajout panier</a>
+                                {% else %}
+                                <a class="btn btn-primary" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}">Ajout panier</a>
+                                {% endif %}
+                                <a class="btn btn-primary" id="actions-edit" href="{{ path('article_edit', {'id': article.id}) }}">Edit</a>
+                            </div>
+                        </div>
+                 </div>
+                {% else %}
+                <p>Aucun article trouvé</p>
+                {% endfor %}
+            </div>
+    </div>
 {% endblock %}
