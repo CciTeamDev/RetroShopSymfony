@@ -3,23 +3,32 @@
 {% block title %}Nous contacter{% endblock %}
 
 {% block form %}
+    <div class="title">
     <h2>Nous contacter</h2>
+    <h2>Nous retrouver</h2>
+    </div>
     {% for message in app.flashes('notice') %}
         <div class="alert alert-info">{{ message }}</div>
     {% endfor %}
     {{ form_start(form) }}
-    <div class="col-md-9">
-        <div class="col-md-2">{{ form_row(form.prenom) }}</div>
-        <div class="col-md-2">{{ form_row(form.nom) }}</div>
-        <div class="col-md-2">{{ form_row(form.email) }}</div>
-        <div class="col-md-2">{{ form_row(form.content) }}</div>
-        <div class="col-md-3">
-            {{ form_end(form) }}
-            <strong>Retroshop</strong>
-            <hr>
-            04.00.00.00.00<br/>
-            92 rue Depagnieux, 69400 Villefranche.<br/>
-            contact@retroshop.com<br/>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="col-md-2">{{ form_row(form.prenom) }}</div>
+            <div class="col-md-2">{{ form_row(form.nom) }}</div>
+            <div class="col-md-2">{{ form_row(form.email) }}</div>
+            <div class="col-md-2">{{ form_row(form.content) }}</div>
+            <div class="col-md-3">
+                {{ form_end(form) }}
+                <strong>Retroshop</strong>
+                <hr>
+                04.00.00.00.00<br/>
+                92 rue Depagnieux, 69400 Villefranche.<br/>
+                contact@retroshop.com<br/>
+            </div>
+        </div>
+
+        <div class="col-md-3 maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2772.7100314115073!2d4.71457211526853!3d45.977050807097314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f485405d708007%3A0xf1abf34181324d0c!2s92%20Rue%20Henri%20Depagneux%2C%2069400%20Limas!5e0!3m2!1sfr!2sfr!4v1632919280024!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>        </div>
         </div>
     </div>
 {% endblock %}
