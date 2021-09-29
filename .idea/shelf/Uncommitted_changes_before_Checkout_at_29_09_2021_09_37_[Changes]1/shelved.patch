@@ -1,0 +1,85 @@
+Index: templates/_partial/_navbar.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><div class=\"container-xxl\">\r\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n  <div class=\"container-fluid\">\r\n    <a class=\"navbar-brand\" href={{path(\"accueil_index\")}}>\r\n    {# logo svg #}\r\n      <svg id=\"Composant_9_1\" data-name=\"Composant 9 – 1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"226\" height=\"78\" viewBox=\"0 0 226 78\">\r\n              <text id=\"Retro\" transform=\"translate(0 57)\" fill=\"#4e5658\" font-size=\"54\" font-family=\"AbrilFatface-Regular, Abril Fatface\"><tspan x=\"0\" y=\"-13\">Retro</tspan></text>\r\n              <g id=\"Composant_8_1\" data-name=\"Composant 8 – 1\" transform=\"translate(146 10)\">\r\n               <text id=\"Shop\" transform=\"translate(40 50)\" fill=\"#5293be\" font-size=\"36\" font-family=\"Pacifico-Regular, Pacifico\"><tspan x=\"-39.767\" y=\"-13\">Shop</tspan></text>\r\n              </g>\r\n      </svg>\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n\r\n        {% if app.user.roles[1] is defined %}\r\n        {% if app.user.roles[1] %}\r\n        <li>\r\n          <a class=\"nav-link\" href={{path(\"admin_user\")}}>Tous les Utilisateurs</a>\r\n        </li>\r\n        <li>\r\n          <a class=\"nav-link\" href={{path(\"purchase_history\",{id:app.user.id})}}>Toutes les Commandes</a>\r\n        </li>\r\n        {% else %}\r\n        <li>\r\n        </li>\r\n        {% endif %}\r\n        {% endif %}\r\n\r\n        <li class=\"nav-item dropdown\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\"\r\n            aria-expanded=\"false\">\r\n            Categorie\r\n          </a>\r\n          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n            <li><a class=\"dropdown-item\" href=\"/category/article/jeux\">Jeux Rétro</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"/category/article/jouet\">Jouets Rétro</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"/category/article/librairie\">Librairie</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"/category/article/films\">Films</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"/category/article/odit\">Musique</a></li>\r\n            <li><a class=\"dropdown-item\" href=\"/category/article/Vêtements\">Vêtements</a></li>\r\n            <li>\r\n              <hr class=\"dropdown-divider\">\r\n            </li>\r\n            <li><a class=\"dropdown-item\" href=\"#\">Autre</a></li>\r\n          </ul>\r\n        </li>\r\n\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href={{path(\"article_index\")}}>Tous les Produits</a>\r\n        </li>\r\n      </ul>\r\n      <form class=\"d-flex\" action=\"/article/search\" method=\"POST\">\r\n        <div class=\"sb-example-1\">\r\n             <div class=\"search\">\r\n                <input type=\"text\" class=\"searchTerm\" name=\"terme\" placeholder=\"What are you looking for?\">\r\n                <button type=\"submit\" class=\"searchButton\">\r\n                  <i class=\"fa fa-search\"></i>\r\n               </button>\r\n             </div> \r\n          </div>\r\n      </form>\r\n      {% if app.user %}\r\n      <a class=\"nav-link\" href=\"/user/cart\"><i class=\"fas fa-shopping-basket\"></i></a>\r\n      {% else %}\r\n\r\n      {% endif %}\r\n\r\n      {% if app.user %}\r\n      {# mettre un style none pour enlever le point du li svp #}\r\n      <li class=\"nav-item dropdown\">\r\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\"\r\n          aria-expanded=\"true\">\r\n          <i class=\"fas fa-user\"></i>\r\n        </a>\r\n        <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n          <li><a class=\"dropdown-item\" href={{path(\"user_index\")}}>Mon compte</a></li>\r\n          <li><a class=\"dropdown-item\" href=\"/user/cart\">Mon panier</a></li>\r\n          <li><a class=\"dropdown-item\" href={{path(\"purchase_history\",{id:app.user.id})}}>Mes commandes</a></li>\r\n          <li>\r\n            <hr class=\"dropdown-divider\">\r\n          </li>\r\n          <li><a class=\"dropdown-item\" href={{path(\"app_logout\")}}>Deconnexion</a></li>\r\n        </ul>\r\n      </li>\r\n\r\n      {% else %}\r\n      <a class=\"nav-link\" href={{path(\"app_login\")}}>Se Connecter</a>\r\n      {% endif %}\r\n\r\n      {# {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined)  %}\r\n      {% if app.user.roles[0] %}\r\n      <a class=\"nav-link\" href={{path(\"app_logout\")}}>Se Déconnecter</a>\r\n      {% elseif app.user.roles[1]%}\r\n      <a class=\"nav-link\" href={{path(\"app_logout\")}}>Se Déconnecter</a>\r\n      {% else %}\r\n      <li>\r\n      </li>\r\n      {% endif %}\r\n      {% endif %} #}\r\n\r\n    </div>\r\n  </div>\r\n</nav>\r\n</div>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/_partial/_navbar.html.twig b/templates/_partial/_navbar.html.twig
+--- a/templates/_partial/_navbar.html.twig	
++++ b/templates/_partial/_navbar.html.twig	
+@@ -53,6 +53,9 @@
+         <li class="nav-item">
+           <a class="nav-link" href={{path("article_index")}}>Tous les Produits</a>
+         </li>
++        <li class="nav-item">
++          <a class="nav-link" href={{path("contact")}}>Nous contacter</a>
++        </li>
+       </ul>
+       <form class="d-flex" action="/article/search" method="POST">
+         <div class="sb-example-1">
+Index: templates/base.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html>\r\n    <head>\r\n        <meta charset=\"UTF-8\">\r\n        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n        <link href=\"https://fonts.googleapis.com/css2?family=Roboto&display=swap\" rel=\"stylesheet\">\r\n        <link href=\"https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap\" rel=\"stylesheet\"> \r\n        \r\n        <title>{% block title %}RetroShop{% endblock %}</title>\r\n        {# Run `composer require symfony/webpack-encore-bundle`\r\n           and uncomment the following Encore helpers to start using Symfony UX #}\r\n        {% block stylesheets %}\r\n            {{ encore_entry_link_tags('app') }}\r\n            \r\n        {% endblock %}\r\n\r\n        \r\n        <script src=\"https://kit.fontawesome.com/00fca59a8b.js\" crossorigin=\"anonymous\"></script>\r\n        {% block javascripts %}\r\n            {{ encore_entry_script_tags('app') }}\r\n        {% endblock %}\r\n    </head>\r\n    <body class = \"bg-light\">\r\n        {% include '_partial/_navbar.html.twig' %}\r\n        {% block body %}{% endblock %}\r\n        {% block footer %}\r\n            <footer>\r\n                <div class=\"foot\">\r\n                    <div class=\"logo\">\r\n                        <h1>logo</h1>\r\n                        <p>92 rue Henri Depagnieux</p>\r\n                        <p>69400 Limas</p>\r\n                    </div>\r\n                    \r\n                    <div class=\"group\">\r\n                        <div class=\"contact\">\r\n                            <h3>Contact</h3>\r\n                            <p><i class=\"fas fa-phone-alt\"></i>04.00.00.00.00</p>\r\n                            <p><i class=\"fas fa-envelope\"></i>contact@retroshop.com</p>\r\n\r\n                        </div>\r\n\r\n                        <div class=\"mention\">\r\n                            <h3>Conditions</h3>\r\n                            <a href=\"#\">Conditions Générales de Vente</a>\r\n                            <a href=\"#\">Condition Générales d'Utilisation Marketplace</a>\r\n                            <a href=\"#\">Protection de la vie privée et cookies</a>\r\n                            <a href=\"#\">Mentions Légales</a>\r\n                            <a href=\"#\">FAQ</a>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"sociaux\">\r\n                        <i class=\"fab fa-twitter\"></i>\r\n                        <i class=\"fab fa-instagram\"></i>\r\n                        <i class=\"fab fa-linkedin-in\"></i>\r\n                        <i class=\"fab fa-facebook\"></i>\r\n                    </div>\r\n                </div>\r\n\r\n                <p class=\"copy\"> &copy; RetroShop 2021 | Développé avec <i class=\"fas fa-heart\"></i> par Anaëlle - Brayan - Kévin et Quentin </p>\r\n            </footer>\r\n        {% endblock %}\r\n    </body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+--- a/templates/base.html.twig	
++++ b/templates/base.html.twig	
+@@ -24,6 +24,16 @@
+     <body class = "bg-light">
+         {% include '_partial/_navbar.html.twig' %}
+         {% block body %}{% endblock %}
++
++
++        <div class="container marketing">
++
++            {% block form %}
++            {% endblock %}
++
++        </div>
++
++
+         {% block footer %}
+             <footer>
+                 <div class="foot">
+Index: composer.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"type\": \"project\",\r\n    \"license\": \"proprietary\",\r\n    \"minimum-stability\": \"stable\",\r\n    \"prefer-stable\": true,\r\n    \"require\": {\r\n        \"php\": \">=7.2.5\",\r\n        \"ext-ctype\": \"*\",\r\n        \"ext-iconv\": \"*\",\r\n        \"composer/package-versions-deprecated\": \"1.11.99.4\",\r\n        \"doctrine/annotations\": \"^1.0\",\r\n        \"doctrine/doctrine-bundle\": \"^2.4\",\r\n        \"doctrine/doctrine-migrations-bundle\": \"^3.1\",\r\n        \"doctrine/orm\": \"^2.9\",\r\n        \"knplabs/knp-paginator-bundle\": \"^5.6\",\r\n        \"phpdocumentor/reflection-docblock\": \"^5.2\",\r\n        \"sensio/framework-extra-bundle\": \"^6.1\",\r\n        \"symfony/asset\": \"5.3.*\",\r\n        \"symfony/console\": \"5.3.*\",\r\n        \"symfony/dotenv\": \"5.3.*\",\r\n        \"symfony/expression-language\": \"5.3.*\",\r\n        \"symfony/flex\": \"^1.3.1\",\r\n        \"symfony/form\": \"5.3.*\",\r\n        \"symfony/framework-bundle\": \"5.3.*\",\r\n        \"symfony/http-client\": \"5.3.*\",\r\n        \"symfony/intl\": \"5.3.*\",\r\n        \"symfony/mailer\": \"5.3.*\",\r\n        \"symfony/mime\": \"5.3.*\",\r\n        \"symfony/monolog-bundle\": \"^3.1\",\r\n        \"symfony/notifier\": \"5.3.*\",\r\n        \"symfony/process\": \"5.3.*\",\r\n        \"symfony/property-access\": \"5.3.*\",\r\n        \"symfony/property-info\": \"5.3.*\",\r\n        \"symfony/proxy-manager-bridge\": \"5.3.*\",\r\n        \"symfony/runtime\": \"5.3.*\",\r\n        \"symfony/security-bundle\": \"5.3.*\",\r\n        \"symfony/serializer\": \"5.3.*\",\r\n        \"symfony/string\": \"5.3.*\",\r\n        \"symfony/translation\": \"5.3.*\",\r\n        \"symfony/twig-bundle\": \"5.3.*\",\r\n        \"symfony/validator\": \"5.3.*\",\r\n        \"symfony/web-link\": \"5.3.*\",\r\n        \"symfony/webpack-encore-bundle\": \"^1.12\",\r\n        \"symfony/yaml\": \"5.3.*\",\r\n        \"twig/extra-bundle\": \"^2.12|^3.0\",\r\n        \"twig/twig\": \"^2.12|^3.0\",\r\n        \"vich/uploader-bundle\": \"^1.18\"\r\n    },\r\n    \"require-dev\": {\r\n        \"doctrine/doctrine-fixtures-bundle\": \"^3.4\",\r\n        \"fzaninotto/faker\": \"^1.5\",\r\n        \"phpunit/phpunit\": \"^9.5\",\r\n        \"symfony/browser-kit\": \"5.3.*\",\r\n        \"symfony/css-selector\": \"5.3.*\",\r\n        \"symfony/debug-bundle\": \"5.3.*\",\r\n        \"symfony/maker-bundle\": \"^1.0\",\r\n        \"symfony/phpunit-bridge\": \"^5.3\",\r\n        \"symfony/stopwatch\": \"5.3.*\",\r\n        \"symfony/web-profiler-bundle\": \"5.3.*\"\r\n    },\r\n    \"config\": {\r\n        \"optimize-autoloader\": true,\r\n        \"preferred-install\": {\r\n            \"*\": \"dist\"\r\n        },\r\n        \"sort-packages\": true\r\n    },\r\n    \"autoload\": {\r\n        \"psr-4\": {\r\n            \"App\\\\\": \"src/\"\r\n        }\r\n    },\r\n    \"autoload-dev\": {\r\n        \"psr-4\": {\r\n            \"App\\\\Tests\\\\\": \"tests/\"\r\n        }\r\n    },\r\n    \"replace\": {\r\n        \"symfony/polyfill-ctype\": \"*\",\r\n        \"symfony/polyfill-iconv\": \"*\",\r\n        \"symfony/polyfill-php72\": \"*\"\r\n    },\r\n    \"scripts\": {\r\n        \"auto-scripts\": {\r\n            \"cache:clear\": \"symfony-cmd\",\r\n            \"assets:install %PUBLIC_DIR%\": \"symfony-cmd\"\r\n        },\r\n        \"post-install-cmd\": [\r\n            \"@auto-scripts\"\r\n        ],\r\n        \"post-update-cmd\": [\r\n            \"@auto-scripts\"\r\n        ]\r\n    },\r\n    \"conflict\": {\r\n        \"symfony/symfony\": \"*\"\r\n    },\r\n    \"extra\": {\r\n        \"symfony\": {\r\n            \"allow-contrib\": false,\r\n            \"require\": \"5.3.*\"\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/composer.json b/composer.json
+--- a/composer.json	
++++ b/composer.json	
+@@ -4,7 +4,7 @@
+     "minimum-stability": "stable",
+     "prefer-stable": true,
+     "require": {
+-        "php": ">=7.2.5",
++        "php": ">=8.0",
+         "ext-ctype": "*",
+         "ext-iconv": "*",
+         "composer/package-versions-deprecated": "1.11.99.4",
+Index: assets/styles/6-main/_main.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@import \"cart/cart\";\r\n@import \"article/article\";\r\n\r\n// PAGE INDEX\r\nbody{\r\n    .main_index{\r\n        margin: 2em;\r\n        display: flex;\r\n        .part1{\r\n            display: flex;\r\n            flex-direction: column;\r\n            margin-left: 5em;\r\n            h1{\r\n                font-family: 'Abril Fatface',cursive;\r\n                font-size: var(--app-gros-titre);\r\n            }\r\n            h2{\r\n                 font-family:'Abril Fatface',  cursive;\r\n                font-size: var(--app-catch);\r\n                margin-top: -0.5em;\r\n                margin-bottom: 0.5em;\r\n            }\r\n            p{\r\n                font-size: var(--app-p);\r\n                font-weight: 400;\r\n                width: 25%;\r\n            }\r\n            .shop{\r\n                margin-top: 2em;\r\n                width: 10%;\r\n                padding: 1em;\r\n                border: none;\r\n                border-radius: 20em;\r\n                background-color: var(--app-color-component);\r\n                color: var(--app-background);\r\n            }\r\n        }\r\n\r\n        .part2{\r\n            .fond{\r\n                color: var(--app-color-component-extralight);\r\n            }\r\n            button{\r\n                position: absolute;\r\n                left: 90em;\r\n                top: 14em;\r\n                width: 10em;\r\n                border: none;\r\n                background-color: var(--app-color-component);\r\n                color: var(--app-background);\r\n                padding: 2em;\r\n                border-radius: 50%;\r\n            }\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/assets/styles/6-main/_main.scss b/assets/styles/6-main/_main.scss
+--- a/assets/styles/6-main/_main.scss	
++++ b/assets/styles/6-main/_main.scss	
+@@ -1,5 +1,6 @@
+ @import "cart/cart";
+ @import "article/article";
++@import "form/form";
+ 
+ // PAGE INDEX
+ body{
+diff --git a/assets/styles/6-main/form/_form.scss b/assets/styles/6-main/form/_form.scss
+new file mode 100644

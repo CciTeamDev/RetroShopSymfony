@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter{% endblock %}
+
+{% block form %}
+    <h2>Nous contacter</h2>
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+    {{ form_start(form) }}
+    <div class="col-md-9">
+        <div class="col-md-2">{{ form_row(form.prenom) }}</div>
+        <div class="col-md-2">{{ form_row(form.nom) }}</div>
+        <div class="col-md-2">{{ form_row(form.email) }}</div>
+        <div class="col-md-2">{{ form_row(form.content) }}</div>
+        <div class="col-md-3">
+            {{ form_end(form) }}
+            <strong>Retroshop</strong>
+            <hr>
+            04.00.00.00.00<br/>
+            92 rue Depagnieux, 69400 Villefranche.<br/>
+            contact@retroshop.com<br/>
+        </div>
+    </div>
+{% endblock %}

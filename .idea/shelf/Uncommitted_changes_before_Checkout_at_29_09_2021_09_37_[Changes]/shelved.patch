@@ -1,0 +1,315 @@
+Index: .idea/php.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"PhpProjectSharedConfiguration\" php_language_level=\"7.2\" />\r\n</project>
+===================================================================
+diff --git a/.idea/php.xml b/.idea/php.xml
+--- a/.idea/php.xml	
++++ b/.idea/php.xml	
+@@ -1,4 +1,151 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
++  <component name="PhpIncludePathManager">
++    <include_path>
++      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
++      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
++      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
++      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
++      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
++      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
++      <path value="$PROJECT_DIR$/vendor/symfony/string" />
++      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
++      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
++      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
++      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
++      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
++      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
++      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/runtime" />
++      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
++      <path value="$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge" />
++      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
++      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
++      <path value="$PROJECT_DIR$/vendor/symfony/process" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
++      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
++      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
++      <path value="$PROJECT_DIR$/vendor/symfony/password-hasher" />
++      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
++      <path value="$PROJECT_DIR$/vendor/symfony/notifier" />
++      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
++      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
++      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
++      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
++      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
++      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
++      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
++      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/form" />
++      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
++      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
++      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
++      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
++      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
++      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
++      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
++      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
++      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
++      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
++      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
++      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
++      <path value="$PROJECT_DIR$/vendor/symfony/console" />
++      <path value="$PROJECT_DIR$/vendor/symfony/config" />
++      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
++      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
++      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
++      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
++      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
++      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
++      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
++      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
++      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
++      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
++      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
++      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
++      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
++      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
++      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
++      <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
++      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
++      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
++      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
++      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
++      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
++      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
++      <path value="$PROJECT_DIR$/vendor/twig/twig" />
++      <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
++      <path value="$PROJECT_DIR$/vendor/psr/log" />
++      <path value="$PROJECT_DIR$/vendor/psr/link" />
++      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
++      <path value="$PROJECT_DIR$/vendor/psr/container" />
++      <path value="$PROJECT_DIR$/vendor/psr/cache" />
++      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
++      <path value="$PROJECT_DIR$/vendor/composer" />
++      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
++      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
++      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
++      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
++      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
++      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
++      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
++      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
++      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
++      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
++      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
++    </include_path>
++  </component>
++  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
++  <component name="PhpUnit">
++    <phpunit_settings>
++      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml.dist" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
++    </phpunit_settings>
++  </component>
+ </project>
+\ No newline at end of file
+Index: .idea/RetroShopSymfony.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"WEB_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/spec\" isTestSource=\"true\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" packagePrefix=\"App\\\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/tests\" isTestSource=\"true\" packagePrefix=\"App\\Tests\\\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+===================================================================
+diff --git a/.idea/RetroShopSymfony.iml b/.idea/RetroShopSymfony.iml
+--- a/.idea/RetroShopSymfony.iml	
++++ b/.idea/RetroShopSymfony.iml	
+@@ -5,6 +5,144 @@
+       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="App\" />
+       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="App\Tests\" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/web-profiler-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/web-link" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-exporter" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/validator" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/twig-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/twig-bridge" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/string" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/stopwatch" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/service-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/serializer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/security-http" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/security-guard" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/security-csrf" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/security-core" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/security-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/runtime" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/routing" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/proxy-manager-bridge" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/property-info" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/property-access" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php80" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php73" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-normalizer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-idn" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-icu" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-grapheme" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/phpunit-bridge" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/password-hasher" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/options-resolver" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/notifier" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/monolog-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/monolog-bridge" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/mime" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/maker-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/mailer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/intl" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-kernel" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-foundation" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-client-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-client" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/framework-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/form" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/flex" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/finder" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/expression-language" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/error-handler" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dotenv" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dom-crawler" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/doctrine-bridge" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/deprecation-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dependency-injection" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/debug-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/css-selector" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/config" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/cache-contracts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/cache" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/browser-kit" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/asset" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/phpunit" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-timer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-text-template" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-invoker" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-file-iterator" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-code-coverage" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpspec/prophecy" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/version" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/manifest" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-code" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-paginator-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/egulias/email-validator" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/framework-extra-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/vich/uploader-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/extra-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/link" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/event-dispatcher" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/metadata" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-common" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofphp/proxy-manager-lts" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/fzaninotto/faker" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/version" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/type" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/resource-operations" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/recursion-context" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/object-reflector" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/object-enumerator" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/lines-of-code" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/global-state" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/exporter" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/environment" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/diff" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/complexity" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/comparator" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/code-unit" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/cli-parser" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/sql-formatter" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/persistence" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/orm" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/migrations" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/event-manager" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/doctrine-bundle" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/deprecations" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/data-fixtures" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/common" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/collections" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
++      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/webpack-encore-bundle" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
