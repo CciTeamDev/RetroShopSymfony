@@ -28,7 +28,8 @@ class CartController extends AbstractController
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',
             'items' => $CartArticles,
-            'total' => $cartService->getTotal($purchase)
+            'total' => $cartService->getTotal($purchase),
+            'purchase' => $purchase
         ]);
         
     }
