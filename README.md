@@ -58,5 +58,9 @@ composer require vich/uploader-bundle
 (si marche pas)
 symfony composer install 
 
+pour liip :
+
+composer require liip/imagine-bundle
+
 
 
