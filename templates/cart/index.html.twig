@@ -25,7 +25,7 @@
                 {% for item in items %}
                     <tr>
                         <th>
-                            <img src="{{ vich_uploader_asset(item.product, 'imageFile') }}" alt="{{ item.product.name}}">
+                            <img src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ item.product.name}}">
                         </th>
                         <td>{{item.product.name}}</td>
                         <td>{{item.product.price}}</td>
