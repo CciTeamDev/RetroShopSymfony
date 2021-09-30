@@ -10,7 +10,7 @@
             <div class="prod">
                 <h3>{{ article.name }}</h3>
                 <p>{{ article.infos }}</p>
-                <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
+                <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.name }}">
                 <p><strong>{{ article.price }}€</strong></p>
                 <div class="actions">
                     <a id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
