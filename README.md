@@ -58,5 +58,8 @@ composer require vich/uploader-bundle
 (si marche pas)
 symfony composer install 
 
-
+Charts(graphiques) :
+composer require symfony/ux-chartjs
+yarn install --force
+yarn run watch
 
