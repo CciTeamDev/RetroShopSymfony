@@ -1,86 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Purchase index{% endblock %}
+{% block title %}Valider ma commande{% endblock %}
 
 {% block body %}
-    {# <h1>Purchase index</h1>
+    <h2>Je passe ma commande</h2>
+    Choisissez vos préférences de livraison avant de passer commande.
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            {% set formHtml %}
+            {{ form(form) }}
+            {% endset %}
+            {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">
+                <b>Récap de ma commande</b><br>
+            </div>
+            <div class="order_summary">
+                {%  for item in cart %}
+                    <div class="row ">
+                        <div class="col-2">
+                            <img src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ item.product.name}}"></div>
+                        <div class="col-8 my-auto" >
+                            {{ item.product.name }}<br/>
+                        </div>
+                        <div class="col-2 my-auto">
+                            x {{ item.quantity }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Created_at</th>
-                <th>Status</th>
-                <th>Total</th>
-                <th>Id_stripe</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {# {% for purchase in purchases %}
-            <tr>
-                <td>{{ purchase.id }}</td>
-                <td>{{ purchase.createdAt ? purchase.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ purchase.status }}</td>
-                <td>{{ purchase.total }}</td>
-                <td>{{ purchase.idStripe }}</td>
-                <td>
-                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
-                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %} #}
-        {# </tbody>
-    </table>
-    <a href="{{ path('purchase_new') }}">Create new</a> #} 
-
-    
-    {# {% for purchase in purchases %}
-    {% if purchase.status == "panier" %}
-        <h2>Commande dans le panier</h2>
-        <tr>
-                <td>{{ purchase.id }}</td>
-                <td>{{ purchase.createdAt ? purchase.createdAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>{{ purchase.status }}</td>
-                <td>{{ purchase.total }}</td>
-                <td>{{ purchase.idStripe }}</td>
-                <td>
-                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
-                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
-                </td>
-            </tr>
-    {% elseif purchase.status == "Validé" %}
-        <h2>Commande Validé</h2>
-        <tr>
-                <td>{{ purchase.id }}</td>
-                <td>{{ purchase.createdAt ? purchase.createdAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>{{ purchase.status }}</td>
-                <td>{{ purchase.total }}</td>
-                <td>{{ purchase.idStripe }}</td>
-                <td>
-                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
-                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
-                </td>
-            </tr>
-    {% elseif purchase.status == "Annulé" %}
-        <h2>Commande Annulé</h2>
-            <tr>
-                <td>{{ purchase.id }}</td>
-                <td>{{ purchase.createdAt ? purchase.createdAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>{{ purchase.status }}</td>
-                <td>{{ purchase.total }}</td>
-                <td>{{ purchase.idStripe }}</td>
-                <td>
-                    <a href="{{ path('purchase_show', {'id': purchase.id}) }}">show</a>
-                    <a href="{{ path('purchase_edit', {'id': purchase.id}) }}">edit</a>
-                </td>
-            </tr>
-    {% else %}
-        <h2>Aucune commande n'a été trouvé</h2>
-    {% endif %}
-    {% endfor %} #}
+        </div>
+    </div>
 {% endblock %}

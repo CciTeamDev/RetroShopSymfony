@@ -61,25 +61,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $date_naissance;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $adress;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="user")
      */
-    private $CP;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $ville;
+    private $adresses;
 
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $phone;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user", orphanRemoval=true)
@@ -92,11 +81,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $comments;
 
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
-        $this->ratings = new ArrayCollection();
+
+        $this->adresses = new ArrayCollection();
+
         $this->comments = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -230,53 +223,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAdress(): ?string
-    {
-        return $this->adress;
-    }
 
-    public function setAdress(?string $adress): self
-    {
-        $this->adress = $adress;
-
-        return $this;
-    }
-
-    public function getCP(): ?string
-    {
-        return $this->CP;
-    }
-
-    public function setCP(?string $CP): self
-    {
-        $this->CP = $CP;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(?string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Purchase[]
@@ -337,6 +284,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($comment->getUser() === $this) {
                 $comment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+    
+
+    /**
+     * @return Collection|Adresse[]
+     */
+    public function getAdresses(): Collection
+    {
+        return $this->adresses;
+    }
+
+    public function addAdresse(Adresse $adresse): self
+    {
+        if (!$this->adresses->contains($adresse)) {
+            $this->adresses[] = $adresse;
+            $adresse->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdress(Adresse $adresse): self
+    {
+        if ($this->adresses->removeElement($adresse)) {
+            // set the owning side to null (unless already changed)
+            if ($adresse->getUser() === $this) {
+                $adresse->setUser(null);
             }
         }
 

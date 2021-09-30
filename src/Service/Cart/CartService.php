@@ -78,6 +78,11 @@ class CartService{
         return $panierWithData;
     }
 
+   
+    
+    
+    
+
     public function getTotal(Purchase $purchase):float{ //ok
         $total = 0;
         foreach($this->getFullCart($purchase) as $item){
