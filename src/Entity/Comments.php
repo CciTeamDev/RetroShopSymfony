@@ -31,13 +31,12 @@ class Comments
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $article;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments",cascade={"remove"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $user;
 
