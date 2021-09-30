@@ -41,17 +41,73 @@ body{
             .fond{
                 color: var(--app-color-component-extralight);
             }
-            button{
-                position: absolute;
-                left: 90em;
-                top: 14em;
-                width: 10em;
-                border: none;
-                background-color: var(--app-color-component);
-                color: var(--app-background);
-                padding: 2em;
-                border-radius: 50%;
-            }
+            // button{
+            //     position: absolute;
+            //     left: 90em;
+            //     top: 14em;
+            //     width: 10em;
+            //     border: none;
+            //     background-color: var(--app-color-component);
+            //     color: var(--app-background);
+            //     padding: 2em;
+            //     border-radius: 50%;
+            // }
+
+            
+  
         }
+        .button {
+            background-color: var(--app-color-component);
+            position: relative;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            border: 2px solid white;
+
+            padding: 10px 20px;
+            margin: 40px;
+            box-shadow: 0 2px 5px 0 rgba(3,6,26,0.15);
+            transition: .5s all ease-in-out;
+            position: absolute;;
+            left: 90em;
+            top: 14em;
+            word-break: normal;
+            background-color: var(--app-color-component);
+            color: var(--app-background);
+            padding: 2em;
+    
+            &:hover {
+              cursor: pointer;
+              background: white;
+              color: #1F4141;
+              animation: none;
+              //animation-play-state: paused;
+            }
+          }
+          
+        .button-pulse {
+            animation: pulse 2s infinite 0s cubic-bezier(0.25, 0, 0, 1);
+            box-shadow: 0 0 0 0 var(--app-color-component);
+            -webkit-animation: pulse 2s infinite 0s cubic-bezier(0.25, 0, 0, 1);
+}
+          @keyframes pulse {
+            to {
+              box-shadow: 0 0 0 18px rgba(255, 255, 255, 0); 
+            }
+          }
+          
+          .button-float {
+            animation: float 1.5s linear alternate infinite;
+          }
+          
+          @keyframes float {
+              50% {
+              transform: translateY(-px);
+            }
+            100% {
+              transform: translateY(-18px);
+            }
+          }
     }
 }
