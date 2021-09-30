@@ -5,6 +5,7 @@
 {% block body %}
 
 {% if app.user.roles[0] is defined %}
+
 {% if app.user.roles[0] %}
 <h1>Profil de {{app.user.username}}</h1>
 <table class="table">
@@ -45,6 +46,7 @@
 
 <a href="{{ path('client_edit') }}">edit</a>
 {% endif %}
+
 {% endif %}
 
 {% if app.user.roles[1] is defined%}
@@ -95,12 +97,6 @@
 <a href="{{ path('user_new') }}">Create new</a>
 {% endif %}
 {% endif %}
-
-{# 
-    A FAIRE MARCHER LE BOUTON EDIT
-    <a href="{{path('user_edit', {'id': app.user.id})}}">Modifier mon profil</a>
-    <a href="{{ path('user_edit', json_encode({'id': app.user.id}))}}">edit</a> 
-    #}
 
 
 {% endblock %}
