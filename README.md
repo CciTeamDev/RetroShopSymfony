@@ -50,13 +50,22 @@ Installer bootstrap
 
 
 
-// viche uploader
+// vich uploader
 https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md
 
 composer require vich/uploader-bundle
 
 (si marche pas)
 symfony composer install 
+
+pour liip :
+
+composer require liip/imagine-bundle
+
+dans php.ini 
+decommenter la ligne extension = gd
+PUIS
+symfony serve:stop
 
 
 
