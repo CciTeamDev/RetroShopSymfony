@@ -63,7 +63,7 @@ pour liip :
 composer require liip/imagine-bundle
 
 dans php.ini 
-decom la ligne extension = gd
+decommenter la ligne extension = gd
 PUIS
 symfony serve:stop
 
