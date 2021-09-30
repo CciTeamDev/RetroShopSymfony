@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Mon panier{% endblock %}
 
 {% block body %}
 <style>
@@ -9,17 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/formationpeweb/Desktop/EcommSymfony/Eshop/RetroShopSymfony/src/Controller/CartController.php'|file_link(0) }}">src/Controller/CartController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/formationpeweb/Desktop/EcommSymfony/Eshop/RetroShopSymfony/templates/cart/index.html.twig'|file_link(0) }}">templates/cart/index.html.twig</a></code></li>
-    </ul>
     {% if items | length > 0 %}
         <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Produit</th>
                     <th>Prix</th>
                     <th>Quantité</th>
@@ -29,34 +24,28 @@
             <tbody>
                 {% for item in items %}
                     <tr>
+                        <th>
+                            <img src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ item.product.name}}">
+                        </th>
                         <td>{{item.product.name}}</td>
-            
                         <td>{{item.product.price}}</td>
-                        
                         <td>{{item.quantity}}</td>
                         <td>{{item.product.price * item.quantity}}</td>
                         <td><a href="{{path('cart_remove',{'id':item.product.id})}}" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i><button>Remove</button>
+                            <i class="fas fa-trash"></i>
                         </a></td>
 
                     </tr>
                 {% endfor %}
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">Total :</td>
-                    <td> {{total}}</td>
-                    <td></td>
-                </tr>
-            </tfoot>
         </table>
+        <div class="text-right mb-5">
+            <b>Total de mon panier :</b> {{ total}}€<br>
+            <a href="{{ path('purchase_validator') }}" class="btn btn-success btn-block mt-3 mr-6">Valider mon panier</a>
+        </div>
     {% else %}
-        <p>c vide</p>
-        
+        <p>Vous n'avez rien dans votre panier </p>
     {% endif %}
 </div>
-<div class="navigation">
-    {{knp_pagination_render(items)}}
-</div>
-<a href="{{ path('purchase_validator') }}">validate cart</a>
+
 {% endblock %}
