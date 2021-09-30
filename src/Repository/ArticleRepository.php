@@ -46,7 +46,7 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     
-    public function suggestionsArticlesRepository()
+    public function showArticlesByDate()
     {
         return $this->createQueryBuilder('a')
             ->orderBy('a.created_at', 'ASC')

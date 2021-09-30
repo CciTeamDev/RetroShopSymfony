@@ -22,32 +22,39 @@
     </div>
 {% endblock %}
 {% block suggestions %}
-    <div>
-        <h1>Suggestions</h1>
-            <div class="row justify-content-md-center">
+    <h1 class="margin">Suggestions</h1>
+    <div class='sectionTemplate'>
+            <div class="gridTemplate">
                 {% for article in articles %}
-                    <div class="col-sm-2">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ article.name }}</h3>
-                                <p class="card-text">{{ article.infos }}</p>
-                                <img class="card-img-top" src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
-                                <p><strong>{{ article.price }}€</strong></p>
+                        <div class='grid-container'>
+                            <h3 class="title">{{ article.name }}</h3>
+                            <details>
+                            <summary class='infos'><small class="form-text text-muted">plus d'infos</small></summary>
+                            <p>{{ article.infos }}</p>
+                            </details>
+                            <a class="picture" id="actions-show" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
+                            </a>
+                            <div class='prices'>
+                                <small>Price</small>
+                                <h4><strong>{{ article.price }}€</strong></h4>
                             </div>
-                            <div class="actions">
-                                <a class="btn btn-primary" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
+                            <div class="buttons">
                                 {% if app.user %}
-                                <a class="btn btn-primary" id="actions-add" href="{{ path('cart_add', {'id': article.id}) }}">Ajout panier</a>
+                                <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('article_add', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% else %}
-                                <a class="btn btn-primary" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}">Ajout panier</a>
+                                <a class="btn btn-primary rounded-pill" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% endif %}
-                                <a class="btn btn-primary" id="actions-edit" href="{{ path('article_edit', {'id': article.id}) }}">Edit</a>
                             </div>
                         </div>
-                 </div>
                 {% else %}
                 <p>Aucun article trouvé</p>
                 {% endfor %}
             </div>
     </div>
+{% endblock %}
+{% block background %}
+<div class="pictureBackground">
+    <img src="/images/background/jason-ng-cc8BVwsSHyQ-unsplash.jpg">
+</div>
 {% endblock %}

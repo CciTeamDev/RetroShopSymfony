@@ -20,7 +20,7 @@ class DefaultController extends AbstractController
     {   
         return $this->render("default/index.html.twig", [
         'users' => $userRepository->findAll(),
-        'articles' => $articleRepository->suggestionsArticlesRepository(),
+        'articles' => $articleRepository->showArticlesByDate(),
         ]);
     }
 

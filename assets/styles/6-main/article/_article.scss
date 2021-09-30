@@ -1,241 +1,73 @@
-body{
-    .testbody{
-       display: flex;
-       flex-direction: column;
-    
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'title title'
+    'infos infos'
+    'picture picture'
+    'prices buttons';
+  background-color: white;
+  box-shadow: 2px 4px 14px -6px rgba(78,86,88,0.33);
+  border-radius: 12%;
+  padding: 30px;
+}
 
-    .blocarticle{
-        align-self: center;
-        width: 100%;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        justify-content: space-around;
-        display: flex;
+// disposition des articles 
+.gridTemplate {
+  display: grid;
+  gap: 0px 20px;
+  grid-template-areas: '. . . .';
+}
 
-        .article{
-        box-shadow: 1px 1px 1px 1px grey;
-        display: flex;
-        flex-direction: column;
+.sectionTemplate {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
-        width: 380px;
-        height: 550px;
-        padding: 10px 10px 10px 10px;
-        border-radius: 50px;
-        background-color: white;
+%article-container {
+  display: flex;
+  flex-direction: column;
+}
 
-        &:hover{
-            animation-duration: 0.2s;
-            scale: 1.1;
-        }
-        .top{
-            margin-left: 7.5%;
-            margin-right: 7.5%;
-            height:35%;
-            .articlename{
-                font-family: 'Abril Fatface',cursive;
-                font-size: 2.188em;
-            }
-
-            .articleinfolabel{
-                font-family: 'Roboto';
-                font-size: 1em;
-            }
-
-            .articleinfos{
-                text-align: center;
-                font-family: 'Roboto';
-                font-size:1.2em;
-            }
-        }
-        
-
-        .testpic{
-            align-self: center;
-            border: 1px solid black;
-            width: 85%;
-            height:40%;
-            border-radius: 15px;
-        }
-
-        .bottom{
-            margin-left: 7.5%;
-            margin-right: 7.5%;
-            height: 25%;
-            align-self: bottom;
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-family: 'Roboto';
+%article-padding {
+  padding-top: 1rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.375rem;
+  padding-left: 0rem;
+}
+  
+.title {
+  @extend %article-container;
+  grid-area: title;
+}
+.infos {
+  @extend %article-padding;
+  grid-area: infos; 
+}
+.picture {
+  @extend %article-padding;
+  grid-area: picture; 
+}
+.prices {
+  @extend %article-container;
+  @extend %article-padding;
+  grid-area: prices;
+}
+.buttons {
+  @extend %article-padding;
+  @extend %article-container; 
+  grid-area: buttons;
+  text-align: center;
+}
             
-            .price {
-                .pricelabel{
-                    font-weight: 200;
-                }
-                .itemprice{
-                   font-size: 1.25em; 
-                }
-            }
-            .actions{
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                #actions-show{
-                    text-decoration: none;
-                    text-align: center;
-                    color: black;
-                    background-color:#d5e0e6;
-                    border-radius: 15px;
-                    padding-left: 5px;
-                    padding-right: 5px;
-                    font-weight: 200;
-                }
+.margin {
+  margin-top: 1.7em;
+  margin-bottom: 1em;
+}
 
-                #actions-add{
-                    text-decoration: none;
-                    text-align: center;
-                    color: black;
-                    background-color: #5496BF;
-                    border-radius: 15px;
-                    padding-left: 5px;
-                    padding-right: 5px;
-                    color:white;
-                }
-
-                #actions-edit{
-                    color: black;
-                    text-align: center;
-                }
-            }
-        }
-
-    }}
-
-    .navigation{
-        
-        align-self: center;
-        letter-spacing: 5px;
-        
-        
-        :link{
-            color: black;
-            text-decoration: none;
-        }
-        :visited{
-            color: black;
-        }
-        :hover{
-            color: green;
-        }
-        :active{
-            color: red;
-        }
-    }
-    }
-    .testbodynew{
-        display: flex;
-        justify-content: center;
-        .newarticle{
-            box-shadow: 1px 1px 1px 1px grey;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-    
-            width: 380px;
-            height: 550px;
-            padding: 10px 10px 10px 10px;
-            border-radius: 50px;
-            background-color: white;
-        }
-    }
-    
-    .testbodyshow{
-        display: flex;
-        justify-content: center;
-        .article{
-            box-shadow: 1px 1px 1px 1px grey;
-            display: flex;
-            flex-direction: column;
-        
-            width: 380px;
-            height: 550px;
-            padding: 10px 10px 10px 10px;
-            border-radius: 50px;
-            background-color: white;
-        
-            &:hover{
-                    animation-duration: 0.2s;
-                    scale: 1.1;
-            }
-            .top{
-                    margin-left: 7.5%;
-                    margin-right: 7.5%;
-                    height:35%;
-                    .articlename{
-                        font-family: 'Abril Fatface',cursive;
-                        font-size: 2.188em;
-                    }
-        
-                    .articleinfolabel{
-                        font-family: 'Roboto';
-                        font-size: 1em;
-                    }
-        
-                    .articleinfos{
-                        text-align: center;
-                        font-family: 'Roboto';
-                        font-size:1.2em;
-                    }
-            }
-
-        
-            .testpic{
-                    align-self: center;
-                    border: 1px solid black;
-                    width: 85%;
-                    height:40%;
-                    border-radius: 15px;
-            }
-        
-            .bottom{
-                    margin-left: 7.5%;
-                    margin-right: 7.5%;
-                    height: 25%;
-                    align-self: bottom;
-                    margin-top: 20px;
-                    display: flex;
-                    justify-content: space-between;
-                    font-family: 'Roboto';
-                    
-                    .price {
-                        .pricelabel{
-                            font-weight: 200;
-                        }
-                        .itemprice{
-                           font-size: 1.25em; 
-                        }
-                    }
-                    .actions{
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-around;
-        
-                        #actions-add{
-                            text-decoration: none;
-                            text-align: center;
-                            color: black;
-                            background-color: #5496BF;
-                            border-radius: 15px;
-                            padding-left: 5px;
-                            padding-right: 5px;
-                            color:white;
-                        }
-        
-                        #actions-edit{
-                            color: black;
-                            text-align: center;
-                        }
-                }
-            }
-        }
-    }
+.pictureBackground {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
