@@ -43,31 +43,6 @@ class CommentsController extends AbstractController
     
         }
         
-
-        // if($validateForm->isSubmitted() && $validateForm->isValid()){
-        //     // $comment->setModerate(null);
-        //     $em = $this->getDoctrine()->getManager();
-        //     if($comment->setModerate(true)){
-
-        //         $em->persist($comment);
-        //         $em->flush();
-
-        //         return $this->render('article/show.html.twig', [
-        //             'comments' => $validateForm
-        //         ]);
-        //     }
-        //     elseif($comment->setModerate(false)){
-
-        //         $em->remove($comment);
-        //         $em->flush();
-
-        //         return $this->redirectToRoute('comments_index', [], Response::HTTP_SEE_OTHER);
-        //     }
-        //     else{
-        //         var_dump("Erreur !!");
-        //     }
-        // }
-
         return $this->render('comments/index.html.twig', [
             'comments' => $commentsRepository->findAll()
         ]);

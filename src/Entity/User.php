@@ -82,17 +82,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $phone;
 
     /**
-     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user", cascade={"remove"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     * 
      */
     private $user;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Ratings::class, mappedBy="user")
-     */
-    private $ratings;
 
     /**
      * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="user")
+     * 
      */
     private $comments;
 
