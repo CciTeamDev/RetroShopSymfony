@@ -91,10 +91,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $ratings;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="user")
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -306,39 +312,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Ratings[]
-     */
-    public function getRatings(): Collection
+    public function __toString()
     {
-        return $this->ratings;
+        return $this->getId();
     }
 
-    public function addRating(Ratings $rating): self
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
     {
-        if (!$this->ratings->contains($rating)) {
-            $this->ratings[] = $rating;
-            $rating->setUser($this);
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeRating(Ratings $rating): self
+    public function removeComment(Comments $comment): self
     {
-        if ($this->ratings->removeElement($rating)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($rating->getUser() === $this) {
-                $rating->setUser(null);
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
             }
         }
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->getId();
     }
 
 

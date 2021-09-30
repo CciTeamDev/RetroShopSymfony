@@ -3,8 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Comments;
+use App\Entity\Note;
+use App\Entity\User;
 use App\Form\ArticleType;
+use App\Form\CommentsType;
+use App\Form\NoteType;
 use App\Repository\ArticleRepository;
+use DateTime;
 use DateTimeImmutable;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -76,12 +82,32 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'article_show', methods: ['GET'])]
-    public function show(Article $article): Response
-    {
+    #[Route('/{id}', name: 'article_show', methods: ['GET', 'POST'])]
+    public function show(Article $article, Request $request): Response
+    {   // On crée le commentaire vierge
+        $comment = new Comments;
         
+        // on génère le formulaire
+        $commentform = $this->createForm(CommentsType::class, $comment);
+        $commentform->handleRequest($request);
+        // dd($comment);
+        // Traitement du formulaire
+        if($commentform->isSubmitted() && $commentform->isValid()){
+            // dd($comment);
+            $comment->setCreatedAt(new DateTimeImmutable());
+            $comment->setArticle($article);
+            $comment->setUser($this->getUser());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('article_index');
+        }
+
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'commentForm' => $commentform->createView()
         ]);
     }
 
