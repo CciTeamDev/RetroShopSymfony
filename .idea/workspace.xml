@@ -2,22 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8b6d102-4268-4275-bdb1-fd5cf994ee93" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/adresse/adresse_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PurchaseController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/products/accueil-v1-61558454a4c29639630702.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/media/cache/my_thumb/images/products/accueil-v1-61558454a4c29639630702.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/media/cache/my_thumb/images/products/accueil-v1-6155a66d3047b198809764.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/media/cache/my_thumb/images/products/palette-couleur2-6151c37acfd81437267939.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CommentsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Comments.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/CommentsType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ValidateType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CommentsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/Comments/CommentsService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/comments/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/comments/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/comments/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/comments/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/comments/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers/hello_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers/hello_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210929091515.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210930115536.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RatingsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Purchase.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Purchase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PurchaseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PurchaseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Cart/CartService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Cart/CartService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cart/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/purchase/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/purchase/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/purchase/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/purchase/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/purchase/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/purchase/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/RatingsRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_partial/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partial/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ratings/index.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +241,7 @@
       <workItem from="1632985198160" duration="42000" />
       <workItem from="1632985528743" duration="496000" />
       <workItem from="1632986069200" duration="11675000" />
-      <workItem from="1633003363646" duration="3259000" />
+      <workItem from="1633003363646" duration="3566000" />
     </task>
     <servers />
   </component>
@@ -253,7 +265,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/ArticleController.php</url>
-          <line>9</line>
+          <line>14</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

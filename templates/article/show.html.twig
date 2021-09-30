@@ -11,12 +11,6 @@
             <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
     </div>
 
-    <div>
-        <h4>Note du produit</h4>
-        {# les moyennes des notes a calculer #}
-        <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-    </div>
-
     <form action="{{ path('cart_add' ,{id:article.id}) }}" method="POST">
         <select name="quantity">
             <option value="1">1</option>
@@ -33,38 +27,37 @@
 
         {% endif %}
     </form>
+    
 
-    <form action="{{path("ratings_add", {id:article.id})}}" method="POST">
-        {#{% if app.user.roles[0] is defined %}
-            {% if app.user.roles[0] == app.user.pr%}#}
-        <select name="note">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+    <div class="commentaire">
+        <h3>Tous les commentaires</h3>
 
-        <label for="comment">Commentaire</label>
-        <textarea name="comment"></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
+            {% for comment in article.comments %}
+                {% if comment.moderate is same as (true) %}
+                    <p>{{comment.note}}</p>
+                    <p>{{comment.content}}</p> 
+                    <p>Publié par {{comment.user.username}} le {{comment.createdAt|date("d/m/y H:i")}}</p>
+                {% endif %}
+                
+            {% endfor %}
+    
+    </div>
 
-    <table>
-        <tr>
-            <td>User</td>
-            <td>Note</td>
-            <td>Commentaire</td>
-        </tr>
-        {# {% for rating in ratings %}
-        <tr>
+    <div class="commentaire">
+        <h3>Ajouter un commentaire</h3>
+        {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined) %}
+            {% if app.user.roles[0] %}
+                {{form(commentForm)}} 
+            {% else %}
+            <a href={{ path('app_login') }}>Pour Ajouter un commentaire, veuillez vous connecter</a> 
+            {% endif %}
+        {% endif %}
 
-            <td>{{rating.user_id}}</td>
-            <td>{{rating.note}}</td>
-            <td>{{rating.comment}}</td>
-        </tr>
-        {% endfor %} #}
-    </table>
+    </div>
+
+    
+   
+
 
     <a href="{{ path('article_index') }}">Revenir à la liste des produits</a>
 
