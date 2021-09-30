@@ -5,56 +5,55 @@
 {% block body %}
 
 {% if app.user.roles[0] is defined %}
-{% if app.user.roles[0] %}
-<h1>Profil de {{app.user.username}}</h1>
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ app.user.id }}</td>
-        </tr>
-        <tr>
-            <th>Username</th>
-            <td>{{ app.user.username }}</td>
-        </tr>
-        <tr>
-            <th>Nom</th>
-            <td>{{ app.user.nom }}</td>
-        </tr>
-        <tr>
-            <th>Prenom</th>
-            <td>{{ app.user.prenom }}</td>
-        </tr>
-        <tr>
-            <th>Genre</th>
-            <td>{{ app.user.genre }}</td>
-        </tr>
-        <tr>
-            <th>Date_naissance</th>
-            <td>{{ app.user.dateNaissance ? app.user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
-        </tr>
-        <tr>
-            <th>Adress</th>
-            <td>{{ app.user.adress }}</td>
-        </tr>
-        <tr>
-            <th>CP</th>
-            <td>{{ app.user.CP }}</td>
-        </tr>
-        <tr>
-            <th>Ville</th>
-            <td>{{ app.user.ville }}</td>
-        </tr>
-        <tr>
-            <th>Phone</th>
-            <td>{{ app.user.phone }}</td>
-        </tr>
-    </tbody>
-</table>
-
-
-<a href="{{ path('client_edit') }}">edit</a>
-{% endif %}
+    {% if app.user.roles[0] %}
+        <h1>Profil de {{app.user.username}}</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ app.user.id }}</td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td>{{ app.user.username }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ app.user.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Prenom</th>
+                    <td>{{ app.user.prenom }}</td>
+                </tr>
+                <tr>
+                    <th>Genre</th>
+                    <td>{{ app.user.genre }}</td>
+                </tr>
+                <tr>
+                    <th>Date_naissance</th>
+                    <td>{{ app.user.dateNaissance ? app.user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Adress</th>
+                    <td>{{ app.user.adress }}</td>
+                </tr>
+                <tr>
+                    <th>CP</th>
+                    <td>{{ app.user.CP }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ app.user.ville }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ app.user.phone }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{{ path('client_edit') }}">edit</a>
+        
+    {% endif %}
 {% endif %}
 
 {% if app.user.roles[1] is defined%}
@@ -110,12 +109,6 @@
 <a href="{{ path('user_new') }}">Create new</a>
 {% endif %}
 {% endif %}
-
-{# 
-    A FAIRE MARCHER LE BOUTON EDIT
-    <a href="{{path('user_edit', {'id': app.user.id})}}">Modifier mon profil</a>
-    <a href="{{ path('user_edit', json_encode({'id': app.user.id}))}}">edit</a> 
-    #}
 
 
 {% endblock %}
