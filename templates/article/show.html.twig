@@ -36,15 +36,6 @@
                 {% if comment.moderate is same as (true) %}
                     <p>{{comment.note}}</p>
                     <p>{{comment.content}}</p> 
-                    
-                    {# {% if app.user.roles[1] is defined%}
-                        
-                        {% if app.user.roles[1]%}
-                            <td>{{(comment.moderate)}}</td>
-                        {% else %}
-                            <td></td>
-                        {% endif %}
-                    {% endif %} #}
                     <p>Publié par {{comment.user.username}} le {{comment.createdAt|date("d/m/y H:i")}}</p>
                 {% endif %}
                 
@@ -54,9 +45,6 @@
 
     <div class="commentaire">
         <h3>Ajouter un commentaire</h3>
-        {# <pre>
-                        {{ dump(app.user.roles[0]) }}
-                    </pre> #}
         {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined) %}
             {% if app.user.roles[0] %}
                 {{form(commentForm)}} 

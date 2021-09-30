@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Comments;
+use App\Entity\Purchase;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -91,11 +93,13 @@ class UserController extends AbstractController
 
 
     #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user): Response
+    public function delete(Request $request, User $user, Comments $comment, Purchase $purchase): Response
     {
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
+            $entityManager->remove($comment);
+            $entityManager->remove($purchase);
             $entityManager->flush();
         }
 
