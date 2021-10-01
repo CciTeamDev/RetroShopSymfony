@@ -34,13 +34,13 @@ class CartController extends AbstractController
         
     }
 
-    #[Route('/cart/add/{id}', name:"cart_add", defaults: ['quantity'=>1])]
+    #[Route('/cart/add/{id}', name:"cart_add")]
     public function add($id,CartService $cartService,Request $request){ //ok
 
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$this->getUser()->getId()]);
         $purchase = $this->getDoctrine()->getRepository(Purchase::class)->findOneBy(['user'=>$user,'status'=>'panier']);
         //dd($request);
-        $cartService->add($id,$request->get('quantity'),$purchase);
+        $cartService->add($id,$request->get('quantity')??1,$purchase);
         
         return $this->redirectToRoute('cart_index');
     }
