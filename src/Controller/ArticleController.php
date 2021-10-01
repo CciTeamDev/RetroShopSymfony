@@ -106,9 +106,9 @@ class ArticleController extends AbstractController
             $em->persist($comment);
             $em->flush();
 
-            $this->addFlash('notice', 'Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.');
+            $this->addFlash("notice" , "Merci pour votre commentaire !");
 
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
         }
 
         return $this->render('article/show.html.twig', [
