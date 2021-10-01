@@ -8,14 +8,15 @@
             xxl: 1640px
           ),
     // change les couleurs de base de bootstrap
-    $primary: #5496bf,
-    $secondary:#A4c3d7, 
-    $success:#B5E48C, 
-    $info:#d5e0e6, 
-    $warning:#EFCD5A,
-    $danger:#BC5A62,
-    $light:#fef9f3,
-    $dark:#4e5658,
+    $blue: #5496bf,
+    $gray-600:#a4c3d7, 
+    $green:#b5e48c, 
+    $cyan:#d5e0e6, 
+    $yellow:#edcd5a,
+    $red:#bc5a62,
+    $gray-100:#fef9f3,
+    $gray-900:#4e5658,
+    $black:#4e5658,
 
     // change la font en Roboto par default
     $font-family-sans-serif: $font-sans-serif-alternative

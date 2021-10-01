@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Comments;
+use App\Entity\User;
 use App\Form\CommentsType;
 use App\Form\ValidateType;
 use App\Repository\ArticleRepository;

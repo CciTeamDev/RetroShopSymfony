@@ -71,16 +71,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     /**
-     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user", cascade={"remove"})
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     * 
+     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user", orphanRemoval=true)
      */
     private $user;
 
 
     /**
-     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="user")
-     * 
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="user", orphanRemoval=true)
      */
     private $comments;
 
