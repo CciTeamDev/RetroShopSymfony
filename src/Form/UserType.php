@@ -17,13 +17,13 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('roles', ChoiceType::class, [
-                'multiple' => true,
-                'choices' => [
-                    'admin' => 'ROLE_ADMIN',
-                    'user' => 'ROLE_USER',
-                ]
-            ])
+            // ->add('roles', ChoiceType::class, [
+            //     'multiple' => true,
+            //     'choices' => [
+            //         'admin' => 'ROLE_ADMIN',
+            //         'user' => 'ROLE_USER',
+            //     ]
+            // ])
             // ->add('password')
             ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
@@ -46,10 +46,7 @@ class UserType extends AbstractType
             ->add('prenom')
             ->add('genre')
             ->add('date_naissance')
-            ->add('adress')
-            ->add('CP')
-            ->add('ville')
-            ->add('phone')
+
         ;
     }
 
