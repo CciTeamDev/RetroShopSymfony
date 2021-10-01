@@ -34,7 +34,7 @@ class CartController extends AbstractController
         
     }
 
-    #[Route('/cart/add/{id}', name:"cart_add")]
+    #[Route('/cart/add/{id}', name:"cart_add", defaults: ['quantity'=>1])]
     public function add($id,CartService $cartService,Request $request){ //ok
 
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$this->getUser()->getId()]);
