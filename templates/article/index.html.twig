@@ -3,6 +3,7 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
 <h1>Tous les produits</h1>
 
     <div class="produits">
@@ -24,20 +25,47 @@
                     <a id="actions-edit" href="{{ path('article_edit', {'id': article.id}) }}">Edit</a>
                     
                 </div>
+=======
+{% block allArticles %}
+    <h1 class="marginProducts">Tous les produits</h1>
+      <div class='sectionTemplate'>
+            <div class="gridTemplate">
+                {% for article in articles %}
+                        <div class='grid-container'>
+                            <h3 class="title">{{ article.name }}</h3>
+                            <details>
+                            <summary class='infos'><small class="form-text text-muted">plus d'infos</small></summary>
+                            <p>{{ article.infos }}</p>
+                            </details>
+                            <a class="picture" id="actions-show" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
+                            </a>
+                            <div class='prices'>
+                                <small>Price</small>
+                                <h4><strong>{{ article.price }}€</strong></h4>
+                            </div>
+                            <div class="buttons">
+                                {% if app.user %}
+                                <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('article_add', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
+                                {% else %}
+                                <a class="btn btn-primary rounded-pill" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                {% else %}
+                <p>Aucun article trouvé</p>
+                {% endfor %}
+>>>>>>> 7f902e5e0efe19850c8789194548d70269823353
             </div>
-            
-        {% else %}
-            <p>Aucun article trouvé</p>
-        {% endfor %}
-        
     </div>
-<div class="navigation">
+{% endblock %}
+<div>
     {{ knp_pagination_render(articles) }}
 </div>
 
 {% if app.user.roles[1] is defined%}
     {% if app.user.roles[1] %}
-    <a href="{{ path('article_new') }}">Create new</a>
+    <a href="{{ path('article_add') }}">Create new</a>
     {% endif %}
 {% endif %}
 
