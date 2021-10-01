@@ -1,4 +1,100 @@
-.product-price{
-  font-weight: bold;
-  font-size: 15px ;
+// elements décoratifs du header
+.pictureBackground{
+  border-radius: 9%;
+  width: 29%;
+  position: absolute;
+  right: 21em;
+  top: 9em;
+  z-index: -1;
 }
+
+.formSvg1{
+  position: absolute;
+  top: 30em;
+  right: 45em;
+}
+
+.formSvg2{
+  position: absolute;
+  top: 35em;
+  right: 50em;
+  z-index: -2
+}
+
+.formSvg3{
+  position: absolute;
+  top: 32em;
+  right: 61em;
+}
+
+
+// disposition des articles 
+.gridTemplate {
+  display: grid;
+  gap: 0px 20px;
+  grid-template-areas: '. . . .';
+}
+
+.sectionTemplate {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+// la carte article
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'title title'
+    'infos infos'
+    'picture picture'
+    'prices buttons';
+  background-color: white;
+  box-shadow: 2px 4px 14px -6px rgba(78,86,88,0.33);
+  border-radius: 12%;
+  padding: 30px;
+}
+
+// variables d'organisation des éléments à l'interieur de la carte article
+%article-container {
+  display: flex;
+  flex-direction: column;
+}
+
+%article-padding {
+  padding-top: 1rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.375rem;
+  padding-left: 0rem;
+}
+
+// éléments à l'interieur de la carte article
+.title {
+  @extend %article-container;
+  grid-area: title;
+}
+.infos {
+  @extend %article-padding;
+  grid-area: infos; 
+}
+.picture {
+  @extend %article-padding;
+  grid-area: picture;
+  img{
+    border-radius: 8%
+  }
+}
+.prices {
+  @extend %article-container;
+  @extend %article-padding;
+  grid-area: prices;
+}
+.buttons {
+  @extend %article-padding;
+  @extend %article-container; 
+  grid-area: buttons;
+  text-align: center;
+}
+
+
+

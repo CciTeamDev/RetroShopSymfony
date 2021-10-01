@@ -41,8 +41,8 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'article_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    #[Route('/new', name: 'article_add', methods: ['GET', 'POST'])]
+    public function new(Request $request, KernelInterface $kernel): Response
     {
         
         $article = new Article();
