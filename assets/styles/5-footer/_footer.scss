@@ -1,8 +1,12 @@
-body{
-    footer{
+footer{
+        position: absolute;
+        left: 0;
+        right: 0;
         background-color: var(--app-color-text);
         color: var(--app-background);
         padding: 1.5em;
+        margin-top: 4em;
+        
         .foot{
             display: flex;
             align-items: flex-end;
@@ -69,4 +73,3 @@ body{
     
     }
     
-}
