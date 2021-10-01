@@ -33,7 +33,7 @@
                             <p>{{ article.infos }}</p>
                             </details>
                             <a class="picture" id="actions-show" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">
-                            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
                             </a>
                             <div class='prices'>
                                 <small>Price</small>
