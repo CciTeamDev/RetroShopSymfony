@@ -6,15 +6,9 @@
     <h1 class="change">{{article.name}}</h1>
 
     <p>{{article.infos}}</p>
-    <p>{{article.price}}€</p>            
+    <p>{{article.price}}€</p>
     <div class="testpic">
-            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
-    </div>
-
-    <div>
-        <h4>Note du produit</h4>
-        {# les moyennes des notes a calculer #}
-        <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+            <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
     </div>
 
     <form action="{{ path('cart_add' ,{id:article.id}) }}" method="POST">
@@ -26,52 +20,51 @@
             <option value="5">5</option>
         </select>
         {% if app.user %}
-        <a href="{{ path('cart_add', {'id': article.id}) }}"><button type="submit">Acheter</button></a>
+            <a href="{{ path('cart_add', {'id': article.id}) }}"><button type="submit">Acheter</button></a>
         {% else %}
 
-        <a href="/login"><input type="button" value="acheter"></a>
+            <a href="/login"><input type="button" value="acheter"></a>
 
         {% endif %}
     </form>
     
-     <form action="{{path("ratings_add", {id:article.id})}}" method="POST">
-        {#{% if app.user.roles[0] is defined %}
-            {% if app.user.roles[0] == app.user.pr%}#}
-        <select name="note">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-            
-        <label for="comment">Commentaire</label>
-        <textarea name="comment"></textarea>
-        <button type="submit">Envoyer</button>
-    </form> 
 
-    <table>
-        <tr>
-            <td>User</td>
-            <td>Note</td>
-            <td>Commentaire</td>
-        </tr>
-        {# {% for rating in ratings %}
-        <tr>
-        
-            <td>{{rating.user_id}}</td>
-            <td>{{rating.note}}</td>
-            <td>{{rating.comment}}</td>
-        </tr>
-        {% endfor %} #}
-    </table>
+    <div class="commentaire">
+        <h3>Tous les commentaires</h3>
+
+            {% for comment in article.comments %}
+                {% if comment.moderate is same as (true) %}
+                    <p>{{comment.note}}</p>
+                    <p>{{comment.content}}</p> 
+                    <p>Publié par {{comment.user.username}} le {{comment.createdAt|date("d/m/y H:i")}}</p>
+                {% endif %}
+                
+            {% endfor %}
+    
+    </div>
+
+    <div class="commentaire">
+        <h3>Ajouter un commentaire</h3>
+        {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined) %}
+            {% if app.user.roles[0] %}
+                {{form(commentForm)}} 
+            {% else %}
+            <a href={{ path('app_login') }}>Pour Ajouter un commentaire, veuillez vous connecter</a> 
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+    
+   
+
 
     <a href="{{ path('article_index') }}">Revenir à la liste des produits</a>
 
     {% if app.user.roles[1] is defined %}
         {% if app.user.roles[1] %}
-        <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-        {{ include('article/_delete_form.html.twig') }}
+            <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+            {{ include('article/_delete_form.html.twig') }}
         {% endif %}
     {% endif %}
 {% endblock %}

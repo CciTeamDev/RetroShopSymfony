@@ -50,7 +50,7 @@ Installer bootstrap
 
 
 
-// viche uploader
+// vich uploader
 https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md
 
 composer require vich/uploader-bundle
@@ -62,4 +62,14 @@ Charts(graphiques) :
 composer require symfony/ux-chartjs
 yarn install --force
 yarn run watch
+pour liip :
+
+composer require liip/imagine-bundle
+
+dans php.ini 
+decommenter la ligne extension = gd
+PUIS
+symfony serve:stop
+
+
 

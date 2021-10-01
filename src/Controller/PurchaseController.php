@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Purchase;
 use App\Entity\User;
+use App\Form\PurchaseType;
 use App\Service\Cart\CartService;
 use App\Service\Purchase\ChartPurchaseService;
 use App\Service\Purchase\PurchaseService;
@@ -73,14 +74,17 @@ class PurchaseController extends AbstractController
         ]);
     }
 
-    #[Route('/purchase/validate', name: 'purchase_validator')]
-    public function purchaseValidator(PurchaseService $purchaseService, CartService $cartService): Response
+    #[Route('/purchase/validate/{id}', name: 'purchase_validator')]
+    public function purchaseValidator(CartService $cartService,Purchase $purchase): Response
     {
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id' => $this->getUser()->getId()]);
-        $purchase = $this->getDoctrine()->getRepository(Purchase::class)->findOneBy(['user' => $user, 'status' => 'panier']);
-        $purchaseService->validatePurchase($purchase, $cartService);
+        
+        $form = $this->createForm(PurchaseType::class,null,[
+            'user' => $this->getUser()
+        ]);
 
-
-        return $this->redirectToRoute('purchase');
+        return $this->render('purchase/index.html.twig',
+            ['cart' => $cartService->getFullCart($purchase),
+                'form' => $form->createView()
+            ]);
     }
 }

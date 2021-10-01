@@ -5,8 +5,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"> 
-        
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
         <title>{% block title %}RetroShop{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -15,7 +15,6 @@
             
         {% endblock %}
 
-        
         <script src="https://kit.fontawesome.com/00fca59a8b.js" crossorigin="anonymous"></script>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
@@ -24,6 +23,9 @@
     <body class = "bg-light">
         {% include '_partial/_navbar.html.twig' %}
         {% block body %}{% endblock %}
+
+        {% block form %}{% endblock %}
+
         {% block footer %}
             <footer>
                 <div class="foot">
@@ -32,7 +34,7 @@
                         <p>92 rue Henri Depagnieux</p>
                         <p>69400 Limas</p>
                     </div>
-                    
+
                     <div class="group">
                         <div class="contact">
                             <h3>Contact</h3>
@@ -59,7 +61,7 @@
                     </div>
                 </div>
 
-                <p class="copy"> &copy; RetroShop 2021 | Développé avec <i class="fas fa-heart"></i> par Anaëlle - Brayan - Kévin et Quentin </p>
+                <p class="copy"> &copy; RetroShop 2021 | Développé avec <i class="fas fa-heart"></i> par Anaëlle - Brayan - Kévin - Loïc et Quentin </p>
             </footer>
         {% endblock %}
     </body>

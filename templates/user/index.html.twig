@@ -5,6 +5,7 @@
 {% block body %}
 
 {% if app.user.roles[0] is defined %}
+
 {% if app.user.roles[0] %}
 <h1>Profil de {{app.user.username}}</h1>
 <table class="table">
@@ -34,27 +35,18 @@
             <td>{{ app.user.dateNaissance ? app.user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
         </tr>
         <tr>
-            <th>Adress</th>
-            <td>{{ app.user.adress }}</td>
+            <th>Mes adresses</th>
+            <td><a href="{{ path('mes_adresses') }}">Gérer mes adresses</a></td>
         </tr>
-        <tr>
-            <th>CP</th>
-            <td>{{ app.user.CP }}</td>
-        </tr>
-        <tr>
-            <th>Ville</th>
-            <td>{{ app.user.ville }}</td>
-        </tr>
-        <tr>
-            <th>Phone</th>
-            <td>{{ app.user.phone }}</td>
-        </tr>
+
+
     </tbody>
 </table>
 
 
 <a href="{{ path('client_edit') }}">edit</a>
 {% endif %}
+
 {% endif %}
 
 {% if app.user.roles[1] is defined%}
@@ -72,10 +64,7 @@
             <th>Prenom</th>
             <th>Genre</th>
             <th>Date_naissance</th>
-            <th>Adress</th>
-            <th>CP</th>
-            <th>Ville</th>
-            <th>Phone</th>
+
             <th>actions</th>
         </tr>
     </thead>
@@ -90,9 +79,7 @@
             <td>{{ user.prenom }}</td>
             <td>{{ user.genre }}</td>
             <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
-            <td>{{ user.adress }}</td>
-            <td>{{ user.CP }}</td>
-            <td>{{ user.ville }}</td>
+
             <td>{{ user.phone }}</td>
             <td>
                 <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
@@ -110,12 +97,6 @@
 <a href="{{ path('user_new') }}">Create new</a>
 {% endif %}
 {% endif %}
-
-{# 
-    A FAIRE MARCHER LE BOUTON EDIT
-    <a href="{{path('user_edit', {'id': app.user.id})}}">Modifier mon profil</a>
-    <a href="{{ path('user_edit', json_encode({'id': app.user.id}))}}">edit</a> 
-    #}
 
 
 {% endblock %}
