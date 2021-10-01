@@ -64,7 +64,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
 
 
     /**
-     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="user",  orphanRemoval=true)
      */
 
     private $adresses;
@@ -81,6 +81,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="user", orphanRemoval=true)
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
 
 
     public function __construct()
@@ -329,10 +334,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
 
         return $this;
     }
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 
     public function unserialize($data)
     {
-
         list(
             $this->id,
             $this->username,

@@ -49,7 +49,7 @@ class Purchase
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=PurchaseHaveProduct::class, mappedBy="purchase")
+     * @ORM\OneToMany(targetEntity=PurchaseHaveProduct::class, mappedBy="purchase", cascade={"remove"})
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $purchaseCommande;
