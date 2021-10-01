@@ -17,22 +17,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        {% if app.user.roles[1] is defined %}
-        {% if app.user.roles[1] %}
-        <li>
-          <a class="nav-link" href={{path("admin_user")}}>Tous les Utilisateurs</a>
-        </li>
-        <li>
-          <a class="nav-link" href={{path("comments_index")}}>Tous les Commentaires</a>
-        </li>
-        <li>
-          <a class="nav-link" href={{path("purchase_history",{id:app.user.id})}}>Toutes les Commandes</a>
-        </li>
-        {% else %}
-        <li>
-        </li>
-        {% endif %}
-        {% endif %}
+        
+          {% if is_granted('ROLE_ADMIN') %}
+          <li>
+            <a class="nav-link" href={{path("admin_user")}}>Tous les Utilisateurs</a>
+          </li>
+          <li>
+            <a class="nav-link" href={{path("comments_index")}}>Tous les Commentaires</a>
+          </li>
+          <li>
+            <a class="nav-link" href={{path("purchase_history",{id:app.user.id})}}>Toutes les Commandes</a>
+          </li>
+          {% endif %}
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"

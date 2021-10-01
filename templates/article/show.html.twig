@@ -47,7 +47,10 @@
         <h3>Ajouter un commentaire</h3>
         {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined) %}
             {% if app.user.roles[0] %}
-                {{form(commentForm)}} 
+                {{form(commentForm)}}
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %} 
             {% else %}
             <a href={{ path('app_login') }}>Pour Ajouter un commentaire, veuillez vous connecter</a> 
             {% endif %}

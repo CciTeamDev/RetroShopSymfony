@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -16,7 +17,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="`user`")
  * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, Serializable
 {
     /**
      * @ORM\Id
@@ -342,6 +343,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+   
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+        ));
+    }
 
+    public function unserialize($data)
+    {
+
+        list(
+            $this->id,
+            $this->username,
+            $this->password,
+        ) = unserialize($data);
+    }
 
 }
