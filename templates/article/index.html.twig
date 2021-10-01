@@ -4,29 +4,29 @@
 
 {% block body %}
 {% block allArticles %}
-    <h1>Tous les produits</h1>
-    <div class='sectionTemplate'>
+    <h1 class="marginProducts">Tous les produits</h1>
+      <div class='sectionTemplate'>
             <div class="gridTemplate">
                 {% for article in articles %}
-                        <div class="card article" style="width: 22rem;">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ article.name }}</h3>
-                                <details>
-                                <summary><small class="form-text text-muted">plus d'infos</small></summary>
-                                <p class="card-text">{{ article.infos }}</p>
-                                </details>
-                                <img class="card-img-top" src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
-                                <small class="form-text text-muted">Price</small>
-                                <p><strong>{{ article.price }}€</strong></p>
+                        <div class='grid-container'>
+                            <h3 class="title">{{ article.name }}</h3>
+                            <details>
+                            <summary class='infos'><small class="form-text text-muted">plus d'infos</small></summary>
+                            <p>{{ article.infos }}</p>
+                            </details>
+                            <a class="picture" id="actions-show" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
+                            </a>
+                            <div class='prices'>
+                                <small>Price</small>
+                                <h4><strong>{{ article.price }}€</strong></h4>
                             </div>
-                            <div class="actions">
-                                <a class="btn btn-primary" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
+                            <div class="buttons">
                                 {% if app.user %}
-                                <a class="btn btn-primary" id="actions-add" href="{{ path('cart_add', {'id': article.id}) }}">Ajout panier</a>
+                                <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('article_add', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% else %}
-                                <a class="btn btn-primary" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}">Ajout panier</a>
+                                <a class="btn btn-primary rounded-pill" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% endif %}
-                                <a class="btn btn-primary" id="actions-edit" href="{{ path('article_edit', {'id': article.id}) }}">Edit</a>
                             </div>
                         </div>
                 {% else %}
@@ -34,7 +34,7 @@
                 {% endfor %}
             </div>
     </div>
-{% endblock %}    
+{% endblock %}
 <div>
     {{ knp_pagination_render(articles) }}
 </div>
