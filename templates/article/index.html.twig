@@ -3,29 +3,6 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
-<h1>Tous les produits</h1>
-
-    <div class="produits">
-        {% for article in articles %}
-            <div class="prod">
-                <h3>{{ article.name }}</h3>
-                <p>{{ article.infos }}</p>
-
-                
-                <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
-                <p><strong>{{ article.price }}€</strong></p>
-                <div class="actions">
-                    <a id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
-                    {% if app.user %}
-                    <a id="actions-add" href="{{ path('cart_add', {'id': article.id}) }}">Ajout panier</a>
-                    {% else %}
-                    <a id="actions-add" href="{{ path('app_login', {'id': article.id}) }}">Ajout panier</a>
-                    {% endif %}
-                    <a id="actions-edit" href="{{ path('article_edit', {'id': article.id}) }}">Edit</a>
-                    
-                </div>
-=======
 {% block allArticles %}
     <h1 class="marginProducts">Tous les produits</h1>
       <div class='sectionTemplate'>
@@ -55,7 +32,6 @@
                 {% else %}
                 <p>Aucun article trouvé</p>
                 {% endfor %}
->>>>>>> 7f902e5e0efe19850c8789194548d70269823353
             </div>
     </div>
 {% endblock %}
