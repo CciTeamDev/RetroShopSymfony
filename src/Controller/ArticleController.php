@@ -106,6 +106,8 @@ class ArticleController extends AbstractController
             $em->persist($comment);
             $em->flush();
 
+            $this->addFlash('notice', 'Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.');
+
             return $this->redirectToRoute('article_index');
         }
 
