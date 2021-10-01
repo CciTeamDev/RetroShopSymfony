@@ -28,12 +28,13 @@ class CartController extends AbstractController
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',
             'items' => $CartArticles,
-            'total' => $cartService->getTotal($purchase)
+            'total' => $cartService->getTotal($purchase),
+            'purchase' => $purchase
         ]);
         
     }
 
-    #[Route('/cart/add/{id}', name:"cart_add")]
+    #[Route('/cart/add/{id}', name:"cart_add", defaults: ['quantity'=>1])]
     public function add($id,CartService $cartService,Request $request){ //ok
 
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$this->getUser()->getId()]);

@@ -36,3 +36,7 @@ services:
     App\Service\Ratings\RatingsService:
         arguments:
             $entityManager: '@doctrine.orm.entity_manager'
+
+    App\Service\Purchase\ChartPurchaseService:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'

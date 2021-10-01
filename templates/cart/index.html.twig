@@ -22,7 +22,8 @@
                     <th></th>
             </thead>
             <tbody>
-                {% for item in items %}
+
+            {% for item in items %}
                     <tr>
                         <th>
                             <img src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ item.product.name}}">
@@ -41,7 +42,7 @@
         </table>
         <div class="text-right mb-5">
             <b>Total de mon panier :</b> {{ total}}€<br>
-            <a href="{{ path('purchase_validator') }}" class="btn btn-success btn-block mt-3 mr-6">Valider mon panier</a>
+            <a href="{{ path('purchase_validator',{ 'id' : purchase.id  }) }}" class="btn btn-success btn-block mt-3 mr-6">Valider mon panier</a>
         </div>
     {% else %}
         <p>Vous n'avez rien dans votre panier </p>

@@ -46,4 +46,13 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     
+    public function showArticlesByDate()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.created_at', 'ASC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

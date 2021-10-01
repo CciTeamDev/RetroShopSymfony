@@ -1,5 +1,5 @@
 liip_imagine:
-
+    
     filter_sets:
         cache: 
 
@@ -9,4 +9,11 @@ liip_imagine:
 
             filters:
                 thumbnail: { size: [120, 90], mode: outbound }
-                
+
+        avatar:
+
+            quality: 75
+
+            filters:
+                thumbnail: { size: [40, 40], mode: outbound }
+
