@@ -41,7 +41,7 @@
                             </div>
                             <div class="buttons">
                                 {% if app.user %}
-                                <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('article_add', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
+                                <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('cart_add', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% else %}
                                 <a class="btn btn-primary rounded-pill" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% endif %}
