@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Purchase{% endblock %}
+
+{% block body %}
+    
+    {% if app.user.roles[1] is defined%}
+    {% if app.user.roles[1]%}
+    
+    {{ render_chart(chart) }}
+    
+    {% endif %}
+    {% endif %}
+
+    <p>Total des ventes sur les 12 derniers mois : {{ superTotal }}</p>
+{% endblock %}
