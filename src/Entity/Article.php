@@ -83,6 +83,11 @@ class Article
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="article")
+     */
+    private $comments;
+
     
 
     public function __construct()
@@ -91,6 +96,7 @@ class Article
         $this->category = new ArrayCollection();
         $this->purchase = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -237,30 +243,32 @@ class Article
         return $this;
     }
 
+
+
     /**
-     * @return Collection|Ratings[]
+     * @return Collection|Comments[]
      */
-    public function getRatings(): Collection
+    public function getComments(): Collection
     {
-        return $this->ratings;
+        return $this->comments;
     }
 
-    public function addRating(Ratings $rating): self
+    public function addComment(Comments $comment): self
     {
-        if (!$this->ratings->contains($rating)) {
-            $this->ratings[] = $rating;
-            $rating->setArticle($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setArticle($this);
         }
 
         return $this;
     }
 
-    public function removeRating(Ratings $rating): self
+    public function removeComment(Comments $comment): self
     {
-        if ($this->ratings->removeElement($rating)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($rating->getArticle() === $this) {
-                $rating->setArticle(null);
+            if ($comment->getArticle() === $this) {
+                $comment->setArticle(null);
             }
         }
 

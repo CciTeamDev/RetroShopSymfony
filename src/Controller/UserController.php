@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Comments;
+use App\Entity\Purchase;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -90,7 +92,7 @@ class UserController extends AbstractController
 
 
 
-    #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'user_delete', methods: ['POST']),]
     public function delete(Request $request, User $user): Response
     {
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
@@ -99,6 +101,6 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
     }
 }

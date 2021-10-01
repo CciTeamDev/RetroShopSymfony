@@ -15,7 +15,7 @@
                             <p>{{ article.infos }}</p>
                             </details>
                             <a class="picture" id="actions-show" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">
-                            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
                             </a>
                             <div class='prices'>
                                 <small>Price</small>
@@ -41,7 +41,7 @@
 
 {% if app.user.roles[1] is defined%}
     {% if app.user.roles[1] %}
-    <a href="{{ path('article_new') }}">Create new</a>
+    <a href="{{ path('article_add') }}">Create new</a>
     {% endif %}
 {% endif %}
 

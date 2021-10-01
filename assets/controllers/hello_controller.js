@@ -11,6 +11,20 @@ import { Controller } from 'stimulus';
  */
 export default class extends Controller {
     connect() {
-        this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
+        // this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
+        
     }
+    // note(){
+    //     // on va chercher toutes les étoiles
+    //     const stars = this.element.querySelectorAll(".fa-star");
+    //     console.log(stars);
+    //     // on va chercher l'imput
+    //     const note = this.element.querySelectorAll("#note");
+
+    //     // on va boucler sur les étoiles pour ajouter des écouteurs d'évenements
+    //     for(star of stars){
+
+    //     }
+    // }
+
 }
