@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Purchase</h1>
 
-    {% for cmds in bleep %}
+    {% for cmds in callOnService %}
         <table class="table">
         <tbody>
             <tr>
@@ -32,6 +32,11 @@
         </tbody>
         
     </table>
+
+    
+
+    
+
     {% for pan in cmds.cart %}
         <div>
             <p>{{ pan.product.name }}, quantity : {{ pan.quantity  }}, {{pan.product.price}}€/u</p>
@@ -40,7 +45,13 @@
     {% endfor %}
     {% endfor %}
 
+    {% if app.user.roles[1] is defined%}
+    {% if app.user.roles[1]%}
     
+    {{ render_chart(chartMixed) }}
+    
+    {% endif %}
+    {% endif %}
 
 
 {% endblock %}
