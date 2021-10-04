@@ -24,7 +24,7 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    // #[Route('/', name: 'accueil_index', methods: ['GET'])]
+   
     // public function articleSuggestion(ArticleRepository $articleRepository,Request $request): Response
     // {
 
