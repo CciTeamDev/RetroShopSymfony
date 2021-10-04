@@ -71,5 +71,7 @@ decommenter la ligne extension = gd
 PUIS
 symfony serve:stop
 
+pour l'environement prod a chaque modif
 
+symfony console cache:clear
 

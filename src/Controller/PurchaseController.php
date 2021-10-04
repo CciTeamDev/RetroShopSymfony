@@ -70,8 +70,16 @@ class PurchaseController extends AbstractController
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id' => $id]);
         $purchase = $this->getDoctrine()->getRepository(Purchase::class)->findBy(['user' => $user, 'status' => 'complete']);
         $callOnService = $purchaseService->purchaseHistory($purchase, $cartService);
+        
+        if ($purchase) {
+            $mixedChartOnUser = $chartPurchaseService->mixedChartOneUser($chartBuilder, $purchase);
+        }
+        else {
+            return $this->render('purchase/nopurchase.html.twig', [
+            ]);
+        }
 
-        $mixedChartOnUser = $chartPurchaseService->mixedChartOneUser($chartBuilder, $purchase);
+        
 
         return $this->render('purchase/show.html.twig', [
             'controller_name' => 'PurchaseController',
