@@ -3,10 +3,12 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Faker\Provider\Text;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,39 +23,67 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
+            ->add('username',TextType::class,[
+                'label'=>'Veuillez choisir un nom d utilisateur'
+            ])
+            ->add('prenom',TextType::class,[
+                'label' => 'Veuillez rentrer votre prénom'
+            ])
+            ->add('nom',TextType::class,[
+                'label' => 'Veuillez rentrer votre nom'
+            ])
+            ->add('email',EmailType::class,[
+                'label' => 'Email',
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 60]),
+                'attr' =>[
+                    'placeholder' => 'Merci de saisir votre adresse email'
+                ]
+            ])
+            ->add('genre', ChoiceType::class,
+                array(
+                    'label'     => 'Genre',
+                    'choices'  =>
+                        array(
+                            'Homme' => 'Homme',
+                            'Femme'  => 'Femme',
+                            'Autre'  => 'Autre',
+                        ),
+                    'expanded' => true,
+                    'multiple' => false
+                )
+            )
+            ->add('date_naissance',DateTimeType::class,[
+                'label' => 'Date de naissance'
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'label' => 'Veuillez choisir un mot de passe',
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez rentrer un mot de passe',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
             ])
-            ->add('nom')
-            ->add('prenom')
-            ->add('genre',ChoiceType::class,["choices"=>[
-                "choix1"=>"choix1",
-                "choix2"=>"choix2",
-            ]])
-            ->add('date_naissance',DateTimeType::class)
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'label' => 'Conditions d utilisation',
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Veuillez accepter nos conditions d utilisation',
+                    ]),
+                ],
+            ])
         ;
     }
 

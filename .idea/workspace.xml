@@ -2,34 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8b6d102-4268-4275-bdb1-fd5cf994ee93" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/products/accueil-v1-61558454a4c29639630702.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/media/cache/my_thumb/images/products/accueil-v1-61558454a4c29639630702.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/media/cache/my_thumb/images/products/accueil-v1-6155a66d3047b198809764.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/media/cache/my_thumb/images/products/palette-couleur2-6151c37acfd81437267939.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/CommentsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Comments.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/CommentsType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ValidateType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CommentsRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/Comments/CommentsService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/comments/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/comments/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/comments/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/comments/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/comments/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/controllers/hello_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers/hello_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210929091515.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210930115536.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RatingsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Purchase.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Purchase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/RatingsRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_partial/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partial/_navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ratings/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/Cart/CartService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Cart/CartService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,6 +176,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
       <path value="$PROJECT_DIR$/vendor/liip/imagine-bundle" />
       <path value="$PROJECT_DIR$/vendor/imagine/imagine" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-chartjs" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ylnn1QsEGbgfPD5s8kZPEIBb5w" />
@@ -209,9 +188,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laboutiquefrancaise" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -241,7 +220,13 @@
       <workItem from="1632985198160" duration="42000" />
       <workItem from="1632985528743" duration="496000" />
       <workItem from="1632986069200" duration="11675000" />
-      <workItem from="1633003363646" duration="3566000" />
+      <workItem from="1633003363646" duration="6141000" />
+      <workItem from="1633071727716" duration="614000" />
+<<<<<<< HEAD
+      <workItem from="1633072554389" duration="7936000" />
+=======
+      <workItem from="1633072554389" duration="9764000" />
+>>>>>>> e455d22e3d677fb72455599f163dfc8ed8da812e
     </task>
     <servers />
   </component>
@@ -267,6 +252,11 @@
           <url>file://$PROJECT_DIR$/src/Controller/ArticleController.php</url>
           <line>14</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/user/show.html.twig</url>
+          <line>51</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

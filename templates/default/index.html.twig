@@ -16,9 +16,15 @@
                     seulement sur l'aspect graphique.</p>
                 <button class="shop">Shop now</button>
         </div>
+        {# <a href="#" class="button button-pulse">
         <div class="part2">
             <button>Regarder tous les produits</button>
         </div>
+        </a> #}
+
+         <a href="#" class="button button-pulse rounded-circle">Regarder <br> tous les  <br>produits</a>
+        
+    
     </div>
 {% endblock %}
 {% block suggestions %}
@@ -33,7 +39,7 @@
                             <p>{{ article.infos }}</p>
                             </details>
                             <a class="picture" id="actions-show" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">
-                            <img src="{{ vich_uploader_asset(article, 'imageFile', 'App\\Entity\\Article') }}" alt="{{ article.name }}">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
                             </a>
                             <div class='prices'>
                                 <small>Price</small>
@@ -41,7 +47,7 @@
                             </div>
                             <div class="buttons">
                                 {% if app.user %}
-                                <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('article_add', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
+                                <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('cart_add', {'id': article.id} )}}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% else %}
                                 <a class="btn btn-primary rounded-pill" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% endif %}

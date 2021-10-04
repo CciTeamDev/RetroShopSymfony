@@ -24,14 +24,6 @@ class CommentsType extends AbstractType
                 ]
             ])
             ->add('content')
-
-            // ->add('moderate', ChoiceType::class, [
-            //     'choices' => [
-            //         "Accepté ou Refusé" => null,
-            //         "Accepté" => true,
-            //         "Refusé" => false 
-            //     ],
-            // ])
             ->add('envoyer', SubmitType::class)
         ;
     }

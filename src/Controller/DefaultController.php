@@ -16,11 +16,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DefaultController extends AbstractController
 {   
     #[Route('/', name: 'accueil_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, ArticleRepository $articleRepository,Request $request): Response
+    public function index(ArticleRepository $articleRepository): Response
     {   
         return $this->render("default/index.html.twig", [
-        'users' => $userRepository->findAll(),
-        'articles' => $articleRepository->showArticlesByDate(),
+            'articles' => $articleRepository->showArticlesByDate(),
         ]);
     }
 

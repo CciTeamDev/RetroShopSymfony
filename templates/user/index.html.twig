@@ -38,8 +38,6 @@
             <th>Mes adresses</th>
             <td><a href="{{ path('mes_adresses') }}">Gérer mes adresses</a></td>
         </tr>
-
-
     </tbody>
 </table>
 
@@ -50,8 +48,8 @@
 {% endif %}
 
 {% if app.user.roles[1] is defined%}
-{% if app.user.roles[1]%}
-<h1>Tous les Utilisateurs</h1>
+    {% if app.user.roles[1]%}
+        <h1>Tous les Utilisateurs</h1>
 
 <table class="table">
     <thead>
@@ -91,9 +89,8 @@
         {% endfor %}
     </tbody>
 </table>
-
-<a href="{{ path('user_new') }}">Create new</a>
-{% endif %}
+        <a href="{{ path('user_new') }}">Create new</a>
+    {% endif %}
 {% endif %}
 
 

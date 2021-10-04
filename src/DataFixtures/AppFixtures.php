@@ -56,6 +56,7 @@ class AppFixtures extends Fixture
             $user->setPrenom($faker->lastName());
             $user->setGenre($faker->word());
             $user->setDateNaissance($faker->dateTime('now'));
+            $user->setEmail($faker->safeEmail());
             $manager->persist($user);
             $users[] = $user;
         }

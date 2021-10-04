@@ -53,11 +53,6 @@ class Article
      * @ORM\OneToMany(targetEntity=PurchaseHaveProduct::class, mappedBy="article")
      */
     private $purchase;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Ratings::class, mappedBy="article")
-     */
-    private $ratings;
     
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
