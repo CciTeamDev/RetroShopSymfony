@@ -275,4 +275,28 @@ class Article
         return $this;
     }
 
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  \DateTimeInterface|null
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  \DateTimeInterface|null  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
 }
