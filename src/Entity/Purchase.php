@@ -54,6 +54,11 @@ class Purchase
      */
     private $purchaseCommande;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reference;
+
     public function __construct()
     {
         $this->purchaseCommande = new ArrayCollection();
@@ -151,6 +156,18 @@ class Purchase
                 $purchaseCommande->setPurchase(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
 
         return $this;
     }

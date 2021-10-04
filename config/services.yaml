@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     app.path.product_images: /uploads/images/articles
+    secretStripe: 'sk_test_51JebZVG4YTfuwl7yBmqO3c6nHiXripO9JqEzGYSUI1cIk6M7cS4LnC7lIkOkhN0cqZBmMVOZeE3ZUL4v1qXrNxX600MQaAqxYu'
     # ...
 
 services:
@@ -40,3 +41,7 @@ services:
     App\Service\Purchase\ChartPurchaseService:
         arguments:
             $entityManager: '@doctrine.orm.entity_manager'
+
+    App\Service\StripeService:
+        arguments:
+            $em: '@doctrine.orm.entity_manager'        

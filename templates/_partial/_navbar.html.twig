@@ -20,13 +20,13 @@
         
           {% if is_granted('ROLE_ADMIN') %}
           <li>
-            <a class="nav-link" href={{path("admin_user")}}>Tous les Utilisateurs</a>
+            <a class="nav-link" href={{path("admin_user")}}>Utilisateurs</a>
           </li>
           <li>
-            <a class="nav-link" href={{path("comments_index")}}>Tous les Commentaires</a>
+            <a class="nav-link" href={{path("comments_index")}}>Commentaires</a>
           </li>
           <li>
-            <a class="nav-link" href={{path("purchase_history",{id:app.user.id})}}>Toutes les Commandes</a>
+            <a class="nav-link" href={{path("purchase_history",{id:app.user.id})}}>Commandes</a>
           </li>
           {% endif %}
 
@@ -50,7 +50,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href={{path("article_index")}}>Tous les Produits</a>
+          <a class="nav-link" href={{path("article_index")}}>Produits</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href={{path("contact")}}>Contact</a>
