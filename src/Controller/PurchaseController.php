@@ -5,12 +5,18 @@ namespace App\Controller;
 use App\Entity\Purchase;
 use App\Entity\User;
 use App\Form\PurchaseType;
+use App\Repository\PurchaseRepository;
 use App\Service\Cart\CartService;
 use App\Service\Purchase\ChartPurchaseService;
 use App\Service\Purchase\PurchaseService;
+use App\Service\StripeService;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 
 class PurchaseController extends AbstractController
@@ -75,16 +81,47 @@ class PurchaseController extends AbstractController
     }
 
     #[Route('/purchase/validate/{id}', name: 'purchase_validator')]
-    public function purchaseValidator(CartService $cartService,Purchase $purchase): Response
+    public function purchaseValidator(
+
+        CartService $cartService,Purchase $purchase, StripeService $stripeService,
+        Request $request, UrlGeneratorInterface $generator): Response
     {
-        
+        $cart = $cartService->getFullCart($purchase);
+
         $form = $this->createForm(PurchaseType::class,null,[
             'user' => $this->getUser()
         ]);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            return $this->redirect($stripeService->getArrayResponse($cart, $form, $purchase,$generator, $this->getParameter('secretStripe')));
+            
+        }
 
         return $this->render('purchase/index.html.twig',
-            ['cart' => $cartService->getFullCart($purchase),
-                'form' => $form->createView()
+            [
+                'cart' => $cart,
+                'form' => $form->createView(),
+
             ]);
+    }
+
+    #[Route('/purchase/success/merci/{id}', name: 'order_success')]
+    public function paymentSuccess(Request $request, Purchase $purchase, StripeService $stripeService)
+    {
+        if($stripeService->checkSuccess($purchase, $this->getParameter('secretStripe')))
+        {
+           return $this->render('order/success.html.twig',[
+               'purchase' => $purchase
+           ]);
+        }
+    }
+
+    #[Route('/purchase/failed/desole/{id}', name: 'order_failed')]
+    public function paymentFailed(Purchase $purchase)
+    {
+        return $this->render('order/failed.html.twig',[
+            'purchase' => $purchase
+        ]);
     }
 }
