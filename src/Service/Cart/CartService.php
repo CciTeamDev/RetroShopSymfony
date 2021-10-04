@@ -21,7 +21,7 @@ class CartService{
         $this->articleRepository = $articleRepository;
     }
 
-    public function add(int $id,int $qte = 1,Purchase $purchase) { //ok
+    public function add(int $id,int $qte ,Purchase $purchase) { //ok
 
         $art = $this->entityManager->getRepository(Article::class)->findOneBy(['id'=>$id]);
         $cart = $this->entityManager->getRepository(Cart::class)->findBy(['purchase'=>$purchase,'article'=>$art]);

@@ -33,7 +33,6 @@ class PurchaseService{
             $purchase->setCreatedAt(new DateTimeImmutable());
             $purchase->setStatus('panier');
             $purchase->setTotal('0');
-            $purchase->setIdStripe('bleh');
             $purchase->setUser($user);
 
             $entityManager->persist($purchase);
@@ -43,10 +42,10 @@ class PurchaseService{
     public function validatePurchase($purchase,CartService $cartService){
         if($purchase) {
             $entityManager = $this->entityManager;
+           
             $purchase->setTotal($cartService->getTotal($purchase));
             $purchase->setCreatedAt(new DateTimeImmutable());
             $purchase->setStatus('complete');
-            $purchase->setIdStripe('bleh');
 
             $entityManager->persist($purchase);
             $entityManager->flush(); 

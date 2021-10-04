@@ -35,8 +35,8 @@ class Comments
     private $article;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments",cascade={"remove"})
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
+     *
      */
     private $user;
 

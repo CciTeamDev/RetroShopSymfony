@@ -14,6 +14,15 @@
             {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
         </div>
         <div class="col-md-6">
+            {% set formHtml %}
+                {{ form_start(form) }}
+                {{ form_label(form.adresse, 'Choisissez votre adresse de livraison') }}
+                <a href="{{ path('ajouter_adresse') }}">Ajouter une nouvelle adresse</a>
+                {{ form_end(form) }}
+            {% endset %}
+            {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+        </div>
+        <div class="col-md-6">
             <div class="text-center">
                 <b>Récap de ma commande</b><br>
             </div>

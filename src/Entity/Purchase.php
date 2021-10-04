@@ -49,10 +49,30 @@ class Purchase
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=PurchaseHaveProduct::class, mappedBy="purchase")
+     * @ORM\OneToMany(targetEntity=PurchaseHaveProduct::class, mappedBy="purchase", cascade={"remove"})
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $purchaseCommande;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reference;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $carrierName;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $carrierPrice;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $delivery;
 
     public function __construct()
     {
@@ -151,6 +171,54 @@ class Purchase
                 $purchaseCommande->setPurchase(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getCarrierName(): ?string
+    {
+        return $this->carrierName;
+    }
+
+    public function setCarrierName(string $carrierName): self
+    {
+        $this->carrierName = $carrierName;
+
+        return $this;
+    }
+
+    public function getCarrierPrice(): ?float
+    {
+        return $this->carrierPrice;
+    }
+
+    public function setCarrierPrice(?float $carrierPrice): self
+    {
+        $this->carrierPrice = $carrierPrice;
+
+        return $this;
+    }
+
+    public function getDelivery(): ?string
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(?string $delivery): self
+    {
+        $this->delivery = $delivery;
 
         return $this;
     }
