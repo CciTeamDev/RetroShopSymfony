@@ -42,6 +42,10 @@ services:
         arguments:
             $entityManager: '@doctrine.orm.entity_manager'
 
+    App\Service\Category\CategoryService:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+
     App\Service\StripeService:
         arguments:
             $em: '@doctrine.orm.entity_manager'        
