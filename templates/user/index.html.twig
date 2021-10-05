@@ -47,9 +47,9 @@
 
 {% endif %}
 
-{% if app.user.roles[1] is defined%}
-    {% if app.user.roles[1]%}
-        <h1>Tous les Utilisateurs</h1>
+{% if is_granted("ROLE_ADMIN") %}
+                    
+<h1>Tous les Utilisateurs</h1>
 
 <table class="table">
     <thead>
@@ -78,7 +78,7 @@
             <td>{{ user.genre }}</td>
             <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
             <td>
-                <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+                <a href="{{ path('user_show_admin', {'id': user.id}) }}">show</a>
                 <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
             </td>
         </tr>
@@ -91,7 +91,7 @@
 </table>
         <a href="{{ path('user_new') }}">Create new</a>
     {% endif %}
-{% endif %}
+
 
 
 {% endblock %}
