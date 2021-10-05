@@ -58,9 +58,6 @@ class StripeService
         return false;
     }
 
-    
-    
-
 
     private function getSession(array $cart, Form $form, Purchase $purchase, UrlGeneratorInterface $generator, string $key): Session
     {
@@ -74,8 +71,6 @@ class StripeService
             'success_url' =>$generator->generate('order_success',['id' => $purchase->getId()],UrlGeneratorInterface::ABSOLUTE_URL),
             'cancel_url' => $generator->generate('order_failed',['id' => $purchase->getId()],UrlGeneratorInterface::ABSOLUTE_URL),
         ]);
-
-
         
     }
 

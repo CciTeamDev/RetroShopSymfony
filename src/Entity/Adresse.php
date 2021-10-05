@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdresseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,7 +20,7 @@ class Adresse
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="adresses")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="adresses")
      */
     private $user;
 
@@ -66,6 +68,13 @@ class Adresse
      * @ORM\Column(type="string", length=255)
      */
     private $lastname;
+
+
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -193,6 +202,33 @@ class Adresse
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addAdresse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeAdresse($this);
+        }
 
         return $this;
     }

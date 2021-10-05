@@ -87,6 +87,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      */
     private $email;
 
+  
 
     public function __construct()
     {
@@ -95,6 +96,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
         $this->adresses = new ArrayCollection();
 
         $this->comments = new ArrayCollection();
+        $this->adresse = new ArrayCollection();
 
     }
 
@@ -354,5 +356,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
             $this->password,
         ) = unserialize($data);
     }
+
+    
 
 }

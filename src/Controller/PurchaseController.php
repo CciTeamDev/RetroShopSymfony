@@ -88,22 +88,30 @@ class PurchaseController extends AbstractController
     {
         $cart = $cartService->getFullCart($purchase);
 
+        $total = $cartService->getTotal($purchase);
+
+
         $form = $this->createForm(PurchaseType::class,null,[
             'user' => $this->getUser()
         ]);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            return $this->redirect($stripeService->getArrayResponse($cart, $form, $purchase,$generator, $this->getParameter('secretStripe')));
-            
+            if($form->getData()['adresse'] === null){
+                $this->addFlash('notice', 'Veuillez rentrer une adresse de livraison');
+            } else {
+                return $this->redirect($stripeService->getArrayResponse($cart, $form, $purchase,$generator, $this->getParameter('secretStripe')));
+            }
         }
 
         return $this->render('purchase/index.html.twig',
             [
                 'cart' => $cart,
                 'form' => $form->createView(),
-
+                'total' => $total
             ]);
+
+
     }
 
     #[Route('/purchase/success/merci/{id}', name: 'order_success')]

@@ -1,30 +1,24 @@
 import { Controller } from 'stimulus';
 
-/*
- * This is an example Stimulus controller!
- *
- * Any element with a data-controller="hello" attribute will cause
- * this controller to be executed. The name "hello" comes from the filename:
- * hello_controller.js -> "hello"
- *
- * Delete this file or adapt it for your use!
- */
+
 export default class extends Controller {
     connect() {
-        // this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
-        
+
+
     }
-    // note(){
-    //     // on va chercher toutes les étoiles
-    //     const stars = this.element.querySelectorAll(".fa-star");
-    //     console.log(stars);
-    //     // on va chercher l'imput
-    //     const note = this.element.querySelectorAll("#note");
 
-    //     // on va boucler sur les étoiles pour ajouter des écouteurs d'évenements
-    //     for(star of stars){
+    calcul(event){
+        let carrier = event.currentTarget.querySelector("input:checked").value
+        let ship = document.getElementById('ship')
+        ship.innerHTML = carrier/100 + ' €'
+        let soustot = this.element.getAttribute('data-total')
+        console.log( carrier )
+        console.log( soustot )
 
-    //     }
-    // }
+        let total = parseInt(carrier) + parseInt(soustot)
+        tot.innerHTML = total/100 + ' €'
+    }
+
+
 
 }
