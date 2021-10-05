@@ -46,8 +46,13 @@
                 </tbody>
             </table>
         </div>
-        
-        
+
+
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+
+
         <button><a href="{{ path('client_edit') }}">Modifier mon profil</a></button>
 
     </div>

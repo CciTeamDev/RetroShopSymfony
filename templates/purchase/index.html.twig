@@ -6,14 +6,11 @@
     <h2>Je passe ma commande</h2>
     Choisissez vos préférences de livraison avant de passer commande.
     <hr>
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
     <div class="row">
-        <div class="col-md-6">
-            {% set formHtml %}
-            {{ form(form) }}
-            {% endset %}
-            {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-6" data-controller="hello" data-total="{{ (total*100) }}">
             {% set formHtml %}
                 {{ form_start(form) }}
                 {{ form_label(form.adresse, 'Choisissez votre adresse de livraison') }}
@@ -33,14 +30,20 @@
                             <img src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ item.product.name}}"></div>
                         <div class="col-8 my-auto" >
                             {{ item.product.name }}<br/>
+                            {{ item.product.price }}€<br/>
                         </div>
                         <div class="col-2 my-auto">
                             x {{ item.quantity }}
                         </div>
                     </div>
+
                 {% endfor %}
             </div>
+            <strong>Sous-Total : </strong> {{ (total)|number_format(2, ',', '.') }} €<br/>
+            <strong>Livraison : </strong><br/> <div id="ship"></div>
+            <strong>Total : </strong> <div id="tot"></div>
 
         </div>
     </div>
 {% endblock %}
+

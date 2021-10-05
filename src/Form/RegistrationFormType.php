@@ -4,13 +4,18 @@ namespace App\Form;
 
 use App\Entity\User;
 use Faker\Provider\Text;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use App\Form\AdresseType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,6 +30,10 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username',TextType::class,[
                 'label'=>"Nom d'utilisateur",
+              'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]),
                 'attr' => [
                     'class' => 'form_input',
                     'placeholder' => 'DurantJohn'
@@ -35,6 +44,10 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('prenom',TextType::class,[
                 'label' => 'Prénom',
+              'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]),
                 'attr' => [
                     'class' => 'form_input',
                     'placeholder' => 'John'
@@ -45,6 +58,10 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('nom',TextType::class,[
                 'label' => 'Nom',
+              'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]),
                 'attr' => [
                     'class' => 'form_input',
                     'placeholder' => 'Durant'
@@ -81,15 +98,16 @@ class RegistrationFormType extends AbstractType
                     'multiple' => false
                 ]
             )
-            ->add('date_naissance',DateTimeType::class,[
+            ->add('date_naissance',BirthdayType::class,[
                 'label' => 'Date de naissance',
-                'label_attr' =>['class'=> 'form_label'],
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'type' => PasswordType::class,
                 'label' => 'Veuillez choisir un mot de passe',
+
                 'attr' => [
                     'autocomplete' => 'new-password',
                     'class' => 'form_input',
@@ -98,6 +116,9 @@ class RegistrationFormType extends AbstractType
                     'label_attr'=>[
                         'class' => 'form_label'
                     ],
+                'required' => true,
+                'first_options' => ['label' => "Mot de passe"],
+                'second_options' => ['label' => "Confirmez votre mot de passe"],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez rentrer un mot de passe',
@@ -105,7 +126,6 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
@@ -120,6 +140,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
         ;
     }
 

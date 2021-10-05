@@ -24,7 +24,7 @@
                                 {{ adresse.adresse }},<br/>
                                 {{ adresse.cp }} - {{ adresse.ville }} - {{ adresse.pays }}
                             </p>
-                            <a href="">Modifier</a> | <a href="">Supprimer</a>
+                            <a href="">Modifier</a> |  <a href="{{ path('account_address_delete', { 'id' : adresse.id }) }}">Supprimer</a>
                         </div>
                     </div>
                 </div>

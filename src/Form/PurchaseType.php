@@ -16,6 +16,7 @@ class PurchaseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $user = $options['user'];
+
         $builder
             ->add('adresse',EntityType::class,[
                 'label' => false,
@@ -31,6 +32,14 @@ class PurchaseType extends AbstractType
                 'class' => Carrier::class,
                 'multiple' =>false,
                 'expanded' =>true,
+                'attr' => [
+                    'class' => "radio-btn",
+                    'data-action' => "click->hello#calcul",
+
+                ],
+                'choice_value' => function (?carrier $carrier) {
+                    return $carrier ? $carrier->getPrice()*100 : '';
+                },
             ])
             ->add('submit',SubmitType::class,[
                 'label'=> 'Valider ma commande',

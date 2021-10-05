@@ -32,19 +32,35 @@ class AdresseController extends AbstractController
         $form = $this->createForm(AdresseType::class,$adresse);
 
         $form->handleRequest($request);
+        if($request->isMethod('GET')){
+            $request->getSession()->set('referer', $request->headers->get('referer'));
+        }
 
         if($form->isSubmitted() && $form->isValid()){
+
             $adresse->setUser($this->getUser());
             $this->entityManager->persist($adresse);
             $this->entityManager->flush();
 
-           
 
-            return $this->redirectToRoute('mes_adresses');
+            return $this->redirect($request->getSession()->get('referer'));
         }
         return $this->render('adresse/adresse_form.html.twig',[
             'form'=> $form->createView()
         ]);
+    }
+
+    #[Route('/compte/delete_adresse/{id}', name: 'account_address_delete')]
+    public function delete($id): Response
+    {
+        $adresse = $this->entityManager->getRepository(Adresse::class)->findOneById($id);
+
+        if($adresse &&  $adresse->getUser() == $this->getUser()) {
+            $this->entityManager->remove($adresse);
+            $this->entityManager->flush();
+        }
+
+        return $this->redirectToRoute('mes_adresses');
     }
 
     
