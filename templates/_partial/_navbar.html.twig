@@ -36,16 +36,14 @@
             Categorie
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/category/article/jeux">Jeux Rétro</a></li>
-            <li><a class="dropdown-item" href="/category/article/jouet">Jouets Rétro</a></li>
-            <li><a class="dropdown-item" href="/category/article/librairie">Librairie</a></li>
-            <li><a class="dropdown-item" href="/category/article/films">Films</a></li>
-            <li><a class="dropdown-item" href="/category/article/odit">Musique</a></li>
-            <li><a class="dropdown-item" href="/category/article/Vêtements">Vêtements</a></li>
+            {%  for categ in globalcateg.getAllCategs %}
+            <li><a class="dropdown-item" href={{path("article_search",{name:categ})}}>{{categ}}</a></li>
+            {% endfor %}
             <li>
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="#">Autre</a></li>
+            
           </ul>
         </li>
 
