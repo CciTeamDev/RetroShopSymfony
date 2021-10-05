@@ -26,8 +26,10 @@ class UserController extends AbstractController
     #[Route('/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
+
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+
         ]);
     }
 
@@ -71,8 +73,11 @@ class UserController extends AbstractController
         Route('/{id}/edit/admin', name: 'user_edit', methods: ['GET', 'POST']),
         Route('/edit', name: 'client_edit', methods: ['GET', 'POST']),
     ]
-    public function edit(Request $request, ?User $user): Response
+    public function edit(Request $request, ?User $user,UserPasswordHasherInterface $hasher): Response
     {
+
+        $notification = null;
+
         if(is_null($user))
         {
             $user = $this->getUser();
@@ -84,11 +89,25 @@ class UserController extends AbstractController
 
         $form = $this->createForm(UserType::class, $user);
 
-        // dd($user, $form);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $old_password = $form->get('old_password')->getData();
+
+            if($hasher->isPasswordValid($user,$old_password)){
+                $new_password = $form->get('new_password')->getData();
+                $password = $hasher->hashPassword($user,$new_password);
+                $user->setPassword($password);
+
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash("notice" , "OUI!");
+
+
+            } else {
+                $this->addFlash("notice" , "NON");
+
+            }
 
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -96,6 +115,7 @@ class UserController extends AbstractController
         return $this->renderForm('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+
         ]);
     }
 
