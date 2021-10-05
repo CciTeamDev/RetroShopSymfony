@@ -70,8 +70,16 @@ class PurchaseController extends AbstractController
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id' => $id]);
         $purchase = $this->getDoctrine()->getRepository(Purchase::class)->findBy(['user' => $user, 'status' => 'complete']);
         $callOnService = $purchaseService->purchaseHistory($purchase, $cartService);
+        
+        if ($purchase) {
+            $mixedChartOnUser = $chartPurchaseService->mixedChartOneUser($chartBuilder, $purchase);
+        }
+        else {
+            return $this->render('purchase/nopurchase.html.twig', [
+            ]);
+        }
 
-        $mixedChartOnUser = $chartPurchaseService->mixedChartOneUser($chartBuilder, $purchase);
+        
 
         return $this->render('purchase/show.html.twig', [
             'controller_name' => 'PurchaseController',
@@ -94,30 +102,34 @@ class PurchaseController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            
             return $this->redirect($stripeService->getArrayResponse($cart, $form, $purchase,$generator, $this->getParameter('secretStripe')));
+            
         }
 
         return $this->render('purchase/index.html.twig',
             [
                 'cart' => $cart,
-                'form' => $form->createView()
+                'form' => $form->createView(),
+
             ]);
     }
 
-    #[Route('/commande/success/merci/{id}', name: 'order_success')]
+    #[Route('/purchase/success/merci/{id}', name: 'order_success')]
     public function paymentSuccess(Request $request, Purchase $purchase, StripeService $stripeService)
     {
         if($stripeService->checkSuccess($purchase, $this->getParameter('secretStripe')))
         {
-            dump('merci pour la moula');
+           return $this->render('order/success.html.twig',[
+               'purchase' => $purchase
+           ]);
         }
-        dd($purchase);
     }
 
-    #[Route('/purchase/success/mercimaisreviensquandtuadelamoula', name: 'order_failed')]
-    public function paymentFailed(Request $request)
+    #[Route('/purchase/failed/desole/{id}', name: 'order_failed')]
+    public function paymentFailed(Purchase $purchase)
     {
-        dd($request);
+        return $this->render('order/failed.html.twig',[
+            'purchase' => $purchase
+        ]);
     }
 }

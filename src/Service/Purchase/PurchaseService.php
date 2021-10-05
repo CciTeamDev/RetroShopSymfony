@@ -42,12 +42,10 @@ class PurchaseService{
     public function validatePurchase($purchase,CartService $cartService){
         if($purchase) {
             $entityManager = $this->entityManager;
-            $date = new DateTime();
-            $reference = $date->format("dmY")."-".uniqid();
+           
             $purchase->setTotal($cartService->getTotal($purchase));
             $purchase->setCreatedAt(new DateTimeImmutable());
             $purchase->setStatus('complete');
-            $purchase->setReference($reference);
 
             $entityManager->persist($purchase);
             $entityManager->flush(); 

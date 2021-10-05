@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use DateTime;
 use Stripe\Stripe;
 use App\Entity\Purchase;
 use Stripe\Checkout\Session;
@@ -20,8 +21,24 @@ class StripeService
         array $cart, Form $form,
         Purchase $purchase, UrlGeneratorInterface $generator, string $key): string
     {
+        $date = new DateTime();
+        $reference = $date->format("dmY")."-".uniqid();
         $session = $this->getSession($cart, $form, $purchase, $generator, $key);
+        $purchase->setReference($reference);
         $purchase->setIdStripe($session->id);
+
+        $carriers = $form->get('carrier')->getData();
+        $purchase->setCarrierName($carriers->getName());
+        $purchase->setCarrierPrice($carriers->getPrice());
+
+        $delivery = $form->get('adresse')->getData();
+        $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
+        $delivery_content .= '<br/>'.$delivery->getTelephone();
+        $delivery_content .= '<br/>'.$delivery->getAdresse();
+        $delivery_content .= '<br/>'.$delivery->getCp().' '.$delivery->getVille();
+        $delivery_content .= '<br/>'.$delivery->getPays();
+        $purchase->setDelivery($delivery_content);
+
         $this->em->persist($purchase);
         $this->em->flush();
         return $session->url;
@@ -40,6 +57,9 @@ class StripeService
         }
         return false;
     }
+
+    
+    
 
 
     private function getSession(array $cart, Form $form, Purchase $purchase, UrlGeneratorInterface $generator, string $key): Session
