@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\User;
 use Faker\Provider\Text;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use App\Form\AdresseType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -84,6 +86,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
         ;
     }
 
