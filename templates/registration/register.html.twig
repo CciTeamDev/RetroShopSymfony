@@ -3,13 +3,17 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+<div class="form_flex">
+    <div class="form">
+        <h3>Inscription</h3>
 
-    {{ form_start(registrationForm) }}
-        {{ form_widget(registrationForm) }}
-        <div class="mb-3">
-        <a href="{{ path('app_login') }}">Vous avez deja un compte ?</a>
-        </div>
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm) }}
+            <div class="mb-3">
+            <a href="{{ path('app_login') }}">Vous avez deja un compte ?</a>
+            </div>
+            <button type="submit" class="btn btn-primary rounded-pill form_button">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
 {% endblock %}

@@ -18,7 +18,7 @@ class ValidateType extends AbstractType{
                 ],
                 'mapped'=> false
             ])
-            ->add('envoyer', SubmitType::class)
+            ->add('envoyer', SubmitType::class) 
         ;
     }
 

@@ -18,32 +18,48 @@ class ContactType extends AbstractType
             ->add('prenom', TextType::class, [
                 'label' => 'Votre prénom',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre prénom'
-                ]
+                    'class' => 'form_input',
+                    'placeholder' => 'John',
+                ],
+                'label_attr'=>[
+                    'class' => 'form_label'
+                ]               
             ])
             ->add('nom', TextType::class, [
                 'label' => 'Votre nom',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre nom'
-                ]
+                    'class' => 'form_input',
+                    'placeholder' => 'Durant',
+                ],
+                'label_attr'=>[
+                    'class' => 'form_label'
+                ]    
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Votre email',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre adresse email'
+                    'class' => 'form_input',
+                    'placeholder' => 'JohnDurant@mail.com',
+                ],
+                'label_attr'=>[
+                    'class' => 'form_label'
                 ]
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Votre message',
                 'attr' => [
+                    'class' => 'form_input form_message',
                     'placeholder' => 'En quoi pouvons-nous vous aider ?'
+                ],
+                'label_attr'=>[
+                    'class' => 'form_label'
                 ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
-                    'class' => 'btn-block btn-success'
-                ]
+                    'class' => 'btn btn-primary rounded-pill form_button'
+                ],
             ])
         ;
     }

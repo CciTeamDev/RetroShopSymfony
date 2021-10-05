@@ -1,15 +1,112 @@
+.form_grid{
+  display: grid;
+  grid-template-areas:
+    'form map map'
+    'contact contact contact';
+}
+
+.form_flex{
+  display: flex;
+  justify-content: center;
+}
+
+.form{
+  flex-basis: 30%;
+  grid-area: form;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 2px 4px 14px -6px rgba(78,86,88,0.33);
+  border-radius: 30px 30px 30px 30px;
+  box-sizing: border-box
+}
+
+.form_label{
+  font-size: 0.875em;
+  margin-bottom: 4px;
+  margin-top: 15px;
+}
+
+.form_input {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #5496bf;
+  border-radius: 30px 30px 30px 30px;
+  outline: none;
+  color: #5496bf;
+  padding-left: 20px;
+}
+
+.form_message {
+  padding: 15px;
+  height: 200px;
+}
+
+.form_button_container {
+  display: flex;
+  justify-content: center;
+  .form_button {
+    margin-top: 40px;
+    width: 200px;
+    }
+}
+
+.form_iframe {
+  border-radius: 30px 30px 30px 30px;
+  margin-top: 40px;
+  border: 1px solid #5496bf;
+  width: 100%
+}
+
+.form_link {
+  margin-bottom: 4px;
+  margin-top: 15px
+}
+
+// .form_choices {
+//   display: flex;
+//   flex-direction: column;
+// }
+#registration_form_genre {
+  display: grid; 
+  grid-template-columns: 20px 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 0px 20px; 
+  grid-template-areas: 
+    ". ."
+    ". ."
+    ". ."; 
+}
+
+.map{
+  grid-area: map;
+  padding: 40px;
+}
+
+.contact{
+  grid-area: contact;
+}
+
 .title{
   display: flex;
   justify-content: center;
   justify-content: space-around;
 }
-.col-md-3 maps{
-  margin-right: 10%;
+// .col-md-3 maps{
+//   margin-right: 10%;
+// }
+
+// .col-md-7 {
+// padding-left: 20%;
+
+// }
+
+.logo {
+  margin-top: 25px;
 }
 
-.col-md-7 {
-padding-left: 20%;
 
-}
+// .form_field {
+//   padding: 100px;
+// }
 
 
