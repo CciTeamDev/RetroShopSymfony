@@ -1,51 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Comments index{% endblock %}
+{% block title %}Tous les commentaires{% endblock %}
 
 {% block body %}
-    {% if app.user.roles[1] is defined%}
-        {% if app.user.roles[1] %}
-            <h1>Comments index</h1>
+    <section class="container_comment">
+
+        {% if app.user.roles[1] is defined%}
+            {% if app.user.roles[1] %}
+            <div class="comment_user">
             
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nom Utilisateur</th>
-                                <th>Content</th>
-                                <th>Created_at</th>
-                                <th>Note</th>
-                                <th>Status Commentaire</th>
-                                <th>Autorisé</th>
-                                <th>actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for comment in comments %}
-                            <tr>
-                                <td>{{ comment.id }}</td>
-                                <td>{{comment.user.username}}</td>
-                                <td>{{ comment.content }}</td>
-                                <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ comment.note }}</td>
-                                <td>{{ comment.moderate }}</td>
-                                <td> 
-                                    <a href="{{ path('comments_index', {'id': comment.id,'moderate': true}) }}">Validé</a>
-                                    <a href="{{ path('comments_index', {'id': comment.id,'moderate': false}) }}">Refuser</a>
-                                </td>
-                                <td>
-                                    <a href="{{ path('comments_show', {'id': comment.id}) }}">En savoir plus</a>
-                                    {# <a href="{{ path('comments_edit', {'id': comment.id}) }}">edit</a> #}
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="6">no records found</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-            {# <a href="{{ path('comments_new') }}">Create new</a> #}
+                <h1>Tous les commentaires</h1>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom Utilisateur</th>
+                            <th>Nom du produit</th>
+                            <th>Commentaire</th>
+                            <th>Date de publication</th>
+                            <th>Note</th>
+                            <th>Status Commentaire</th>
+                            <th>Autorisé</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for comment in comments %}
+                        <tr>
+                            <td>{{comment.user.username}}</td>
+                            <td>{{comment.article.name}}</td>
+                            <td>{{ comment.content }}</td>
+                            <td>{{ comment.createdAt ? comment.createdAt|date('d-m-Y H:i') : '' }}</td>
+                            <td>{{ comment.note }}</td>
+                            <td>{{ comment.moderate }}</td>
+                            <td> 
+                                <button><a href="{{ path('comments_index', {'id': comment.id,'moderate': true}) }}">Validé</a></button>
+                                <button><a href="{{ path('comments_index', {'id': comment.id,'moderate': false}) }}">Refuser</a></button>
+                            </td>
+                            <td>
+                                <button><a href="{{ path('comments_show', {'id': comment.id}) }}">En savoir plus</a></button>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {# <a href="{{ path('comments_new') }}">Create new</a> #}
+            </div>
+            {% endif %}
         {% endif %}
-    {% endif %}
+    </section>
 {% endblock %}
