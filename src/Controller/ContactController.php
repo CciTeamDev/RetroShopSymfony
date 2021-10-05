@@ -13,7 +13,9 @@ class ContactController extends AbstractController
 
     public function index(Request $request)
     {
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactType::class, null,  [
+            'user'=> $this->getUser() ? $this->getUser() : null
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

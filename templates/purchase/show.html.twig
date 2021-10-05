@@ -1,57 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Purchase{% endblock %}
+{% block title %}RetroShop - Commandes{% endblock %}
 
 {% block body %}
-    <h1>Purchase</h1>
-
-    {% for cmds in callOnService %}
-        <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cmds.purchase.id }}</td>
-            </tr>
-            <tr>
-                <th>Created_at</th>
-                <td>{{ cmds.purchase.createdAt ? cmds.purchase.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ cmds.purchase.status }}</td>
-            </tr>
-            <tr>
-                <th>Total</th>
-                <td>{{ cmds.purchase.total }}€</td>
-            </tr>
-            <tr>
-                <th>Id_stripe</th>
-                <td>{{ cmds.purchase.idStripe }}</td>
-            </tr>
-            
-        </tbody>
+    <section class="container_commandes">
+        <div class="commandes">
         
-    </table>
+            <h1>Commandes</h1>
 
-    
+            {% for cmds in callOnService %}
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Numéro de la commande</th>
+                            <td>{{ cmds.purchase.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date de la commande</th>
+                            <td>{{ cmds.purchase.createdAt ? cmds.purchase.createdAt|date('d-m-Y H:i') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ cmds.purchase.status }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td>{{ cmds.purchase.total }}€</td>
+                        </tr>
+                        <tr>
+                            <th>Référence achat</th>
+                            <td>{{ cmds.purchase.idStripe }}</td>
+                        </tr>
+                        
+                    </tbody>
+                    
+                </table>
 
-    
-
-    {% for pan in cmds.cart %}
-        <div>
-            <p>{{ pan.product.name }}, quantity : {{ pan.quantity  }}, {{pan.product.price}}€/u</p>
-            
+                {% for pan in cmds.cart %}
+                    <div>
+                        <p>{{ pan.product.name }}, quantity : {{ pan.quantity  }}, {{pan.product.price}}€/u</p>
+                        
+                    </div>
+                {% endfor %}
+            {% endfor %}
         </div>
-    {% endfor %}
-    {% endfor %}
 
-    {% if app.user.roles[1] is defined%}
-    {% if app.user.roles[1]%}
-    
-    {{ render_chart(chartMixed) }}
-    
-    {% endif %}
-    {% endif %}
+        <div class="stats">
+            {% if app.user.roles[1] is defined%}
+                {% if app.user.roles[1]%}
+                <h1>Stats</h1>
+            
+                {{ render_chart(chartMixed) }}
+            
+                {% endif %}
+            {% endif %}
+        </div>
 
+    </section>
 
 {% endblock %}

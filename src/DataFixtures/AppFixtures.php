@@ -76,7 +76,7 @@ class AppFixtures extends Fixture
                 $articleInCateg->setPrice($faker->randomFloat(2, 1, 50));
                 $articleInCateg->setCreatedAt(new DateTimeImmutable());
                 $articleInCateg->setUpdatedAt(new DateTimeImmutable());
-                $articleInCateg->setImageName($faker->firstName());
+                $articleInCateg->setImageName("histoire-1-615b108768e47235993646.jpg");
                 $articleInCateg->addCategory($categ);
                 $manager->persist($articleInCateg);
                 $article[] = $articleInCateg;

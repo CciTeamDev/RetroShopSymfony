@@ -54,7 +54,21 @@ class UserController extends AbstractController
     }
 
     #[
-        Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST']),
+        Route('/show/{id}/admin', name: 'user_show_admin', methods: ['GET', 'POST'])
+    ]
+    public function show(User $user): Response
+    {
+        if($this->isGranted('ROLE_ADMIN')){
+            return $this->render('user/show.html.twig', [
+                'user' => $user,
+            ]);
+        } else {
+            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+        }
+    }
+
+    #[
+        Route('/{id}/edit/admin', name: 'user_edit', methods: ['GET', 'POST']),
         Route('/edit', name: 'client_edit', methods: ['GET', 'POST']),
     ]
     public function edit(Request $request, ?User $user): Response
@@ -64,7 +78,7 @@ class UserController extends AbstractController
             $user = $this->getUser();
         }else{
             if(!$this->isGranted('ROLE_ADMIN')){
-                throw new AuthenticationException();
+                return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
             }
         }
 
@@ -85,19 +99,11 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'user_show', methods: ['GET'])]
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
-
 
     #[Route('/{id}', name: 'user_delete', methods: ['POST']),]
     public function delete(Request $request, User $user): Response
     {
+
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);

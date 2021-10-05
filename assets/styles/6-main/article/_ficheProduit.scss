@@ -1,0 +1,116 @@
+// Fiche produit
+.container_ficheProduit{
+    .ficheInfos{
+        display: flex;
+        align-items: baseline;
+        justify-content: space-evenly;
+        .infosProduit{
+            margin: 2em 4em;
+            p{
+                width: 90%;
+            }
+        }
+        .prix_quantite{
+            margin: 2em 10em;
+            .prix{
+                margin: 2em 0;
+            }
+            .quantite{
+                margin: 2em 0;
+                form{
+                    button{
+                        border: none;
+                        border-radius: 2em;
+                        padding: 1em;
+                        margin: 1em;
+
+                        a{
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .tousCommentaires{
+        margin: 3em 0;
+        .commentaireValide{
+            padding: 1em;
+            margin: 1.5em;
+            width: 50%;
+            background-color:#ebf0f3;
+            border-radius: 2em;
+            .stars{
+                margin-left: 2.5em;
+                margin-top: 1em;
+                .fas{
+                    color: #5496bf;
+                }
+            }
+            p{
+                margin-left: 3em;
+                margin-top: 1em;
+            }
+            .content{
+                font-size: 15px;
+                margin-right: 4em;
+            }
+            .publication{
+                text-align: right;
+                margin-right: 3em;
+            }
+        }
+    }
+    .ajout_commentaire{
+        margin: 3em 0;
+        .commentaire{
+            form{
+                margin: 2em 0;
+                #comments{
+                    div{
+                        display: flex;
+                        flex-direction: column;
+                        width: 50%;
+                        margin: 2em 0;
+                        #comments_note{
+                            margin: 0 1.5em;
+                            border: 1px solid #5496bf;
+                            border-radius: 2em;
+                        }
+                        #comments_content{
+                            height: 6em;
+                            margin: 0 1.5em;
+                            border: 1px solid #5496bf;
+                            border-radius: 2em;
+                        }
+                        #comments_envoyer{
+                            border: none;
+                            background-color:#5496bf ;
+                            color:#fef9f3 ;
+                            border-radius: 1em;
+                            padding: 0.5em;
+                            margin: 1em;
+                            width: 20%;
+                            a{
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    button{
+        background-color:#5496bf;
+        border: none;
+        border-radius: 2em;
+        padding: 0.5em;
+        margin: 1em;
+        a{
+            text-decoration: none;
+            color:#fef9f3 ;
+        }
+    }
+    
+}

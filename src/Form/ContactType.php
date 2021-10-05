@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,19 +19,26 @@ class ContactType extends AbstractType
             ->add('prenom', TextType::class, [
                 'label' => 'Votre prénom',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre prénom'
-                ]
+                    'placeholder' => 'Merci de saisir votre prénom',
+                    'value' => $options['user'] instanceof User ? $options['user']->getPrenom() : '',
+                    'disabled'=>$options['user'] instanceof User ? true : false
+                ],
+                
             ])
             ->add('nom', TextType::class, [
                 'label' => 'Votre nom',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre nom'
+                    'placeholder' => 'Merci de saisir votre nom',
+                    'value' => $options['user'] instanceof User ? $options['user']->getNom() : '',
+                    'disabled'=>$options['user'] instanceof User ? true : false
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Votre email',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre adresse email'
+                    'placeholder' => 'Merci de saisir votre adresse email',
+                    'value' => $options['user'] instanceof User ? $options['user']->getEmail() : '',
+                    'disabled'=>$options['user'] instanceof User ? true : false
                 ]
             ])
             ->add('content', TextareaType::class, [
@@ -51,7 +59,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'user' => null
         ]);
     }
 }

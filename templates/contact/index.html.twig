@@ -13,10 +13,22 @@
     {{ form_start(form) }}
     <div class="row">
         <div class="col-md-7">
-            <div class="col-md-2">{{ form_row(form.prenom) }}</div>
+            <div class="col-md-2">
+            
+            {{ form_label(form.prenom) }}
+            {{ form_errors(form.prenom) }}
+            {{ form_widget(form.prenom) }}
+            
+            
+            
+            </div>
             <div class="col-md-2">{{ form_row(form.nom) }}</div>
             <div class="col-md-2">{{ form_row(form.email) }}</div>
             <div class="col-md-2">{{ form_row(form.content) }}</div>
+            <div class="col-md-2">
+            
+            {{ form_widget(form.submit) }}
+            </div>
             <div class="col-md-3">
                 {{ form_end(form) }}
                 <strong>Retroshop</strong>
