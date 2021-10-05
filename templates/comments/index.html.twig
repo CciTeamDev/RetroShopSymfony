@@ -26,9 +26,11 @@
                     </thead>
                     <tbody>
                     {% for comment in comments %}
+                     
+                        {% if comment.moderate is not defined %}
                         <tr>
-                            <td>{{comment.user.username}}</td>
-                            <td>{{comment.article.name}}</td>
+                            <td>{{ comment.user.username}}</td>
+                            <td>{{ comment.article.name}}</td>
                             <td>{{ comment.content }}</td>
                             <td>{{ comment.createdAt ? comment.createdAt|date('d-m-Y H:i') : '' }}</td>
                             <td>{{ comment.note }}</td>
@@ -41,10 +43,16 @@
                                 <button><a href="{{ path('comments_show', {'id': comment.id}) }}">En savoir plus</a></button>
                             </td> #}
                         </tr>
+             
+                        
+                
+                      
                     {% else %}
-                        <tr>
+                        {# <tr>
                             <td colspan="6">no records found</td>
-                        </tr>
+                        </tr> #}
+                    {% endif %}
+                        
                     {% endfor %}
                     </tbody>
                 </table>
