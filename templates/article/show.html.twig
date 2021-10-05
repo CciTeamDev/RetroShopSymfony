@@ -3,70 +3,110 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1 class="change">{{article.name}}</h1>
+    <section class="container_ficheProduit">
 
-    <p>{{article.infos}}</p>
-    <p>{{article.price}}€</p>
-    <div class="testpic">
-            <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
-    </div>
+        <h1 class="change">{{article.name}}</h1>
+        <div class="ficheInfos">
+            <div class="infosProduit">
+            <div class="testpic">
+                <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('show') }}" alt="{{ article.name }}">
+            </div>
+                <p>{{article.infos}}</p>
+            </div>
+            <div class="prix_quantite">
+                <div class="prix">
+                    <h3><strong>{{article.price}}€</strong></h3>
+                </div>
 
-    <form action="{{ path('cart_add' ,{id:article.id}) }}" method="POST">
-        <select name="quantity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        {% if app.user %}
-            <a href="{{ path('cart_add', {'id': article.id}) }}"><button type="submit">Acheter</button></a>
-        {% else %}
-
-            <a href="/login"><input type="button" value="acheter"></a>
-
-        {% endif %}
-    </form>
+                <div class="quantite">
     
+                    <form action="{{ path('cart_add' ,{id:article.id}) }}" method="POST">
+                        <label for="quantity">Quantité :</label>
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        {% if app.user %}
+                            <button type="submit"><a href="{{ path('cart_add', {'id': article.id}) }}">Acheter</a></button>
+                        {% else %}
 
-    <div class="commentaire">
-        <h3>Tous les commentaires</h3>
+                            <button type="submit"><a href="/login">Acheter</a></button>
 
-            {% for comment in article.comments %}
-                {% if comment.moderate is same as (true) %}
-                    <p>{{comment.note}}</p>
-                    <p>{{comment.content}}</p> 
-                    <p>Publié par {{comment.user.username}} le {{comment.createdAt|date("d/m/y H:i")}}</p>
-                {% endif %}
+                        {% endif %}
+                    </form>
+                </div>
                 
-            {% endfor %}
-    
-    </div>
+            </div>
+        </div>
+        <hr>
 
-    <div class="commentaire">
-        <h3>Ajouter un commentaire</h3>
+        <div class="tousCommentaires">
+            <h3>Tous les commentaires</h3>
 
-        {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined) %}
-            {% if app.user.roles[0] %}
-                {{form(commentForm)}}
-                {% for message in app.flashes('notice') %}
-                    <div class="alert alert-info">{{ message }}</div>
-                {% endfor %} 
-            {% else %}
-            <a href={{ path('app_login') }}>Pour Ajouter un commentaire, veuillez vous connecter</a> 
+                {% for comment in article.comments %}
+                    {% if comment.moderate is same as (true) %}
+                    <div class="commentaireValide">
+                        {% if comment.note == "Très mauvais" %}
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        {% elseif comment.note == "Mauvais" %}
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        {% elseif comment.note == "Bon" %}
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        {% elseif comment.note == "Très bon" %}
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        {% elseif comment.note == "Excellent" %}
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>    
+                        {% else %}
+                            <p></p>
+                        {% endif %}
+                        <p><strong>{{comment.note}}</strong></p>
+                        <p class="content">{{comment.content}}</p> 
+                        <p class="publication"><em>Publié par <strong>{{comment.user.username}}</strong> le {{comment.createdAt|date("d/m/y H:i")}}</em> </p>
+                    </div>
+                    {% endif %}
+                    
+                {% endfor %}
+        
+        </div>
+
+        <div class="ajout_commentaire">
+            <h3>Ajouter un commentaire</h3>
+
+            {% if (app.user.roles[1] is defined) or (app.user.roles[0] is defined) %}
+                {% if app.user.roles[0] %}
+                    <div class="commentaire">
+                        {{form(commentForm)}}
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-info">{{ message }}</div>
+                        {% endfor %} 
+                    </div>
+                {% else %}
+                <button><a href={{ path('app_login') }}>Pour ajouter un commentaire, veuillez vous connecter</a></button>
+                {% endif %}
+            {% endif %}
+
+        </div>
+
+        <button><a href="{{ path('article_index') }}">Revenir à la liste des produits</a></button>
+
+        {% if app.user.roles[1] is defined %}
+            {% if app.user.roles[1] %}
+                {# <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                {{ include('article/_delete_form.html.twig') }} #}
             {% endif %}
         {% endif %}
-
-    </div>
-
-
-
-    <a href="{{ path('article_index') }}">Revenir à la liste des produits</a>
-
-    {% if app.user.roles[1] is defined %}
-        {% if app.user.roles[1] %}
-            <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-            {{ include('article/_delete_form.html.twig') }}
-        {% endif %}
-    {% endif %}
+    </section>
 {% endblock %}

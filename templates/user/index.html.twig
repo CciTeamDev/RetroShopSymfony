@@ -1,97 +1,106 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}RetroShop - Page Utilisateurs{% endblock %}
 
 {% block body %}
+<section class="container_user">
 
-{% if app.user.roles[0] is defined %}
+    {% if app.user.roles[0] is defined %}
 
-{% if app.user.roles[0] %}
-<h1>Profil de {{app.user.username}}</h1>
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ app.user.id }}</td>
-        </tr>
-        <tr>
-            <th>Username</th>
-            <td>{{ app.user.username }}</td>
-        </tr>
-        <tr>
-            <th>Nom</th>
-            <td>{{ app.user.nom }}</td>
-        </tr>
-        <tr>
-            <th>Prenom</th>
-            <td>{{ app.user.prenom }}</td>
-        </tr>
-        <tr>
-            <th>Genre</th>
-            <td>{{ app.user.genre }}</td>
-        </tr>
-        <tr>
-            <th>Date_naissance</th>
-            <td>{{ app.user.dateNaissance ? app.user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
-        </tr>
-        <tr>
-            <th>Mes adresses</th>
-            <td><a href="{{ path('mes_adresses') }}">Gérer mes adresses</a></td>
-        </tr>
-    </tbody>
-</table>
+    {% if app.user.roles[0] %}
+    <div class="profil_user">
+    
+        <h1>Profil de {{app.user.username}}</h1>
 
+        <div class="profil">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ app.user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Username</th>
+                        <td>{{ app.user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ app.user.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prenom</th>
+                        <td>{{ app.user.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Genre</th>
+                        <td>{{ app.user.genre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date_naissance</th>
+                        <td>{{ app.user.dateNaissance ? app.user.dateNaissance|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mes adresses</th>
+                        <td><a href="{{ path('mes_adresses') }}">Gérer mes adresses</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        <button><a href="{{ path('client_edit') }}">Modifier mon profil</a></button>
 
-<a href="{{ path('client_edit') }}">edit</a>
-{% endif %}
-
-{% endif %}
-
-{% if app.user.roles[1] is defined%}
-    {% if app.user.roles[1]%}
-        <h1>Tous les Utilisateurs</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Roles</th>
-            <th>Password</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Genre</th>
-            <th>Date_naissance</th>
-
-            <th>actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            <td>{{ user.password }}</td>
-            <td>{{ user.nom }}</td>
-            <td>{{ user.prenom }}</td>
-            <td>{{ user.genre }}</td>
-            <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
-            <td>
-                <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="13">no records found</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-        <a href="{{ path('user_new') }}">Create new</a>
+    </div>
     {% endif %}
-{% endif %}
+
+    {% endif %}
+
+    {% if app.user.roles[1] is defined%}
+        {% if app.user.roles[1]%}
+        <div class="users">
+            <h1>Tous les Utilisateurs</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Genre</th>
+                        <th>Date de naissance</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.nom }}</td>
+                        <td>{{ user.prenom }}</td>
+                        <td>{{ user.genre }}</td>
+                        <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d') : '' }}</td>
+                        <td>
+                            <button><a href="{{ path('user_show', {'id': user.id}) }}">Voir son profil</a></button>
+                            <button><a href="{{ path('user_edit', {'id': user.id}) }}">Modifier son profil</a></button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="13">no records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <button><a href="{{ path('user_new') }}">Créer un nouveau utilisateur</a></button>
+        </div>
+
+        {% endif %}
+    {% endif %}
+        
+
+            
+</section>
 
 
 {% endblock %}
