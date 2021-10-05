@@ -17,3 +17,12 @@ liip_imagine:
             filters:
                 thumbnail: { size: [40, 40], mode: outbound }
 
+        show:
+
+            quality: 75
+
+            filters:
+                thumbnail: { size: [400, 200], mode: outbound }
+
+        
+

@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\PurchaseRepository;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PurchaseRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 
 #[Route('/admin')]
@@ -32,24 +33,7 @@ class AdminController extends AbstractController
 
     }
 
-    #[Route('/{id}/edit', name: 'admin_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user): Response
-    {   
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
-        }
-        
-        return $this->renderForm('user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    
-    }
 
     #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
     public function deleteUser(Request $request, User $user): Response
@@ -71,4 +55,18 @@ class AdminController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/admin', name: 'user_delete_admin', methods: ['POST']),]
+    public function delete(Request $request, User $user): Response
+    {
+        if($this->isGranted('ROLE_ADMIN')){
+            if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->remove($user);
+                $entityManager->flush();
+            }
+        } else {
+            throw new AuthenticationException();
+        }
+        return $this->redirectToRoute('admin_user', [], Response::HTTP_SEE_OTHER);
+    }
 }

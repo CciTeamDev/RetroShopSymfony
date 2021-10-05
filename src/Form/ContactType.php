@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,6 +21,8 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form_input',
                     'placeholder' => 'John',
+                    'value' => $options['user'] instanceof User ? $options['user']->getPrenom() : '',
+                    'disabled'=>$options['user'] instanceof User ? true : false
                 ],
                 'label_attr'=>[
                     'class' => 'form_label'
@@ -30,16 +33,21 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form_input',
                     'placeholder' => 'Durant',
+                    'value' => $options['user'] instanceof User ? $options['user']->getNom() : '',
+                    'disabled'=>$options['user'] instanceof User ? true : false
                 ],
                 'label_attr'=>[
                     'class' => 'form_label'
                 ]    
+                
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Votre email',
                 'attr' => [
                     'class' => 'form_input',
-                    'placeholder' => 'JohnDurant@mail.com',
+                    'placeholder' => 'JohnDurant@mail.com', 
+                    'value' => $options['user'] instanceof User ? $options['user']->getEmail() : '',
+                    'disabled'=>$options['user'] instanceof User ? true : false
                 ],
                 'label_attr'=>[
                     'class' => 'form_label'
@@ -67,7 +75,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'user' => null
         ]);
     }
 }

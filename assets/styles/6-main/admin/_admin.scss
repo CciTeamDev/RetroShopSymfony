@@ -1,0 +1,182 @@
+// Lien Utilisateur (PROFIL ADMIN ET TOUS LES USERS)
+.container_user{
+    display: flex;
+    align-items:baseline;
+    .profil_user{
+        width: 35%;
+        margin: 2em;
+        h1{
+            // text-align: center;
+            margin: 1em;
+        }
+        .profil{ 
+            margin-left: 2em;
+            table{
+                tbody{
+                    tr{
+                       border: none;
+                       margin: 1em;
+                       th{
+                            padding: 0.5em;
+                       }
+                       td{
+                            padding: 0.5em;
+                       }
+                    }
+                }
+            }
+        }
+        button{
+            border: none;
+            background-color:#5496bf ;
+            border-radius: 2em;
+            padding: 0.5em;
+            margin: 1em;
+            a{
+                text-decoration: none;
+                color:#fef9f3 ;
+            }
+        }
+        
+    }
+    .users{
+        width: 65%;
+        margin: 2em;
+        h1{
+            text-align: center;
+            margin: 1em;
+        }
+        table{
+            thead{
+                tr{
+                    th{
+                        padding: 0.5em;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                   border: none;
+                   margin: 0.5em;
+                   td{
+                       text-align: center;
+                        padding: 0.5em;
+                        button{
+                            border: none;
+                            border-radius: 2em;
+                            margin: 0.5em;
+                            padding: 0.5em;
+                            a{
+                                text-decoration: none;
+                            }
+                        }
+                   }
+                }
+                tr:nth-child(odd){
+                    background-color: #d5e0e6;
+                }
+            }
+        }
+        button{
+            border: none;
+            border-radius: 2em;
+            margin : 1em;
+            padding: 0.5em;
+            a{
+                text-decoration: none;
+            }
+        }
+    }
+}
+// Lien pour afficher tous les commentaires
+.container_comment{
+    margin: 5em 0;
+    .comment_user{
+        width: 100%;
+        margin: 2em 0;
+        h1{
+            margin: 1em;
+        }
+        table{
+            thead{
+                tr{
+                    padding: 2em;
+                    th{
+                        padding: 0.5em;
+                        text-align: center;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                   border: none;
+                   margin: 0.5em;
+                   padding: 2em;
+                   td{
+                       text-align: center;
+                        padding: 0.5em;
+                        button{
+                            border: none;
+                            background-color:#5496bf ;
+                            margin: 0.5em;
+                            border-radius: 2em;
+                            a{
+                                text-decoration: none;
+                                color:#fef9f3 ;
+                            }
+                        }
+                   }
+                }
+                tr:nth-child(odd){
+                    background-color: #d5e0e6;
+                }
+            }
+        }
+    }
+}
+// Lien pour les commandes et stats
+.container_commandes{
+    display: flex;
+    align-items:flex-start;
+    margin: 5em 0;
+    .commandes{
+        width: 65%;
+        table{
+            tbody{
+                tr{
+                   border: none;
+                   margin: 1em;
+                   th{
+                        padding: 0.5em;
+                   }
+                   td{
+                        padding: 0.5em;
+                   }
+                }
+            }
+        }
+    }
+    .stats{
+        width: 30%;
+    }
+}
+// Tous les produits
+.container_produits{
+    // .produits{
+
+    // }
+    .new_produit{
+        margin: 3em 0;
+        button{
+            border: none;
+            background-color:#5496bf ;
+            border-radius: 2em;
+            margin: 0.5em;
+            padding: 1em;
+            a{
+                text-decoration: none;
+                color:#fef9f3 ;
+            }
+        }
+    }
+}

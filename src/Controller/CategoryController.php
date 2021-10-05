@@ -16,16 +16,14 @@ class CategoryController extends AbstractController
 {
 
     #[Route('/article/{name}', name: 'article_search')]
-    public function searchByCategory(CategoryRepository $categoryRepository, PaginatorInterface $Paginator, Request $request, $name): Response
+    public function searchByCategory(PaginatorInterface $Paginator, Request $request, $name): Response
     {
-        $category = $categoryRepository->findOneBy([
-            'name' => $name
-        ]);
+        $category = $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name'=>$name]);
 
         $articles = $Paginator->paginate(
             $category->getCategory()->getValues(),
             $request->query->getInt('page', 1),
-            5
+            4
         );
         
         return $this->render('article/index.html.twig', [

@@ -35,11 +35,16 @@
                         <td><a href="{{path('cart_remove',{'id':item.product.id})}}" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash"></i>
                         </a></td>
-
+                        
                     </tr>
                 {% endfor %}
+                
             </tbody>
+            
         </table>
+        <div>
+            {{ knp_pagination_render(items) }}
+            </div>
         <div class="text-right mb-5">
             <b>Total de mon panier :</b> {{ total}}€<br>
             <a href="{{ path('purchase_validator',{ 'id' : purchase.id  }) }}" class="btn btn-success btn-block mt-3 mr-6">Valider mon panier</a>

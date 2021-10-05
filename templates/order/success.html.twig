@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande{% endblock %}
+
+{% block body %}
+
+    <h2>Confirmation de commande</h2>
+    <p>
+        Bonjour <strong>{{ purchase.user.prenom }} {{ purchase.user.nom }}</strong>,<br/><br/>
+        Nous vous remercions pour votre commande n°<strong>{{ purchase.reference }}</strong>.<br/>
+        Une confirmation vient de vous être envoyée par email à l'adresse <strong>{{ purchase.user.email }}</strong>.
+    <hr>
+    Votre commande sera livrée par <strong>{{ purchase.carrierName }}</strong> à l'adresse suivante : <br/>
+    {{ purchase.delivery|raw }}
+{% endblock %}
