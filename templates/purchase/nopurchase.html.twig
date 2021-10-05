@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Valider ma commande{% endblock %}
+{% block title %}RetroShop - Commandes{% endblock %}
 
 {% block body %}
-  <h1>Aucune commande trouvé pour ce user</h1>
+
+  <section class="container_purchase">
+      <h1>Aucune commande trouvé pour {{app.user.username}}</h1>
+  </section>
+  
 {% endblock %}

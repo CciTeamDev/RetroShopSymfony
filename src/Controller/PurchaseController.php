@@ -63,6 +63,30 @@ class PurchaseController extends AbstractController
             'superTotal'=>$superTotal
         ]);
     }
+
+    #[Route('/purchase/history/admin', name: 'purchase_history_admin')]
+    public function purchaseHistoryAdmin(ChartBuilderInterface $chartBuilder, PurchaseService $purchaseService, CartService $cartService, ChartPurchaseService $chartPurchaseService): Response
+    {
+
+        $user = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $purchase = $this->getDoctrine()->getRepository(Purchase::class)->findAll();
+        $callOnService = $purchaseService->purchaseHistory($purchase, $cartService);
+        
+        if ($purchase) {
+            $mixedChartOnUser = $chartPurchaseService->mixedChartOneUser($chartBuilder, $purchase);
+        }
+        else {
+            return $this->render('purchase/nopurchase.html.twig', [
+            ]);
+        }
+
+        return $this->render('purchase/show.html.twig', [
+            'controller_name' => 'PurchaseController',
+            'callOnService' => $callOnService,
+            'chartMixed' => $mixedChartOnUser
+        ]);
+    }
+
     #[Route('/purchase/history/{id}', name: 'purchase_history')]
     public function purchaseHistory($id, ChartBuilderInterface $chartBuilder, PurchaseService $purchaseService, CartService $cartService, ChartPurchaseService $chartPurchaseService): Response
     {
@@ -79,14 +103,14 @@ class PurchaseController extends AbstractController
             ]);
         }
 
-        
-
         return $this->render('purchase/show.html.twig', [
             'controller_name' => 'PurchaseController',
             'callOnService' => $callOnService,
             'chartMixed' => $mixedChartOnUser
         ]);
     }
+
+    
 
     #[Route('/purchase/validate/{id}', name: 'purchase_validator')]
     public function purchaseValidator(

@@ -67,30 +67,31 @@
                         <th>Prenom</th>
                         <th>Genre</th>
                         <th>Date de naissance</th>
-                        <th>actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.username }}</td>
-            <td>{{ user.nom }}</td>
-            <td>{{ user.prenom }}</td>
-            <td>{{ user.genre }}</td>
-            <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
-            <td>
-                <a href="{{ path('user_show_admin', {'id': user.id}) }}">show</a>
-                <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="13">no records found</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-        <a href="{{ path('user_new') }}">Create new</a>
+                        <th></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.nom }}</td>
+                        <td>{{ user.prenom }}</td>
+                        <td>{{ user.genre }}</td>
+                        <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d') : '' }}</td>
+                        <td>
+                            <button><a href="{{ path('user_show_admin', {'id': user.id}) }}">Voir le profil</a></button>
+                            <button><a href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a></button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="13">no records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <button><a href="{{ path('user_new') }}">Créer un nouveau utilisateur</a></button>
     {% endif %}
         
 
