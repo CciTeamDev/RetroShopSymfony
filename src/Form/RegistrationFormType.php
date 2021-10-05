@@ -29,25 +29,46 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username',TextType::class,[
-                'label'=>'Veuillez choisir un nom d utilisateur',
-                'constraints' => new Length([
+                'label'=>"Nom d'utilisateur",
+              'constraints' => new Length([
                     'min' => 2,
                     'max' => 30
-                ])
+                ]),
+                'attr' => [
+                    'class' => 'form_input',
+                    'placeholder' => 'DurantJohn'
+                ],
+                    'label_attr'=>[
+                        'class' => 'form_label'
+                ] 
             ])
             ->add('prenom',TextType::class,[
-                'label' => 'Veuillez rentrer votre prénom',
-                'constraints' => new Length([
+                'label' => 'Prénom',
+              'constraints' => new Length([
                     'min' => 2,
                     'max' => 30
                 ]),
+                'attr' => [
+                    'class' => 'form_input',
+                    'placeholder' => 'John'
+                ],
+                    'label_attr'=>[
+                        'class' => 'form_label'
+                ] 
             ])
             ->add('nom',TextType::class,[
-                'label' => 'Veuillez rentrer votre nom',
-                'constraints' => new Length([
+                'label' => 'Nom',
+              'constraints' => new Length([
                     'min' => 2,
                     'max' => 30
                 ]),
+                'attr' => [
+                    'class' => 'form_input',
+                    'placeholder' => 'Durant'
+                ],
+                    'label_attr'=>[
+                        'class' => 'form_label'
+                ] 
             ])
             ->add('email',EmailType::class,[
                 'label' => 'Email',
@@ -55,21 +76,27 @@ class RegistrationFormType extends AbstractType
                     'min' => 2,
                     'max' => 60]),
                 'attr' =>[
-                    'placeholder' => 'Merci de saisir votre adresse email'
-                ]
+                    'class' => 'form_input',
+                    'placeholder' => 'DurantJohn@mail.com'
+                ],
+                    'label_attr'=>[
+                        'class' => 'form_label'
+                ] 
             ])
             ->add('genre', ChoiceType::class,
-                array(
-                    'label'     => 'Genre',
+                [
+                    'label'    => 'Genre',
+                    'row_attr' => ['class' => 'form_choices'],
+                    'label_attr' =>['class'=> 'form_label'],
                     'choices'  =>
-                        array(
+                        [
                             'Homme' => 'Homme',
                             'Femme'  => 'Femme',
                             'Autre'  => 'Autre',
-                        ),
+                        ],
                     'expanded' => true,
                     'multiple' => false
-                )
+                ]
             )
             ->add('date_naissance',BirthdayType::class,[
                 'label' => 'Date de naissance',
@@ -80,7 +107,15 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'type' => PasswordType::class,
                 'label' => 'Veuillez choisir un mot de passe',
-                'attr' => ['autocomplete' => 'new-password'],
+
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'form_input',
+                    'placeholder' => '******'
+                ],
+                    'label_attr'=>[
+                        'class' => 'form_label'
+                    ],
                 'required' => true,
                 'first_options' => ['label' => "Mot de passe"],
                 'second_options' => ['label' => "Confirmez votre mot de passe"],
@@ -97,7 +132,8 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => 'Conditions d utilisation',
+                'label' => "Conditions d'utilisation",
+                'label_attr' =>['class'=> 'form_label'],
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Veuillez accepter nos conditions d utilisation',
