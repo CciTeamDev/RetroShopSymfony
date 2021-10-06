@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article{% endblock %}
+{% block title %} RetroShop - {{article.name}}{% endblock %}
 
 {% block body %}
     <section class="container_ficheProduit">
@@ -8,9 +8,9 @@
         <h1 class="change">{{article.name}}</h1>
         <div class="ficheInfos">
             <div class="infosProduit">
-            <div class="testpic">
-                <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('show') }}" alt="{{ article.name }}">
-            </div>
+                <div class="testpic">
+                    <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('show') }}" alt="{{ article.name }}">
+                </div>
                 <p>{{article.infos}}</p>
             </div>
             <div class="prix_quantite">
@@ -20,7 +20,7 @@
 
                 <div class="quantite">
 
-                    <form action="{{ path('cart_add' ,{id:article.id}) }}" method="POST">
+                    <form action="{{ path('cart_add', {"id": article.id}) }}" method="POST">
                         <label for="quantity">Quantité :</label>
                         <select name="quantity">
                             <option value="1">1</option>

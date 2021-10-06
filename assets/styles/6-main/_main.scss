@@ -39,25 +39,7 @@ body{
             }
         }
 
-        .part2{
-            .fond{
-                color: var(--app-color-component-extralight);
-            }
-            // button{
-            //     position: absolute;
-            //     left: 90em;
-            //     top: 14em;
-            //     width: 10em;
-            //     border: none;
-            //     background-color: var(--app-color-component);
-            //     color: var(--app-background);
-            //     padding: 2em;
-            //     border-radius: 50%;
-            // }
-
-            
-  
-        }
+        
         .button {
             background-color: var(--app-color-component);
             position: relative;
@@ -77,6 +59,7 @@ body{
             background-color: var(--app-color-component);
             color: var(--app-background);
             padding: 2em;
+            
     
             &:hover {
               cursor: pointer;

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon panier{% endblock %}
+{% block title %}RetroShop - Mon panier{% endblock %}
 
 {% block body %}
 <style>
@@ -8,7 +8,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+<section class="container_cart">
 
     {% if items | length > 0 %}
         <table class="table">
@@ -52,6 +52,6 @@
     {% else %}
         <p>Vous n'avez rien dans votre panier </p>
     {% endif %}
-</div>
+</section>
 
 {% endblock %}

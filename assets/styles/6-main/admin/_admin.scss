@@ -1,9 +1,10 @@
 // Lien Utilisateur (PROFIL ADMIN ET TOUS LES USERS)
 .container_user{
     display: flex;
-    align-items:baseline;
+    // align-items:baseline;
+    // flex-wrap: wrap;
     .profil_user{
-        width: 35%;
+        width: 30%;
         margin: 2em;
         h1{
             // text-align: center;
@@ -40,7 +41,7 @@
         
     }
     .users{
-        width: 65%;
+        width: 70%;
         margin: 2em;
         h1{
             text-align: center;
@@ -147,9 +148,13 @@
     flex-direction: column;
     margin: 5em 0;
     .commandes{
-        width: 55%;
+        width: 75%;
+        .comm{
+            padding: 1em;
+        }
         .comm:nth-child(even){
             background-color: #d5e0e6;
+            padding: 1em;
         }
         table{
             tbody{
@@ -170,7 +175,7 @@
            
     }
     canvas{
-        width: 30%;
+        width: 60%;
         height: 500vh;
     }
     button{
@@ -186,8 +191,43 @@
     }
     
 }
+// Stats mois
+.mois{
+    border: none;
+    background-color: #5496bf ;
+    border-radius: 2em;
+    padding: 0.5em;
+    margin: 1em;
+    a{
+        text-decoration: none;
+        color: #fef9f3;
+    }
+}
+// Stats année
+.year{
+    border: none;
+    background-color: #5496bf ;
+    border-radius: 2em;
+    padding: 0.5em;
+    margin: 1em;
+    a{
+        text-decoration: none;
+        color: #fef9f3;
+    }
+}
 // Tous les produits
 .container_produits{
+    .sectionTemplate{
+        .gridTemplate{
+            .grid-container{
+                details{
+                    p{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
     .new_produit{
         margin: 3em 0;
         button{

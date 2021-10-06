@@ -1,75 +1,87 @@
 footer{
-        position: absolute;
-        left: 0;
-        right: 0;
-        background-color: var(--app-color-text);
-        color: var(--app-background);
-        padding: 1.5em;
-        margin-top: 4em;
-        
-        .foot{
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: var(--app-color-text);
+    color: var(--app-background);
+    padding: 1.5em;
+    margin-top: 4em;
+    
+    .foot{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-around;
+        font-size: var(--app-p);
+        .logo{
+            p{
+                font-weight: 200;
+            }
+        }
+        .group{
             display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            font-size: var(--app-p);
-            .logo{
+            align-items: flex-start;
+            .contact{
+                margin-right: 10em;
+                h3{
+                    font-family: 'Abril Fatface', cursive;
+                    // font-weight: bold;
+                    margin: 0 1em;
+                }
                 p{
+                    margin: 0;
+                    font-weight: 200;
+                    .fas{
+                        margin: 1em;
+                    }
+                }
+            }
+            .mention{
+                display: flex;
+                flex-direction: column;
+                margin-left: 7em;
+                h3{
+                    font-family: 'Abril Fatface', cursive;
+                }
+                a{
+                    text-decoration: none;
+                    color: var(--app-background);
                     font-weight: 200;
                 }
             }
-            .group{
-                display: flex;
-                align-items: flex-start;
-                .contact{
-                    margin-right: 10em;
-                    h3{
-                        font-family: 'Abril Fatface', cursive;
-                        // font-weight: bold;
-                        margin: 0 1em;
-                    }
-                    p{
-                        margin: 0;
-                        font-weight: 200;
-                        .fas{
-                            margin: 1em;
-                        }
-                    }
-                }
-                .mention{
-                    display: flex;
-                    flex-direction: column;
-                    margin-left: 7em;
-                    h3{
-                        font-family: 'Abril Fatface', cursive;
-                    }
-                    a{
-                        text-decoration: none;
-                        color: var(--app-background);
-                        font-weight: 200;
-                    }
-                }
-            }
-            
-            .sociaux{
-                display: flex;
-                flex-direction: row;
-                .fab{
-                    padding: 0.5em;
-                    cursor: pointer;
-                    font-size: 1.2em;
-                }
+        }
+        
+        .sociaux{
+            display: flex;
+            flex-direction: row;
+            .fab{
+                padding: 0.5em;
+                cursor: pointer;
+                font-size: 1.2em;
             }
         }
-        .copy{
-            text-align: center;
-            font-size: var(--app-p);
-            margin-top: 3em;
-            padding: 0.5em;
-            font-weight: 200;
-            .fas{
-                color: rgb(175, 17, 17);
-            }
-        }
-    
     }
+    .copy{
+        text-align: center;
+        font-size: var(--app-p);
+        margin-top: 3em;
+        padding: 0.5em;
+        font-weight: 200;
+        .fas{
+            color: rgb(175, 17, 17);
+        }
+    }
+    
+}
+
+@media screen and (min-width:769px) and (max-width:1024px){
+    .foot{
+        display: flex;
+        .group{
+            .contact{
+                margin-right: 0 !important;
+            }
+        }
+    }
+}
     
