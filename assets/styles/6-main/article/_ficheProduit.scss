@@ -2,6 +2,7 @@
 .container_ficheProduit{
     .ficheInfos{
         display: flex;
+        flex-wrap: wrap;
         align-items: baseline;
         justify-content: space-evenly;
         .infosProduit{

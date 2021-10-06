@@ -2,6 +2,7 @@
 .container_user{
     display: flex;
     align-items:baseline;
+    flex-wrap: wrap;
     .profil_user{
         width: 35%;
         margin: 2em;
