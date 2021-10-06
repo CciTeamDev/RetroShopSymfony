@@ -1,20 +1,25 @@
 // Fiche produit
 .container_ficheProduit{
+    margin: 2em;
     .ficheInfos{
         display: flex;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
+        // flex-direction: row;
         align-items: baseline;
-        justify-content: space-evenly;
+        justify-content: center;
         .infosProduit{
-            margin: 2em 4em;
+            margin: 2em 0 2em 5em;
             p{
-                width: 90%;
+                width: 60%;
             }
         }
         .prix_quantite{
-            margin: 2em 10em;
+            margin: 2em 10em 2em 0;
             .prix{
                 margin: 2em 0;
+                h3{
+                    font-size: 2.2em;
+                }
             }
             .quantite{
                 margin: 2em 0;

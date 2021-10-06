@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Purchase{% endblock %}
+{% block title %}RetroShop - Stats de l'année{% endblock %}
 
 {% block body %}
     
@@ -14,5 +14,5 @@
 
     <p>Total des ventes sur les 12 derniers mois : {{ superTotal }}</p>
 
-    <button><a href="{{path('purchase_history_admin')}}">Revenir à la page commande</a></button>
+    <button class="year"><a href="{{path('purchase_history_admin')}}">Revenir à la page commande</a></button>
 {% endblock %}

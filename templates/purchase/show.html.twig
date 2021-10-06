@@ -45,25 +45,31 @@
                             
                         </div>
                     {% endfor %}
-                    {% endif %}  
+                     
                 </div>
+                {% endif %} 
             {% endfor %}
         </div>
 
         <div class="stats">
-            {% if app.user.roles[1] is defined%}
-                {% if app.user.roles[1]%}
+            {% if is_granted('ROLE_ADMIN') %}
+                
                 <h1>Stats</h1>
             
                 {{ render_chart(chartMixed) }}
             
-                {% endif %}
+             
             {% endif %}
         </div>
 
-        <button><a href="{{path('purchase_historyMonth')}}">Voir les stats du mois</a></button>
+        {% if is_granted('ROLE_ADMIN') %}
+            
+            <button><a href="{{path('purchase_historyMonth')}}">Voir les stats du mois</a></button>
 
-        <button><a href="{{path('purchase_historyYear')}}">Voir les stats de l'année</a></button>
+            <button><a href="{{path('purchase_historyYear')}}">Voir les stats de l'année</a></button>
+            
+        {% endif %}
+        
 
     </section>
 

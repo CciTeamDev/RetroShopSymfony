@@ -14,15 +14,15 @@
                     lignes n'est pas valide, et surtout l'attention du client 
                     n'est pas dérangée par le contenu, il demeure concentré 
                     seulement sur l'aspect graphique.</p>
-                <button class="shop">Shop now</button>
+                <button class="shop" id="shooop">Shop now</button>
         </div>
         {# <a href="#" class="button button-pulse">
         <div class="part2">
             <button>Regarder tous les produits</button>
         </div>
         </a> #}
-
-         <a href="{{path("article_index")}}" class="button button-pulse rounded-circle">Regarder <br> tous les  <br>produits</a>
+            <a href="{{path("article_index")}}" class="button button-pulse rounded-circle">Regarder <br> tous les  <br>produits</a>
+        
         
     
     </div>
@@ -49,7 +49,7 @@
                                 {% if app.user %}
                                 <a class="btn btn-primary rounded-pill" id="actions-show" id="actions-add" href="{{ path('cart_add', {'id': article.id} )}}"><i class="fas fa-shopping-basket"></i>Acheter</a>
                                 {% else %}
-                                <a class="btn btn-primary rounded-pill" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}"><i class="fas fa-shopping-basket"></i>Acheter</a>
+                                <a class="btn btn-primary rounded-pill" id="actions-add" href="{{ path('app_login', {'id': article.id}) }}"><i class="fas panier fa-shopping-basket"></i>Acheter</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -60,20 +60,20 @@
     </div>
 {% endblock %}
 {% block background %}
-<div class="formSvg1">
+<div class="formSvg1" id="form1">
     <svg xmlns="http://www.w3.org/2000/svg" width="289.879" height="315.685" viewBox="0 0 289.879 315.685">
     <path id="Tracé_44" data-name="Tracé 44" d="M736,2104c44-18-48-30,0-78s50-112,126-38,60,84,34,128-82,124-124,80S692,2122,736,2104Z" transform="translate(284.21 -2073.948) rotate(25)" fill="#5293be"/>
     </svg>  
 </div>
-<div class="formSvg2">
+<div class="formSvg2" id="form2">
     <svg xmlns="http://www.w3.org/2000/svg" width="233" height="306" viewBox="0 0 233 306">
     <path id="Tracé_43" data-name="Tracé 43" d="M572.518,2286.907s-46.159-10.021-40.728-53.112,9.956-83.177,57.925-111.236,40.729-60.128,57.925-80.17,19.006-39.083,48.874-41.087,39.823,27.057,51.589,53.113,22.627,80.17,11.766,120.255-.905,78.166,0,83.177,9.051,58.124-47.064,48.1-117.66,1-131.236-11.023Z" transform="translate(-531.346 -2001.203)" fill="#adc9da" opacity="0.52"/>
     </svg>
 </div>
-<div class="formSvg3">
+<div class="formSvg3" id="form3">
     <svg xmlns="http://www.w3.org/2000/svg" width="181.469" height="208.3" viewBox="0 0 181.469 208.3">
     <path id="Tracé_45" data-name="Tracé 45" d="M628,2184c24-12-2-74,22-96s38,8,56,26,48,36,12,70-44,90-90,66S604,2196,628,2184Z" transform="matrix(0.951, 0.309, -0.309, 0.951, 125.373, -2164.195)" fill="#5293be" opacity="0.52"/>
     </svg>
 </div>
-    <img class="pictureBackground" src="/images/background/jason-ng-cc8BVwsSHyQ-unsplash.jpg">
+    <img class="pictureBackground" id="imageBg" src="/images/background/jason-ng-cc8BVwsSHyQ-unsplash.jpg">
 {% endblock %}

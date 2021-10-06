@@ -8,9 +8,9 @@
         <h1 class="change">{{article.name}}</h1>
         <div class="ficheInfos">
             <div class="infosProduit">
-            <div class="testpic">
-                <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('show') }}" alt="{{ article.name }}">
-            </div>
+                <div class="testpic">
+                    <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('show') }}" alt="{{ article.name }}">
+                </div>
                 <p>{{article.infos}}</p>
             </div>
             <div class="prix_quantite">

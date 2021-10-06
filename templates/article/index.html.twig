@@ -10,14 +10,14 @@
         <div class="produits">
             <h1 class="marginProducts">Tous les produits</h1>
             <div class='sectionTemplate'>
-                    <div class="gridTemplate">
+                    <div class="gridTemplate" id="gTemplate">
                         {% for article in articles %}
                                 <div class='grid-container'>
                                     <h3 class="title">{{ article.name }}</h3>
-                                    <details>
+                                    {# <details>
                                     <summary class='infos'><small class="form-text text-muted">plus d'infos</small></summary>
                                     <p>{{ article.infos }}</p>
-                                    </details>
+                                    </details> #}
                                     <a class="picture" id="actions-show" id="actions-show" href="{{ path('article_show', {'id': article.id}) }}">
                                     <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('my_thumb') }}" alt="{{ article.name }}">
                                     </a>

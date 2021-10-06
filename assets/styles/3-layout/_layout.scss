@@ -1,1 +1,64 @@
 // si on faait du responsive
+@media screen and (min-width:769px) and (max-width:1024px){
+    // Page Accueil
+    .main_index{
+        .part1{
+            h1{
+                font-size: var(--app-gros-titreT) !important;
+            }
+            h2{
+                font-size: var(--app-catchT) !important;
+            }
+            p{
+                font-size: var(--app-pT) !important;
+                width: 46% !important;
+            }
+            #shooop{
+                width: 20% !important ;
+            }
+        }
+        .button{
+            left: 42em !important;
+            top: 6em !important;
+        }
+    }
+    .sectionTemplate{
+        .gridTemplate{
+            grid-template-areas: ". ." !important;
+            gap : 20px 20px !important;
+        }
+    }
+    #form1{
+        top: 27em !important;
+        right: 22em !important;
+    }
+    #form2{
+        top: 24em !important;
+        right: 12em !important;
+    }
+    #form3{
+        top: 37em !important;
+        right: 21em !important;
+    }
+    #imageBg{
+        top: 11em ;
+        right: 13em;
+    }
+}
+@media screen and (min-width:1025px){
+    .main_index{
+        .button{
+            left: 76em !important;
+        }
+    }
+    .sectionTemplate{
+        .gridTemplate{
+            grid-template-areas: ". . . ." !important;
+            gap : 10px 10px !important;
+        }
+    }
+    #imageBg{
+        top: 11em ;
+        right: 13em;
+    }
+}
