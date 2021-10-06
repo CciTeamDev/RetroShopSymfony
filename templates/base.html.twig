@@ -29,46 +29,6 @@
 
         {% block form %}{% endblock %}
 
-        {% block footer %}
-            <footer>
-                <div class="foot">
-                    <div class="logo">
-                        <svg id="Composant_9_1" data-name="Composant 9 – 1" xmlns="http://www.w3.org/2000/svg" width="226" height="78" viewBox="0 0 226 78">
-                            <text id="Retro" transform="translate(0 57)" fill="#fef9f3" font-size="54" font-family="AbrilFatface-Regular, Abril Fatface"><tspan x="0" y="-13">Retro</tspan></text>
-                            <g id="Composant_8_1" data-name="Composant 8 – 1" transform="translate(146 10)">
-                            <text id="Shop" transform="translate(40 50)" fill="#5293be" font-size="36" font-family="Pacifico-Regular, Pacifico"><tspan x="-39.767" y="-13">Shop</tspan></text>
-                            </g>
-                        </svg>
-                        <p>92 rue Henri Depagnieux</p>
-                        <p>69400 Limas</p>
-                    </div>
-
-                    <div class="group">
-                        <div class="contact">
-                            <h3>Contact</h3>
-                            <p><i class="fas fa-phone-alt"></i>04.00.00.00.00</p>
-                            <p><i class="fas fa-envelope"></i>contact@retroshop.com</p>
-
-                        </div>
-
-                        <div class="mention">
-                            <h3>Conditions</h3>
-                            <a href="#">Conditions Générales de Vente</a>
-                            <a href="#">Condition Générales d'Utilisation Marketplace</a>
-                            <a href="#">Protection de la vie privée et cookies</a>
-                            <a href="#">Mentions Légales</a>
-                            <a href="#">FAQ</a>
-                        </div>
-                    </div>
-                    <div class="sociaux">
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-linkedin-in"></i>
-                        <i class="fab fa-facebook"></i>
-                    </div>
-                </div>
-                <p class="copy"> &copy; RetroShop 2021 | Développé avec <i class="fas fa-heart"></i> par Anaëlle - Brayan - Kévin - Loïc et Quentin </p>
-            </footer>
-        {% endblock %}
+      {% include "_partial/_footer.html.twig" %}
     </body>
 </html>
