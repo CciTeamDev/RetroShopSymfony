@@ -147,13 +147,16 @@ class PurchaseController extends AbstractController
     }
 
     #[Route('/purchase/success/merci/{id}', name: 'order_success')]
-    public function paymentSuccess(Request $request, Purchase $purchase, StripeService $stripeService)
+    public function paymentSuccess(Request $request, Purchase $purchase, PurchaseService $purchaseService, StripeService $stripeService)
     {
         if($stripeService->checkSuccess($purchase, $this->getParameter('secretStripe')))
         {
-           return $this->render('order/success.html.twig',[
+            $purch = $this->getDoctrine()->getManager()->getRepository(Purchase::class)->findOneBy(['user'=>$this->getUser(),"status"=>"panier"]);
+            //dd($purch,$this->getUser());
+            $purchaseService->checkPurchase($purch,$this->getUser());
+            return $this->render('order/success.html.twig',[
                'purchase' => $purchase
-           ]);
+            ]);
         }
     }
 
