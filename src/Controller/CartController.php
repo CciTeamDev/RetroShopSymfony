@@ -39,8 +39,14 @@ class CartController extends AbstractController
 
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$this->getUser()->getId()]);
         $purchase = $this->getDoctrine()->getRepository(Purchase::class)->findOneBy(['user'=>$user,'status'=>'panier']);
-        //dd($request);
-        $cartService->add($id,$request->get('quantity')??1,$purchase);
+        
+        if($request->get('quantity') === null) {
+            $patch = 1;
+        } else {
+            $patch = $request->get('quantity');
+        }
+        
+        $cartService->add($id,$patch,$purchase);
         
         return $this->redirectToRoute('cart_index');
     }
