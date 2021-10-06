@@ -100,25 +100,32 @@ class RegistrationFormType extends AbstractType
             )
             ->add('date_naissance',BirthdayType::class,[
                 'label' => 'Date de naissance',
+                'label_attr' =>['class'=> 'form_label'],
             ])
             ->add('plainPassword', RepeatedType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
                 'type' => PasswordType::class,
-                'label' => 'Veuillez choisir un mot de passe',
 
-                'attr' => [
+                'label' => 'Veuillez choisir un mot de passe',
+                'required' => true,
+                'first_options' => [
+                    'label' => "Mot de passe",
+                    'attr' => [
                     'autocomplete' => 'new-password',
                     'class' => 'form_input',
-                    'placeholder' => '******'
-                ],
+                    ],
                     'label_attr'=>[
                         'class' => 'form_label'
-                    ],
-                'required' => true,
-                'first_options' => ['label' => "Mot de passe"],
-                'second_options' => ['label' => "Confirmez votre mot de passe"],
+                    ]],
+                'second_options' => [
+                    'label' => "Confirmez votre mot de passe",
+                    'attr' => [
+                        'autocomplete' => 'new-password',
+                        'class' => 'form_input',
+                        ],
+                        'label_attr'=>[
+                            'class' => 'form_label'
+                        ]],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez rentrer un mot de passe',
